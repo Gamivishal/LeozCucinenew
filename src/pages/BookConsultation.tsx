@@ -31,12 +31,12 @@ const categories = [
 const FINISHES_DATA: FinishItem[] = [
   // Membrane
   { name: 'Avenza', category: 'Membrane', finishType: 'Surface Finish: High Gloss', code: 'SKU Code: CMBL95H0045', color: '#FFF5DC' },
-  { name: 'Olmo', category: 'Membrane', finishType: 'Surface Finish: Textured Wood', code: 'SKU Code: LMEM-OL90', image: 'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Olmo', category: 'Membrane', finishType: 'Surface Finish: Textured Wood', code: 'SKU Code: LMEM-OL90', color: '#B08D57' },
   { name: 'Beluga', category: 'Membrane', finishType: 'Surface Finish: High Gloss', code: 'SKU Code: CMBL95H0045', color: '#EFF0F2' },
   { name: 'Mentone', category: 'Membrane', finishType: 'Surface Finish: Premium Matte', code: 'SKU Code: LMEM-MN48', color: '#E2DDD5' },
   { name: 'Lucernario', category: 'Membrane', finishType: 'Surface Finish: Soft Matte', code: 'SKU Code: LMEM-LU12', color: '#D9ECEF' },
   { name: 'Crema', category: 'Membrane', finishType: 'Surface Finish: Smooth Matte', code: 'SKU Code: LMEM-CR34', color: '#F1EFEA' },
-  { name: 'Assolato', category: 'Membrane', finishType: 'Surface Finish: Textured Veneer', code: 'SKU Code: LMEM-AS77', image: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Assolato', category: 'Membrane', finishType: 'Surface Finish: Textured Veneer', code: 'SKU Code: LMEM-AS77', color: '#C9A876' },
   { name: 'Maronne Sughero', category: 'Membrane', finishType: 'Surface Finish: Premium Texture', code: 'SKU Code: LMEM-MS66', color: '#8B5E3C' },
 
   // PU
@@ -46,9 +46,9 @@ const FINISHES_DATA: FinishItem[] = [
   { name: 'Verde Salvia', category: 'PU', finishType: 'Surface Finish: Satin Lacquer', code: 'SKU Code: LPU-VS04', color: '#8FBC8F' },
 
   // Laminate
-  { name: 'Rovere Tabacco', category: 'Laminate', finishType: 'Surface Finish: Synchro Wood', code: 'SKU Code: LLAM-RT09', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Cemento', category: 'Laminate', finishType: 'Surface Finish: Industrial Concrete', code: 'SKU Code: LLAM-CE11', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Ardesia Slate', category: 'Laminate', finishType: 'Surface Finish: Natural Stone Texture', code: 'SKU Code: LLAM-AS01', image: 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Rovere Tabacco', category: 'Laminate', finishType: 'Surface Finish: Synchro Wood', code: 'SKU Code: LLAM-RT09', color: '#7B5B3A' },
+  { name: 'Cemento', category: 'Laminate', finishType: 'Surface Finish: Industrial Concrete', code: 'SKU Code: LLAM-CE11', color: '#9B9B93' },
+  { name: 'Ardesia Slate', category: 'Laminate', finishType: 'Surface Finish: Natural Stone Texture', code: 'SKU Code: LLAM-AS01', color: '#4A4E52' },
   { name: 'Corten Steel', category: 'Laminate', finishType: 'Surface Finish: Oxide Metallic', code: 'SKU Code: LLAM-CS02', color: '#A0522D' },
 
   // Alvic
@@ -68,8 +68,8 @@ const FINISHES_DATA: FinishItem[] = [
   { name: 'Graphite Crystal', category: 'Acrylic Crystal', finishType: 'Surface Finish: 3D Acrylic Glass', code: 'SKU Code: LACR-GC12', color: '#2E3B4E' },
 
   // Egger
-  { name: 'Denver Oak', category: 'Egger', finishType: 'Surface Finish: Feelwood', code: 'SKU Code: LEGG-DO05', image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Fleetwood', category: 'Egger', finishType: 'Surface Finish: Linear Wood', code: 'SKU Code: LEGG-FW06', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Denver Oak', category: 'Egger', finishType: 'Surface Finish: Feelwood', code: 'SKU Code: LEGG-DO05', color: '#C4A576' },
+  { name: 'Fleetwood', category: 'Egger', finishType: 'Surface Finish: Linear Wood', code: 'SKU Code: LEGG-FW06', color: '#B79868' },
 
   // Acrylic
   { name: 'Lucido Bianco', category: 'Acrylic', finishType: 'Surface Finish: High Gloss Acrylic', code: 'SKU Code: LACR-LB01', color: '#FAFAFA' },

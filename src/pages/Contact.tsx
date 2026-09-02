@@ -4,7 +4,7 @@ import { Header } from '../components/common/Header';
 import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
-import { Phone, Mail, MapPin, Clock, MessageSquare, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Headphones, MessageSquare, CheckCircle } from 'lucide-react';
 
 /* Easing curve token matching Modular Kitchens and Wardrobes pages */
 const luxuryEase = [0.16, 1, 0.3, 1];
@@ -50,7 +50,6 @@ export const Contact: React.FC = () => {
     phone: '',
     email: '',
     projectType: 'Kitchen',
-    city: '',
     message: ''
   });
 
@@ -63,7 +62,7 @@ export const Contact: React.FC = () => {
 
   useDocumentMeta(
     'Contact Leoz Cucine | Kitchens & Wardrobes',
-    "Planning a new kitchen or wardrobe? Speak with our team and explore what works best for your home."
+    'Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients across Ahmedabad and throughout Gujarat.'
   );
 
   // Parallax transform calculation for Hero image
@@ -183,7 +182,7 @@ export const Contact: React.FC = () => {
                 className="page-title"
                 style={{ marginBottom: '20px' }}
               >
-                Let's Talk About Your Space.
+                Let's Talk About Your Kitchen or Wardrobe
               </motion.h1>
 
               <motion.p
@@ -191,7 +190,7 @@ export const Contact: React.FC = () => {
                 className="hero-description"
                 style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
               >
-                Planning a new kitchen or wardrobe? Speak with our team and explore what works best for your home.
+                Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients across Ahmedabad and throughout Gujarat.
               </motion.p>
             </motion.div>
           </div>
@@ -264,21 +263,6 @@ export const Contact: React.FC = () => {
                 </motion.h2>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-                  {/* Phone */}
-                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
-                    <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
-                      <Phone size={22} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
-                        Phone Number
-                      </h4>
-                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
-                        [Phone Number]
-                      </p>
-                    </div>
-                  </motion.div>
-
                   {/* Email */}
                   <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
                     <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
@@ -286,10 +270,40 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
-                        Email Address
+                        Email
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
-                        [Email Address]
+                        Info@leozcucine.com
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Sales & Inquiry */}
+                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                    <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
+                      <Phone size={22} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
+                        Sales &amp; Inquiry
+                      </h4>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                        93131 51559
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Customer Care */}
+                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                    <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
+                      <Headphones size={22} strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
+                        Customer Care
+                      </h4>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                        8758 551552
                       </p>
                     </div>
                   </motion.div>
@@ -301,10 +315,10 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
-                        Showroom Address
+                        Head Office / Showroom (Ahmedabad)
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
-                        [Studio Address]
+                        Sankalp Square 3B, 509, Sindhu Bhavan Marg, beside Taj Sky line, PRL Colony, Thaltej, Ahmedabad, Gujarat 380059
                       </p>
                     </div>
                   </motion.div>
@@ -316,10 +330,10 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
-                        Working Hours
+                        Business Hours
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
-                        [Working Hours]
+                        Monday – Saturday: 10:00 AM – 7:00 PM<br />Sunday: By appointment only
                       </p>
                     </div>
                   </motion.div>
@@ -352,9 +366,9 @@ export const Contact: React.FC = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    <span className="section-label" style={{ display: 'block' }}>GET IN TOUCH</span>
+                    <span className="section-label" style={{ display: 'block' }}>ENQUIRY FORM</span>
                     <h3 style={{ fontFamily: 'var(--font-family-serif)', fontSize: '24px', fontWeight: 500, color: '#FFFFFF', marginBottom: '8px' }}>
-                      Start Your Project.
+                      Send Us a Message
                     </h3>
 
                     {/* Name */}
@@ -389,7 +403,7 @@ export const Contact: React.FC = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '16px' }}>
                       <div>
                         <label style={{ display: 'block', fontFamily: 'var(--font-family-sans)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', marginBottom: '8px' }}>
-                          Phone Number
+                          Mobile No.
                         </label>
                         <input
                           type="tel"
@@ -441,62 +455,34 @@ export const Contact: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Interested In & Location Row */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '16px' }}>
-                      <div>
-                        <label style={{ display: 'block', fontFamily: 'var(--font-family-sans)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', marginBottom: '8px' }}>
-                          I'm Interested In
-                        </label>
-                        <select
-                          name="projectType"
-                          value={formData.projectType}
-                          onChange={handleInputChange}
-                          className="contact-form-input"
-                          style={{
-                            width: '100%',
-                            height: '52px',
-                            padding: '0 18px',
-                            backgroundColor: '#181818',
-                            border: '1px solid rgba(182, 154, 107, 0.25)',
-                            borderRadius: '8px',
-                            color: '#FFFFFF',
-                            fontFamily: 'var(--font-family-sans)',
-                            fontSize: '14px',
-                            outline: 'none',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <option value="Kitchen">Kitchen</option>
-                          <option value="Wardrobe">Wardrobe</option>
-                          <option value="Kitchen & Wardrobe">Kitchen &amp; Wardrobe</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label style={{ display: 'block', fontFamily: 'var(--font-family-sans)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', marginBottom: '8px' }}>
-                          Location
-                        </label>
-                        <input
-                          type="text"
-                          name="city"
-                          required
-                          value={formData.city}
-                          onChange={handleInputChange}
-                          placeholder="Your city"
-                          className="contact-form-input"
-                          style={{
-                            width: '100%',
-                            height: '52px',
-                            padding: '0 18px',
-                            backgroundColor: '#181818',
-                            border: '1px solid rgba(182, 154, 107, 0.25)',
-                            borderRadius: '8px',
-                            color: '#FFFFFF',
-                            fontFamily: 'var(--font-family-sans)',
-                            fontSize: '14px',
-                            outline: 'none',
-                          }}
-                        />
-                      </div>
+                    {/* Project Type */}
+                    <div>
+                      <label style={{ display: 'block', fontFamily: 'var(--font-family-sans)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', marginBottom: '8px' }}>
+                        Project Type
+                      </label>
+                      <select
+                        name="projectType"
+                        value={formData.projectType}
+                        onChange={handleInputChange}
+                        className="contact-form-input"
+                        style={{
+                          width: '100%',
+                          height: '52px',
+                          padding: '0 18px',
+                          backgroundColor: '#181818',
+                          border: '1px solid rgba(182, 154, 107, 0.25)',
+                          borderRadius: '8px',
+                          color: '#FFFFFF',
+                          fontFamily: 'var(--font-family-sans)',
+                          fontSize: '14px',
+                          outline: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <option value="Kitchen">Kitchen</option>
+                        <option value="Wardrobe">Wardrobe</option>
+                        <option value="Both">Both</option>
+                      </select>
                     </div>
 
                     {/* Message */}
@@ -546,7 +532,7 @@ export const Contact: React.FC = () => {
                         transition: 'all 300ms cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
                     >
-                      Request a Consultation
+                      Submit Enquiry
                     </button>
                   </form>
                 )}
@@ -555,6 +541,9 @@ export const Contact: React.FC = () => {
           </div>
         </section>
 
+        {/* EXTRA SECTION (not part of current spec) — disabled, kept for reference. Remove `false &&` to re-enable. */}
+        {false && (
+        <>
         {/* ==========================================================================
            SECTION 3: WHATSAPP CONTACT
            ========================================================================== */}
@@ -643,6 +632,8 @@ export const Contact: React.FC = () => {
             </motion.div>
           </div>
         </section>
+        </>
+        )}
 
         {/* ==========================================================================
            SECTION 4: GOOGLE MAP
@@ -670,11 +661,12 @@ export const Contact: React.FC = () => {
                 overflow: 'hidden',
                 border: '1px solid rgba(182, 154, 107, 0.25)',
                 boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
+                backgroundColor: '#2a2a2a',
               }}
             >
               <iframe
                 title="LEOZ CUCINE Showroom Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.697926830501!2d72.5085465!3d23.0348763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f509d43501%3A0xb35a3fa1e43e2e88!2sS.G.%20Highway%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps?q=Sankalp+Square+3B%2C+509%2C+Sindhu+Bhavan+Marg%2C+Thaltej%2C+Ahmedabad%2C+Gujarat+380059&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: 'contrast(1.05) saturate(1.1)' }}
@@ -682,6 +674,71 @@ export const Contact: React.FC = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+            </motion.div>
+
+            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Sankalp+Square+3B%2C+509%2C+Sindhu+Bhavan+Marg%2C+Thaltej%2C+Ahmedabad%2C+Gujarat+380059"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="small-description"
+                style={{ color: 'var(--color-accent, #B69A6B)', fontWeight: 600 }}
+              >
+                View on Google Maps →
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 5: PREFER TO TALK DIRECTLY CTA
+           ========================================================================== */}
+        <section
+          aria-label="Prefer to Talk Directly"
+          style={{
+            paddingTop: '60px',
+            paddingBottom: '60px',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: '#202020',
+            color: '#FFFFFF',
+            borderTop: '1px solid rgba(182, 154, 107, 0.15)',
+          }}
+        >
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={staggerContainer}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '24px',
+              }}
+            >
+              <motion.h2
+                variants={staggerItem}
+                style={{
+                  fontFamily: 'var(--font-family-serif)',
+                  fontSize: 'clamp(28px, 3.2vw, 42px)',
+                  fontWeight: 300,
+                  color: '#FFFFFF',
+                  margin: 0,
+                }}
+              >
+                Prefer to Talk Directly?
+              </motion.h2>
+
+              <motion.div variants={staggerItem}>
+                <a
+                  href="tel:+919313151559"
+                  className="btn btn-light"
+                >
+                  Call Us / Talk to Us
+                </a>
+              </motion.div>
             </motion.div>
           </div>
         </section>

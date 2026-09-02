@@ -67,11 +67,11 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
     { name: 'Kitchens', path: '/modular-kitchens' },
     { name: 'Wardrobes', path: '/modular-wardrobes' },
-    { name: 'Franchise Enquiry', path: '/franchise-opportunities' },
+    { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Franchise Enquiry', path: '/franchise-opportunities' },
   ];
 
   return (
@@ -165,7 +165,7 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
               minHeight: 'auto',
             }}
           >
-            Book a Consultation
+            Talk to Us
           </a>
 
           {/* MOBILE HAMBURGER TOGGLE BUTTON */}
@@ -246,7 +246,7 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
                 className="btn btn-light"
                 style={{ width: '100%', textAlign: 'center', display: 'block' }}
               >
-                Book a Consultation
+                Talk to Us
               </a>
             </div>
           </motion.div>

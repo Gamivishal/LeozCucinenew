@@ -62,12 +62,13 @@ export const Footer: React.FC = () => {
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {[
                 { label: 'Home', path: '/' },
-                { label: 'About', path: '/about' },
                 { label: 'Kitchens', path: '/modular-kitchens' },
                 { label: 'Wardrobes', path: '/modular-wardrobes' },
-                { label: 'Franchise Enquiry', path: '/franchise-opportunities' },
+                { label: 'About', path: '/about' },
                 { label: 'Contact', path: '/contact' },
-                { label: 'Franchise Enquiry', path: '/franchise-enquiry' },
+                { label: 'Franchise Enquiry', path: '/franchise-opportunities' },
+                // EXTRA (not part of current spec) — disabled, kept for reference. Uncomment to re-enable.
+                // { label: 'Franchise Enquiry', path: '/franchise-enquiry' },
               ].map((item) => (
                 <li key={item.path}>
                   <a
@@ -119,10 +120,11 @@ export const Footer: React.FC = () => {
                 color: 'var(--color-text-secondary)',
               }}
             >
-              <p>Email: [Email Address]</p>
-              <p>Phone: [Phone Number]</p>
-              <p>Studio: [Studio Address]</p>
-              <p>Hours: [Working Hours]</p>
+              <p>Email: Info@leozcucine.com</p>
+              <p>Sales &amp; Inquiry: 93131 51559</p>
+              <p>Customer Care: 8758 551552</p>
+              <p>Studio: Sankalp Square 3B, 509, Sindhu Bhavan Marg, Thaltej, Ahmedabad, Gujarat 380059</p>
+              <p>Hours: Mon–Sat 10 AM–7 PM, Sun by appointment</p>
             </div>
           </div>
         </div>

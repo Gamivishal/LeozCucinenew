@@ -5,6 +5,7 @@ import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
 import { ParallaxImage } from '../components/ui/ParallaxImage';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { Check, Factory, Compass, Clock, ShieldCheck, Wrench } from 'lucide-react';
 
 /* Easing curve token matching Modular Kitchens page */
 const luxuryEase = [0.16, 1, 0.3, 1];
@@ -175,16 +176,30 @@ export const ModularWardrobes: React.FC = () => {
                 className="page-title"
                 style={{ marginBottom: '20px' }}
               >
-                Storage Made Beautiful.
+                Wardrobes Built Around the Way You Live
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
                 className="hero-description"
-                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
+                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)', marginBottom: '32px' }}
               >
-                Wardrobes designed around your room, belongings and personal style.
+                Custom-designed, in-house manufactured wardrobes that bring the same premium standard as our kitchens to every corner of your home.
               </motion.p>
+
+              <motion.div variants={itemVariants}>
+                <a
+                  href="/talk-to-us"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.history.pushState({}, '', '/talk-to-us');
+                    window.dispatchEvent(new Event('popstate'));
+                  }}
+                  className="btn btn-primary"
+                >
+                  Book a Wardrobe Consultation
+                </a>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -299,17 +314,449 @@ export const ModularWardrobes: React.FC = () => {
                   className="section-title"
                   style={{ marginBottom: '20px', willChange: 'clip-path' }}
                 >
-                  Made for What You Keep.
+                  More Than Storage — A Considered Part of Your Home
                 </motion.h2>
 
                 <p className="description" style={{ marginBottom: 0 }}>
-                  From the outer finish to the smallest internal detail, every wardrobe is planned around you.
+                  A wardrobe should be as thoughtfully designed as any other feature of your home. At LEOZ Cucine, we design wardrobes around your space, your storage needs, and your style — then manufacture and install them ourselves.
                 </p>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
+        {/* ==========================================================================
+           SECTION 2.5: CUSTOMIZED WARDROBES
+           ========================================================================== */}
+        <section
+          aria-label="Customized Wardrobes"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-dark)',
+            color: 'var(--color-text-primary)',
+          }}
+        >
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={staggerContainer}
+            >
+              <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                CUSTOMIZED WARDROBES
+              </motion.span>
+
+              <motion.h2 variants={staggerItem} className="section-title text-white" style={{ marginBottom: '20px' }}>
+                Maximize Your Space, Elevate Your Room
+              </motion.h2>
+
+              <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto', color: 'var(--color-text-secondary)' }}>
+                Maximize your space with our innovative wardrobe designs. Tailored to your needs, our wardrobes combine practicality with elegance, ensuring optimal storage and a clutter-free environment.
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.6: WARDROBE STYLES & COLLECTIONS
+           ========================================================================== */}
+        <section
+          aria-label="Wardrobe Styles & Collections"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-light)',
+            color: 'var(--color-text-dark)',
+          }}
+        >
+          <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WARDROBE COLLECTIONS</span>
+              <h2 className="section-title">Find Your Wardrobe Style.</h2>
+            </div>
+
+            <div
+              className="mw-styles-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: 'clamp(24px, 3vw, 40px)',
+              }}
+            >
+              {[
+                { title: 'Sliding Wardrobes', description: 'Space-efficient designs ideal for compact bedrooms, with smooth, durable sliding mechanisms.' },
+                { title: 'Hinged Wardrobes', description: 'Classic, spacious wardrobes with full access — customizable in finish and internal layout.' },
+                { title: 'Walk-In Wardrobes', description: 'Premium walk-in storage solutions for larger spaces, designed for organization and display.' },
+              ].map((style, idx) => (
+                <motion.div
+                  key={style.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                  style={{
+                    padding: 'clamp(32px, 3.5vw, 44px)',
+                    backgroundColor: 'var(--color-surface-stone)',
+                    border: '1px solid var(--color-border-gold)',
+                    borderRadius: 'var(--radius-sm)',
+                    boxShadow: 'var(--shadow-subtle)',
+                  }}
+                >
+                  <h3 className="sub-title" style={{ marginBottom: '12px' }}>{style.title}</h3>
+                  <p className="description" style={{ margin: 0 }}>{style.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.7: MATERIALS & FINISHES (SPECIFICATIONS)
+           ========================================================================== */}
+        <section
+          aria-label="Materials & Finishes Specifications"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: '#202020',
+            color: 'var(--color-text-primary)',
+          }}
+        >
+          <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>MATERIALS &amp; FINISHES</span>
+            <h2 className="section-title text-white" style={{ marginBottom: '40px' }}>Built for Performance. Finished for Life.</h2>
+
+            <div
+              className="mw-fusion-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '20px',
+                textAlign: 'left',
+              }}
+            >
+              {[
+                'Engineered wood and marine-grade plywood construction',
+                'Laminate, veneer, acrylic and PU finish options',
+                'Premium German-grade sliding and hinge hardware for long-term durability',
+                'Internal organizers — drawers, shelves, trouser racks, accessory units',
+              ].map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <div
+                    style={{
+                      width: '26px',
+                      height: '26px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                      color: '#B69A6B',
+                      flexShrink: 0,
+                      marginTop: '2px',
+                    }}
+                  >
+                    <Check size={14} strokeWidth={2.5} />
+                  </div>
+                  <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.8: WHY OUR WARDROBES STAND APART
+           ========================================================================== */}
+        <section
+          aria-label="Why Our Wardrobes Stand Apart"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-stone)',
+            color: 'var(--color-text-dark)',
+          }}
+        >
+          <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ WARDROBES</span>
+              <h2 className="section-title">Why Our Wardrobes Stand Apart.</h2>
+            </div>
+
+            <div
+              className="mw-standapart-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: 'clamp(24px, 3vw, 40px)',
+              }}
+            >
+              {[
+                { icon: Factory, title: 'Designed & Manufactured In-House', description: 'Designed and manufactured at our own factory.' },
+                { icon: Compass, title: 'German Design Precision', description: 'German design precision reflected in finish and detailing.' },
+                { icon: Clock, title: '20+ Years of Experience', description: '20+ years of manufacturing experience.' },
+                { icon: ShieldCheck, title: 'Comprehensive Warranty', description: 'Comprehensive warranty on materials and workmanship.' },
+                { icon: Wrench, title: 'In-House Installation', description: 'Installed by our own trained team, not outsourced labor.' },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                    style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
+                  >
+                    <div
+                      style={{
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'rgba(182, 154, 107, 0.12)',
+                        color: '#B69A6B',
+                        marginBottom: '6px',
+                      }}
+                    >
+                      <Icon size={22} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="sub-title" style={{ fontSize: '18px', margin: 0 }}>{item.title}</h3>
+                    <p className="small-description" style={{ margin: 0 }}>{item.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.9: OUR PROCESS
+           ========================================================================== */}
+        <section
+          aria-label="Our Process"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-dark)',
+            color: 'var(--color-text-primary)',
+          }}
+        >
+          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR PROCESS</span>
+              <h2 className="section-title text-white">From Consultation to Installation.</h2>
+            </div>
+
+            <div
+              className="mw-process-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                gap: 'clamp(24px, 3vw, 40px)',
+              }}
+            >
+              {[
+                { step: '01', title: 'Space Assessment & Measurement', desc: 'We assess your space and take precise measurements.' },
+                { step: '02', title: 'Custom Design', desc: 'A design based on your storage needs.' },
+                { step: '03', title: 'Material & Finish Selection', desc: 'Choose the materials and finishes that suit you.' },
+                { step: '04', title: 'In-House Manufacturing', desc: 'Your wardrobe is built at our own factory.' },
+                { step: '05', title: 'Professional Installation', desc: 'Installed by our own in-house team.' },
+                { step: '06', title: 'Final Quality Inspection', desc: 'A final check to ensure everything is right.' },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.step}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-family-sans)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--color-accent)',
+                      display: 'block',
+                      marginBottom: '10px',
+                    }}
+                  >
+                    {item.step}
+                  </span>
+                  <h3 className="sub-title text-white" style={{ marginBottom: '8px' }}>{item.title}</h3>
+                  <p className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.10: FAQ
+           ========================================================================== */}
+        <section
+          aria-label="Frequently Asked Questions"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-light)',
+            color: 'var(--color-text-dark)',
+          }}
+        >
+          <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
+              <h2 className="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+              {[
+                {
+                  q: 'Can wardrobes be customized for irregular room shapes?',
+                  a: 'Yes, every wardrobe is designed to fit your exact space and dimensions.',
+                },
+                {
+                  q: 'What internal storage options are available?',
+                  a: 'Drawers, shelves, trouser racks, jewelry units, and shoe racks can all be included based on your needs.',
+                },
+                {
+                  q: 'What warranty applies to wardrobes?',
+                  a: '[Client Confirmation Required: wardrobe warranty duration and coverage terms]',
+                },
+                {
+                  q: 'Do you handle both design and installation?',
+                  a: 'Yes, our in-house team manages the entire process from design through installation.',
+                },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.q}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                  style={{
+                    padding: 'clamp(24px, 3vw, 32px)',
+                    backgroundColor: 'var(--color-surface-stone)',
+                    border: '1px solid var(--color-border-gold)',
+                    borderRadius: 'var(--radius-sm)',
+                  }}
+                >
+                  <h3 className="sub-title" style={{ fontSize: '19px', marginBottom: '10px' }}>{item.q}</h3>
+                  <p className="description" style={{ margin: 0 }}>{item.a}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 6: LEAD ENQUIRY CTA
+           ========================================================================== */}
+        <section
+          id="contact"
+          aria-label="Request Design Consultation"
+          style={{
+            position: 'relative',
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: '#181818',
+            color: '#FFFFFF',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+          }}
+        >
+          {/* Subtle Ambient Background Vignette */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.03 }}
+            whileInView={{ opacity: 0.15, scale: 1.00 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 1.0, ease: luxuryEase }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: `url(${images.consultationBg})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              pointerEvents: 'none',
+              willChange: 'transform, opacity',
+            }}
+          />
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'radial-gradient(circle at center, rgba(24,24,24,0.6) 0%, rgba(24,24,24,0.98) 100%)',
+              pointerEvents: 'none',
+            }}
+          />
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={staggerContainer}
+            style={{
+              position: 'relative',
+              zIndex: 10,
+              maxWidth: '820px',
+              width: '100%',
+              margin: '0 auto',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              textAlign: 'center',
+            }}
+          >
+            <motion.h2
+              variants={staggerItem}
+              className="section-title text-white"
+              style={{ marginBottom: '20px' }}
+            >
+              Ready to Design Your Wardrobe?
+            </motion.h2>
+
+            <motion.div
+              variants={staggerItem}
+            >
+              <a
+                href="/talk-to-us"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.history.pushState({}, '', '/talk-to-us');
+                  window.dispatchEvent(new Event('popstate'));
+                }}
+                className="btn btn-light"
+              >
+                Book a Wardrobe Consultation
+              </a>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* EXTRA SECTIONS (not part of current spec) — disabled, kept for reference. Remove `false &&` to re-enable. */}
+        {false && (
+        <>
         {/* ==========================================================================
            SECTION 3: WARDROBE TYPES (3 CARDS GRID)
            ========================================================================== */}
@@ -504,7 +951,7 @@ export const ModularWardrobes: React.FC = () => {
                   marginBottom: 'var(--space-4)',
                 }}
               >
-                FINISHES
+                FINISH GALLERY
               </motion.span>
               <motion.h2
                 variants={staggerItem}
@@ -664,95 +1111,9 @@ export const ModularWardrobes: React.FC = () => {
             </div>
           </div>
         </section>
+        </>
+        )}
 
-        {/* ==========================================================================
-           SECTION 6: LEAD ENQUIRY CTA
-           ========================================================================== */}
-        <section
-          id="contact"
-          aria-label="Request Design Consultation"
-          style={{
-            position: 'relative',
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
-            paddingLeft: '6vw',
-            paddingRight: '6vw',
-            backgroundColor: '#181818',
-            color: '#FFFFFF',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-          }}
-        >
-          {/* Subtle Ambient Background Vignette */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.03 }}
-            whileInView={{ opacity: 0.15, scale: 1.00 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 1.0, ease: luxuryEase }}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: `url(${images.consultationBg})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              pointerEvents: 'none',
-              willChange: 'transform, opacity',
-            }}
-          />
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'radial-gradient(circle at center, rgba(24,24,24,0.6) 0%, rgba(24,24,24,0.98) 100%)',
-              pointerEvents: 'none',
-            }}
-          />
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
-            variants={staggerContainer}
-            style={{
-              position: 'relative',
-              zIndex: 10,
-              maxWidth: '820px',
-              width: '100%',
-              margin: '0 auto',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              textAlign: 'center',
-            }}
-          >
-            <motion.h2
-              variants={staggerItem}
-              className="section-title text-white"
-              style={{ marginBottom: '20px' }}
-            >
-              Make Space for Everything.
-            </motion.h2>
-
-            <motion.div
-              variants={staggerItem}
-            >
-              <a
-                href="/talk-to-us"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.history.pushState({}, '', '/talk-to-us');
-                  window.dispatchEvent(new Event('popstate'));
-                }}
-                className="btn btn-light"
-              >
-                Book a Wardrobe Consultation
-              </a>
-            </motion.div>
-          </motion.div>
-        </section>
       </main>
 
       {/* FOOTER */}
@@ -777,13 +1138,13 @@ export const ModularWardrobes: React.FC = () => {
           }
         }
         @media (max-width: 767px) {
-          .mw-intro-grid, .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid {
+          .mw-intro-grid, .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid, .mw-fusion-grid, .mw-styles-grid, .mw-standapart-grid, .mw-process-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
-          .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid {
+          .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid, .mw-styles-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
         }

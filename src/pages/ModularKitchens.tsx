@@ -5,6 +5,7 @@ import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
 import { ParallaxImage } from '../components/ui/ParallaxImage';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
+import { Check, Factory, Compass, Clock, ShieldCheck, Wrench } from 'lucide-react';
 
 /* Easing curve token */
 const luxuryEase = [0.16, 1, 0.3, 1];
@@ -70,70 +71,6 @@ export const ModularKitchens: React.FC = () => {
 
   // Parallax transform calculation for Hero image
   const parallaxY = Math.min(scrollY * 0.15, 120);
-
-  /* Layout Cards Data (5 Types) */
-  const layouts = [
-    {
-      id: 'l-shape',
-      title: 'L-Shape Layout',
-      subtitle: 'Corner wall layout',
-      description: 'Works well in open-plan spaces, providing easy access to the sink and stove while leaving the center area open.',
-      image: images.layouts.lShape
-    },
-    {
-      id: 'u-shape',
-      title: 'U-Shape Layout',
-      subtitle: 'Three-wall workspace',
-      description: 'Surrounds you on three sides for an efficient work triangle with maximum counter space and storage.',
-      image: images.layouts.uShape
-    },
-    {
-      id: 'island',
-      title: 'Island Layout',
-      subtitle: 'Central island counter',
-      description: 'Combines a wall kitchen setup with a freestanding center counter for extra preparation space and seating.',
-      image: '/Island Layout.png'
-    },
-    {
-      id: 'parallel',
-      title: 'Parallel Layout',
-      subtitle: 'Double-wall layout',
-      description: 'A classic galley design with counters on opposing walls, commonly used to keep cooking steps short.',
-      image: images.layouts.parallel
-    },
-    {
-      id: 'straight',
-      title: 'Straight Layout',
-      subtitle: 'Single-wall layout',
-      description: 'Fits all appliances and cabinets on a single wall. Useful for studio apartments or narrow spaces.',
-      image: '/Straight Layout.png'
-    },
-    {
-      id: 'contemporary',
-      title: 'Contemporary',
-      subtitle: 'Clean lines, modern finish',
-      description: 'Minimal lines and sophisticated finishes for a modern, uncluttered look.',
-      image: images.materials.woodVeneer
-    },
-    {
-      id: 'handleless',
-      title: 'Handleless',
-      subtitle: 'Seamless push-to-open fronts',
-      description: 'Clean, uninterrupted surfaces with integrated push-to-open profiles.',
-      image: images.materials.matte
-    }
-  ];
-
-  /* Finishes & Materials (7 Categories) */
-  const materials = [
-    { title: 'Matte Finish', detail: 'Soft-touch, fingerprint-resistant.', image: images.materials.matte },
-    { title: 'Gloss Finish', detail: 'Reflective, high-shine surface.', image: images.materials.gloss },
-    { title: 'Wood Veneer', detail: 'Natural oak and walnut tones.', image: images.materials.woodVeneer },
-    { title: 'Marble', detail: 'Natural stone worktops.', image: '/Italian Marble.png' },
-    { title: 'Quartz Stone', detail: 'Durable engineered worktops.', image: images.materials.quartz },
-    { title: 'Glass Vitrines', detail: 'Fluted glass cabinet doors.', image: images.materials.glass },
-    { title: 'Metal Accents', detail: 'Anodized handles and trim.', image: '/Metal Accents.png' }
-  ];
 
   return (
     <div className="page-modular-kitchens" style={{ backgroundColor: 'var(--color-surface-dark)', color: 'var(--color-text-primary)' }}>
@@ -239,16 +176,30 @@ export const ModularKitchens: React.FC = () => {
                 className="page-title"
                 style={{ marginBottom: '20px' }}
               >
-                Designed for Cooking. Made for Living.
+                Modular Kitchens, Designed Around Your Life
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
                 className="hero-description"
-                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
+                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)', marginBottom: '32px' }}
               >
-                Thoughtfully planned kitchens with refined finishes and intelligent storage.
+                Experience German Precision – Premium Modular Kitchens from Design to Installation.
               </motion.p>
+
+              <motion.div variants={itemVariants}>
+                <a
+                  href="/talk-to-us"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.history.pushState({}, '', '/talk-to-us');
+                    window.dispatchEvent(new Event('popstate'));
+                  }}
+                  className="btn btn-primary"
+                >
+                  Book a Kitchen Consultation
+                </a>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -319,11 +270,11 @@ export const ModularKitchens: React.FC = () => {
                   className="section-title"
                   style={{ marginBottom: '20px', willChange: 'clip-path' }}
                 >
-                  Your Kitchen. Your Way.
+                  A Kitchen Should Work as Beautifully as It Looks
                 </motion.h2>
 
                 <p className="description" style={{ marginBottom: 0 }}>
-                  Every kitchen is designed around your space, lifestyle and daily routine.
+                  At LEOZ Cucine, every modular kitchen is designed for the way you cook, store, and gather — then finished to a standard that feels considered in every detail, from cabinet edges to hardware.
                 </p>
               </motion.div>
 
@@ -353,10 +304,271 @@ export const ModularKitchens: React.FC = () => {
         </section>
 
         {/* ==========================================================================
-           SECTION 3: KITCHEN LAYOUTS (5 CARDS GRID)
+           SECTION 2.5: MODULAR KITCHENS — GERMAN PRECISION, INDIAN SENSIBILITY
            ========================================================================== */}
         <section
-          aria-label="Kitchen Layouts Architecture"
+          aria-label="Modular Kitchens"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-dark)',
+            color: 'var(--color-text-primary)',
+          }}
+        >
+          <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              variants={staggerContainer}
+            >
+              <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                MODULAR KITCHENS
+              </motion.span>
+
+              <motion.h2 variants={staggerItem} className="section-title text-white" style={{ marginBottom: '20px' }}>
+                German Precision, Indian Sensibility
+              </motion.h2>
+
+              <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto 40px', color: 'var(--color-text-secondary)' }}>
+                Our kitchens blend German-grade hardware with Indian sensibilities, offering a smart fusion of:
+              </motion.p>
+
+              <motion.div
+                variants={staggerItem}
+                className="mk-fusion-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '20px',
+                  textAlign: 'left',
+                  marginBottom: '40px',
+                }}
+              >
+                {[
+                  'Ergonomic Flow',
+                  'Ample Storage',
+                  'Easy Maintenance',
+                  'Moisture-resistant carcass and finishes',
+                  'Customizable layouts',
+                ].map((item) => (
+                  <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    <div
+                      style={{
+                        width: '26px',
+                        height: '26px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                        color: '#B69A6B',
+                        flexShrink: 0,
+                        marginTop: '2px',
+                      }}
+                    >
+                      <Check size={14} strokeWidth={2.5} />
+                    </div>
+                    <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+                  </div>
+                ))}
+              </motion.div>
+
+              <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto', color: 'var(--color-text-secondary)' }}>
+                Whether you're a gourmet chef or a minimalist, a LEOZ kitchen is crafted to perform flawlessly and remain timeless.
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.6: KITCHEN STYLES & COLLECTIONS
+           ========================================================================== */}
+        <section
+          aria-label="Kitchen Styles & Collections"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-light)',
+            color: 'var(--color-text-dark)',
+          }}
+        >
+          <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>KITCHEN COLLECTIONS</span>
+              <h2 className="section-title">Find Your Kitchen Style.</h2>
+            </div>
+
+            <div
+              className="mk-styles-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: 'clamp(24px, 3vw, 40px)',
+              }}
+            >
+              {[
+                { title: 'Modern Minimalist', description: 'Clean lines, handle-less shutters, and a restrained material palette for a contemporary look.' },
+                { title: 'German Classic', description: 'Precision-engineered cabinetry and refined finishes inspired by German kitchen design.' },
+                { title: 'Contemporary Fusion', description: "A balance of bold and understated — built for Gujarati households that entertain often." },
+              ].map((style, idx) => (
+                <motion.div
+                  key={style.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                  style={{
+                    padding: 'clamp(32px, 3.5vw, 44px)',
+                    backgroundColor: 'var(--color-surface-stone)',
+                    border: '1px solid var(--color-border-gold)',
+                    borderRadius: 'var(--radius-sm)',
+                    boxShadow: 'var(--shadow-subtle)',
+                  }}
+                >
+                  <h3 className="sub-title" style={{ marginBottom: '12px' }}>{style.title}</h3>
+                  <p className="description" style={{ margin: 0 }}>{style.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.7: MATERIALS & FINISHES (SPECIFICATIONS)
+           ========================================================================== */}
+        <section
+          aria-label="Materials & Finishes Specifications"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: '#202020',
+            color: 'var(--color-text-primary)',
+          }}
+        >
+          <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+            <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>MATERIALS &amp; FINISHES</span>
+            <h2 className="section-title text-white" style={{ marginBottom: '40px' }}>Built for Performance. Finished for Life.</h2>
+
+            <div
+              className="mk-fusion-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '20px',
+                textAlign: 'left',
+              }}
+            >
+              {[
+                'High-grade marine plywood and engineered wood carcasses',
+                'Premium laminate, acrylic, and PU finish options',
+                'German-grade hardware for smooth, long-lasting function',
+                "Anti-scratch, moisture-resistant surfaces suited to Gujarat's climate",
+              ].map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <div
+                    style={{
+                      width: '26px',
+                      height: '26px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                      color: '#B69A6B',
+                      flexShrink: 0,
+                      marginTop: '2px',
+                    }}
+                  >
+                    <Check size={14} strokeWidth={2.5} />
+                  </div>
+                  <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.8: WHY OUR KITCHENS STAND APART
+           ========================================================================== */}
+        <section
+          aria-label="Why Our Kitchens Stand Apart"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-stone)',
+            color: 'var(--color-text-dark)',
+          }}
+        >
+          <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ KITCHENS</span>
+              <h2 className="section-title">Why Our Kitchens Stand Apart.</h2>
+            </div>
+
+            <div
+              className="mk-standapart-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: 'clamp(24px, 3vw, 40px)',
+              }}
+            >
+              {[
+                { icon: Factory, title: 'Manufactured In-House', description: 'Manufactured entirely at our own factory — no outsourced production.' },
+                { icon: Compass, title: 'German Precision', description: 'German design and hardware precision.' },
+                { icon: Clock, title: '20+ Years of Experience', description: '20+ years of manufacturing experience.' },
+                { icon: ShieldCheck, title: 'Comprehensive Warranty', description: 'Comprehensive warranty on materials and workmanship.' },
+                { icon: Wrench, title: 'In-House Installation', description: 'In-house installation team, not third-party contractors.' },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                    style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
+                  >
+                    <div
+                      style={{
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'rgba(182, 154, 107, 0.12)',
+                        color: '#B69A6B',
+                        marginBottom: '6px',
+                      }}
+                    >
+                      <Icon size={22} strokeWidth={1.5} />
+                    </div>
+                    <h3 className="sub-title" style={{ fontSize: '18px', margin: 0 }}>{item.title}</h3>
+                    <p className="small-description" style={{ margin: 0 }}>{item.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.9: OUR PROCESS
+           ========================================================================== */}
+        <section
+          aria-label="Our Process"
           style={{
             paddingTop: 'var(--space-section-padding-desktop)',
             paddingBottom: 'var(--space-section-padding-desktop)',
@@ -367,338 +579,104 @@ export const ModularKitchens: React.FC = () => {
           }}
         >
           <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-family-sans)',
-                  fontSize: 'var(--font-size-xs)',
-                  fontWeight: 500,
-                  letterSpacing: '0.3em',
-                  textTransform: 'uppercase',
-                  color: '#B69A6B',
-                  display: 'block',
-                  marginBottom: 'var(--space-4)',
-                }}
-              >
-                OUR KITCHENS
-              </span>
-              <motion.h2
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: luxuryEase }}
-                className="section-title"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                Explore Our Kitchens.
-              </motion.h2>
-            </div>
-
-            {/* Responsive Grid Layout */}
-            <div
-              className="mk-layouts-grid"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: 'clamp(32px, 4vw, 54px)',
-              }}
-            >
-              {layouts.map((layout, idx) => (
-                <motion.article
-                  key={layout.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                  className="layout-card"
-                  style={{
-                    backgroundColor: 'var(--color-surface-card)',
-                    borderRadius: 'var(--radius-sm)',
-                    overflow: 'hidden',
-                    border: '1px solid var(--color-border-gold)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    transition: 'transform 400ms var(--motion-ease-luxury), box-shadow 400ms var(--motion-ease-luxury)',
-                  }}
-                >
-                  <div
-                    style={{
-                      position: 'relative',
-                      height: '320px',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <ParallaxImage yOffset={30}>
-                      <img
-                        src={layout.image}
-                        alt={layout.title}
-                        loading="lazy"
-                        className="layout-img"
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover',
-                          transition: 'transform 800ms var(--motion-ease-luxury)',
-                        }}
-                      />
-                    </ParallaxImage>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'linear-gradient(180deg, transparent 50%, rgba(24, 24, 24, 0.8) 100%)',
-                      }}
-                    />
-                  </div>
-
-                  <div style={{ padding: '32px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-family-sans)',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        letterSpacing: '0.2em',
-                        color: '#B69A6B',
-                        textTransform: 'uppercase',
-                        marginBottom: '8px',
-                      }}
-                    >
-                      {layout.subtitle}
-                    </span>
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-family-serif)',
-                        fontSize: 'clamp(24px, 2vw, 30px)',
-                        fontWeight: 400,
-                        color: 'var(--color-text-primary)',
-                        marginBottom: '12px',
-                      }}
-                    >
-                      {layout.title}
-                    </h3>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-family-sans)',
-                        fontSize: 'var(--font-size-sm)',
-                        fontWeight: 300,
-                        lineHeight: '1.65',
-                        color: 'var(--color-text-secondary)',
-                      }}
-                    >
-                      {layout.description}
-                    </p>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-
-          <style>{`
-            .layout-card:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 16px 40px -10px rgba(24, 24, 24, 0.4);
-            }
-            .layout-card:hover .layout-img {
-              transform: scale(1.04);
-            }
-          `}</style>
-        </section>
-
-        {/* ==========================================================================
-           SECTION 4: FINISHES & MATERIALS (7 CATEGORIES)
-           ========================================================================== */}
-        <section
-          aria-label="Finishes & Materials Showcase"
-          style={{
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
-            paddingLeft: '6vw',
-            paddingRight: '6vw',
-            backgroundColor: '#202020',
-            color: 'var(--color-text-primary)',
-          }}
-        >
-          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-family-sans)',
-                  fontSize: 'var(--font-size-xs)',
-                  fontWeight: 500,
-                  letterSpacing: '0.3em',
-                  textTransform: 'uppercase',
-                  color: '#B69A6B',
-                  display: 'block',
-                  marginBottom: 'var(--space-4)',
-                }}
-              >
-                MATERIALS &amp; FINISHES
-              </span>
-              <motion.h2
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: luxuryEase }}
-                className="section-title"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                Materials That Define the Space.
-              </motion.h2>
-              <p className="description" style={{ margin: '20px auto 0', color: 'var(--color-text-secondary)' }}>
-                A considered mix of textures, tones and finishes makes every kitchen personal.
-              </p>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR PROCESS</span>
+              <h2 className="section-title text-white">From Consultation to Installation.</h2>
             </div>
 
             <div
-              className="mk-materials-grid"
+              className="mk-process-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                gap: 'clamp(24px, 3vw, 40px)',
-              }}
-            >
-              {materials.map((mat, idx) => (
-                <motion.div
-                  key={mat.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                  className="material-card"
-                  style={{
-                    position: 'relative',
-                    height: '360px',
-                    borderRadius: 'var(--radius-sm)',
-                    overflow: 'hidden',
-                    backgroundColor: 'var(--color-surface-card)',
-                    border: '1px solid var(--color-border-gold)',
-                  }}
-                >
-                  <ParallaxImage yOffset={30}>
-                    <img
-                      src={mat.image}
-                      alt={mat.title}
-                      loading="lazy"
-                      className="material-img"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 800ms var(--motion-ease-luxury)',
-                      }}
-                    />
-                  </ParallaxImage>
-                  <div
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      background: 'linear-gradient(180deg, rgba(24, 24, 24, 0.2) 0%, rgba(24, 24, 24, 0.9) 100%)',
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      padding: '28px 24px',
-                    }}
-                  >
-                    <h3
-                      style={{
-                        fontFamily: 'var(--font-family-serif)',
-                        fontSize: 'clamp(20px, 1.8vw, 26px)',
-                        fontWeight: 400,
-                        color: 'var(--color-text-primary)',
-                        marginBottom: '6px',
-                      }}
-                    >
-                      {mat.title}
-                    </h3>
-                    <p
-                      style={{
-                        fontFamily: 'var(--font-family-sans)',
-                        fontSize: '12px',
-                        fontWeight: 300,
-                        color: 'var(--color-text-secondary)',
-                      }}
-                    >
-                      {mat.detail}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          <style>{`
-            .material-card:hover .material-img {
-              transform: scale(1.04);
-            }
-          `}</style>
-        </section>
-
-        {/* ==========================================================================
-           SECTION 5: FEATURES (PLAIN VISUAL LABELS)
-           ========================================================================== */}
-        <section
-          aria-label="Kitchen Features"
-          style={{
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
-            paddingLeft: '6vw',
-            paddingRight: '6vw',
-            backgroundColor: 'var(--color-surface-stone)',
-            color: 'var(--color-text-dark)',
-          }}
-        >
-          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
-                THOUGHTFULLY PLANNED
-              </span>
-              <motion.h2
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: luxuryEase }}
-                className="section-title"
-              >
-                Everything in Its Place.
-              </motion.h2>
-            </div>
-
-            <div
-              className="mk-features-grid"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
                 gap: 'clamp(24px, 3vw, 40px)',
               }}
             >
               {[
-                'Smart Storage',
-                'Integrated Appliances',
-                'Premium Hardware',
-                'Internal Organisers',
-                'Ambient Lighting',
-                'Refined Finishes',
-              ].map((feature, idx) => (
+                { step: '01', title: 'Site Visit & Measurement', desc: 'We visit your space and take precise measurements.' },
+                { step: '02', title: 'Custom Layout & 3D Design', desc: 'A layout and 3D design tailored to your space.' },
+                { step: '03', title: 'Material & Finish Selection', desc: 'Choose the materials and finishes that suit you.' },
+                { step: '04', title: 'In-House Manufacturing', desc: 'Your kitchen is built at our own factory.' },
+                { step: '05', title: 'Professional Installation', desc: 'Installed by our own in-house team.' },
+                { step: '06', title: 'Post-Installation Quality Check', desc: 'A final check to ensure everything is right.' },
+              ].map((item, idx) => (
                 <motion.div
-                  key={feature}
+                  key={item.step}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.06, ease: luxuryEase }}
+                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-family-sans)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--color-accent)',
+                      display: 'block',
+                      marginBottom: '10px',
+                    }}
+                  >
+                    {item.step}
+                  </span>
+                  <h3 className="sub-title text-white" style={{ marginBottom: '8px' }}>{item.title}</h3>
+                  <p className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ==========================================================================
+           SECTION 2.10: FAQ
+           ========================================================================== */}
+        <section
+          aria-label="Frequently Asked Questions"
+          style={{
+            paddingTop: 'var(--space-section-padding-desktop)',
+            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingLeft: '6vw',
+            paddingRight: '6vw',
+            backgroundColor: 'var(--color-surface-light)',
+            color: 'var(--color-text-dark)',
+          }}
+        >
+          <div style={{ maxWidth: '860px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
+              <h2 className="section-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+              {[
+                {
+                  q: 'How long does a modular kitchen installation take?',
+                  a: '[Client Confirmation Required: standard timeline from final design approval to installation]',
+                },
+                {
+                  q: 'Do you offer customization for non-standard kitchen spaces?',
+                  a: 'Yes, all our kitchens are custom-designed to fit your specific layout and dimensions.',
+                },
+                {
+                  q: 'What warranty do you offer on kitchens?',
+                  a: '[Client Confirmation Required: kitchen warranty duration and coverage terms]',
+                },
+              ].map((item, idx) => (
+                <motion.div
+                  key={item.q}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
-                    padding: '28px 20px',
-                    textAlign: 'center',
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid var(--color-border)',
+                    padding: 'clamp(24px, 3vw, 32px)',
+                    backgroundColor: 'var(--color-surface-stone)',
+                    border: '1px solid var(--color-border-gold)',
                     borderRadius: 'var(--radius-sm)',
                   }}
                 >
-                  <span className="sub-title" style={{ fontSize: '18px' }}>{feature}</span>
+                  <h3 className="sub-title" style={{ fontSize: '19px', marginBottom: '10px' }}>{item.q}</h3>
+                  <p className="description" style={{ margin: 0 }}>{item.a}</p>
                 </motion.div>
               ))}
             </div>
@@ -773,7 +751,7 @@ export const ModularKitchens: React.FC = () => {
               className="section-title text-white"
               style={{ marginBottom: '20px' }}
             >
-              Ready to Plan Your Kitchen?
+              Ready to Design Your Kitchen?
             </motion.h2>
 
             {/* 4. Single Premium Button */}
@@ -789,7 +767,7 @@ export const ModularKitchens: React.FC = () => {
                 }}
                 className="btn btn-light"
               >
-                Book a Design Consultation
+                Book a Free Design Consultation
               </a>
             </motion.div>
           </motion.div>
@@ -818,16 +796,13 @@ export const ModularKitchens: React.FC = () => {
           }
         }
         @media (max-width: 767px) {
-          .mk-intro-grid, .mk-layouts-grid, .mk-materials-grid, .mk-features-grid {
+          .mk-intro-grid, .mk-fusion-grid, .mk-styles-grid, .mk-standapart-grid, .mk-process-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
-          .mk-layouts-grid, .mk-materials-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .mk-features-grid {
+          .mk-styles-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
         }
