@@ -65,11 +65,11 @@ export const Footer: React.FC = () => {
                 { label: 'About', path: '/about' },
                 { label: 'Kitchens', path: '/modular-kitchens' },
                 { label: 'Wardrobes', path: '/modular-wardrobes' },
-                { label: 'Projects', path: '/projects' },
+                { label: 'Franchise Enquiry', path: '/franchise-opportunities' },
                 { label: 'Contact', path: '/contact' },
                 { label: 'Franchise Enquiry', path: '/franchise-enquiry' },
               ].map((item) => (
-                <li key={item.label}>
+                <li key={item.path}>
                   <a
                     href={item.path}
                     onClick={(e) => {

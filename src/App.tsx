@@ -6,7 +6,7 @@ import BookConsultation from './pages/BookConsultation';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import FranchiseEnquiry from './pages/FranchiseEnquiry';
-import Projects from './pages/Projects';
+import FranchiseOpportunities from './pages/FranchiseOpportunities';
 
 import { CinematicPageTransition } from './components/common/CinematicPageTransition';
 import { LenisProvider } from './providers/LenisProvider';
@@ -57,8 +57,8 @@ export const App: React.FC = () => {
       return <FranchiseEnquiry />;
     }
 
-    if (currentPath === '/projects') {
-      return <Projects />;
+    if (currentPath === '/franchise-opportunities') {
+      return <FranchiseOpportunities />;
     }
 
     if (currentPath === '/talk-to-us') {

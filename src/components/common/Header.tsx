@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
   const isVisible = !isPreloaderActive || showHeader;
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-    if (path === '/modular-kitchens' || path === '/talk-to-us' || path === '/modular-wardrobes' || path === '/about' || path === '/contact' || path === '/franchise-enquiry' || path === '/projects') {
+    if (path === '/modular-kitchens' || path === '/talk-to-us' || path === '/modular-wardrobes' || path === '/about' || path === '/contact' || path === '/franchise-enquiry' || path === '/franchise-opportunities') {
       e.preventDefault();
       window.history.pushState({}, '', path);
       window.dispatchEvent(new Event('popstate'));
@@ -63,14 +63,14 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
   };
 
   const currentPath = typeof window !== 'undefined' ? window.location.pathname : '/';
-  const isSpecialPage = currentPath === '/modular-kitchens' || currentPath === '/modular-wardrobes' || currentPath === '/about' || currentPath === '/contact' || currentPath === '/talk-to-us' || currentPath === '/franchise-enquiry' || currentPath === '/projects';
+  const isSpecialPage = currentPath === '/modular-kitchens' || currentPath === '/modular-wardrobes' || currentPath === '/about' || currentPath === '/contact' || currentPath === '/talk-to-us' || currentPath === '/franchise-enquiry' || currentPath === '/franchise-opportunities';
 
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Kitchens', path: '/modular-kitchens' },
     { name: 'Wardrobes', path: '/modular-wardrobes' },
-    { name: 'Projects', path: '/projects' },
+    { name: 'Franchise Enquiry', path: '/franchise-opportunities' },
     { name: 'Contact', path: '/contact' },
   ];
 
