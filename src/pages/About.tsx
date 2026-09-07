@@ -5,7 +5,7 @@ import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
 import { ParallaxImage } from '../components/ui/ParallaxImage';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
-import { Check, Factory, Clock, ShieldCheck, Wrench, Handshake, User } from 'lucide-react';
+import { Check, Factory, Clock, ShieldCheck, Wrench, Handshake, Globe } from 'lucide-react';
 
 /* Easing curve token matching Modular Kitchens and Wardrobes pages */
 const luxuryEase = [0.16, 1, 0.3, 1];
@@ -132,10 +132,13 @@ export const About: React.FC = () => {
               backgroundColor: '#FFFFFF',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
               alignItems: 'center',
               textAlign: 'center',
-              padding: '80px clamp(32px, 5vw, 60px)',
+              paddingTop: 'clamp(130px, 15vh, 170px)',
+              paddingBottom: '80px',
+              paddingLeft: 'clamp(32px, 5vw, 60px)',
+              paddingRight: 'clamp(32px, 5vw, 60px)',
               position: 'relative',
               zIndex: 10,
             }}
@@ -184,17 +187,17 @@ export const About: React.FC = () => {
                 min-height: auto !important;
                 width: 100% !important;
               }
-              .hero-split-container > div:first-child {
+              .hero-split-container > div:first-of-type {
                 min-height: 360px !important;
                 height: 45vh !important;
-                order: 2 !important;
+                order: 1 !important;
               }
-              .hero-split-container > div:last-child {
-                padding-top: 110px !important;
-                padding-bottom: 40px !important;
+              .hero-split-container > div:last-of-type {
+                padding-top: clamp(40px, 8vw, 60px) !important;
+                padding-bottom: clamp(40px, 8vw, 60px) !important;
                 padding-left: clamp(20px, 4vw, 40px) !important;
                 padding-right: clamp(20px, 4vw, 40px) !important;
-                order: 1 !important;
+                order: 2 !important;
               }
             }
           `}</style>
@@ -280,44 +283,66 @@ export const About: React.FC = () => {
         </section>
 
         {/* ==========================================================================
-           SECTION 2.5: OUR PHILOSOPHY
+           SECTION 2.5: OUR PHILOSOPHY (REDESIGNED: CLEAN SPLIT LAYOUT)
            ========================================================================== */}
         <section
           aria-label="Our Philosophy"
           style={{
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingTop: 'clamp(80px, 12vw, 140px)',
+            paddingBottom: 'clamp(80px, 12vw, 140px)',
             paddingLeft: '6vw',
             paddingRight: '6vw',
             backgroundColor: '#F7F5F1',
             color: '#181818',
-            textAlign: 'center',
           }}
         >
-          <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.2 }}
               variants={containerVariants}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: 'clamp(40px, 6vw, 80px)',
+                alignItems: 'center',
+              }}
             >
-              <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
-                OUR PHILOSOPHY
-              </motion.span>
-              <motion.h2
+              {/* Left Column: Title */}
+              <div>
+                <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                  OUR PHILOSOPHY
+                </motion.span>
+                <motion.h2
+                  variants={itemVariants}
+                  className="section-title"
+                  style={{ margin: 0 }}
+                >
+                  German Precision.<br />Local Craftsmanship.
+                </motion.h2>
+              </div>
+
+              {/* Right Column: Description with elegant styling */}
+              <motion.div
                 variants={itemVariants}
-                className="section-title"
-                style={{ marginBottom: '20px' }}
+                style={{
+                  borderLeft: '2px solid #B69A6B',
+                  paddingLeft: '32px',
+                }}
               >
-                German Precision. Local Craftsmanship.
-              </motion.h2>
-              <motion.p
-                variants={itemVariants}
-                className="description"
-                style={{ margin: '0 auto' }}
-              >
-                Inspired by German design principles, we combine precision, balanced proportions, and refined finishes with our own manufacturing expertise — thoughtfully crafted for modern Indian homes and everyday living.
-              </motion.p>
+                <p
+                  className="description"
+                  style={{ 
+                    margin: 0, 
+                    fontSize: 'clamp(18px, 1.5vw, 22px)',
+                    lineHeight: 1.6,
+                    color: '#4A4A4A'
+                  }}
+                >
+                  Inspired by German design principles, we combine precision, balanced proportions, and refined finishes with our own manufacturing expertise — thoughtfully crafted for modern Indian homes and everyday living.
+                </p>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -411,10 +436,9 @@ export const About: React.FC = () => {
                 alignItems: 'center',
               }}
             >
-              {/* Director photograph pending — do not substitute stock imagery for a real person */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.6, ease: luxuryEase }}
                 style={{
@@ -423,32 +447,20 @@ export const About: React.FC = () => {
                   aspectRatio: '4 / 5',
                   borderRadius: '12px',
                   overflow: 'hidden',
-                  backgroundColor: 'var(--color-light)',
-                  border: '1.5px dashed var(--color-border-gold-medium)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '12px',
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
                 }}
               >
-                <div
+                <img
+                  src="/director.png"
+                  alt="Director Portrait"
                   style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'rgba(182, 154, 107, 0.12)',
-                    color: '#B69A6B',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
                   }}
-                >
-                  <User size={26} strokeWidth={1.5} />
-                </div>
-                <span className="small-description" style={{ color: 'var(--color-body)' }}>
-                  Director Photograph — Coming Soon
-                </span>
+                />
               </motion.div>
 
               {/* Minimal Founder Message (Max 80 words) */}
@@ -520,7 +532,7 @@ export const About: React.FC = () => {
         </section>
 
         {/* ==========================================================================
-           SECTION 3.5: WHERE WE CRAFT
+           SECTION 3.5: WHERE WE CRAFT (REDESIGNED: BENTO BOX GRID)
            ========================================================================== */}
         <section
           aria-label="Where We Craft"
@@ -529,103 +541,163 @@ export const About: React.FC = () => {
             paddingBottom: 'var(--space-section-padding-desktop)',
             paddingLeft: '6vw',
             paddingRight: '6vw',
-            backgroundColor: 'var(--color-surface-dark)',
-            color: 'var(--color-text-primary)',
+            backgroundColor: '#181818',
+            color: '#FFFFFF',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
+          {/* Subtle glowing radial gradient in the background */}
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '80%',
+              height: '80%',
+              background: 'radial-gradient(circle, rgba(182,154,107,0.05) 0%, transparent 70%)',
+              pointerEvents: 'none',
+            }}
+          />
+
+          <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 80px)' }}>
+              <motion.span variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                WHERE WE CRAFT
+              </motion.span>
+              <motion.h2 variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-title text-white" style={{ marginBottom: '20px' }}>
+                A 20,000 Sq. Ft. Facility Built for Precision
+              </motion.h2>
+              <motion.p variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="description" style={{ margin: '0 auto', color: '#B0ABA2', maxWidth: '700px' }}>
+                Spanning 20,000 sq. ft., our in-house facility powers the precision behind every LEOZ Cucine project. We manufacture modular kitchens and wardrobes under one roof, ensuring consistent quality, on-time delivery, and competitive pricing.
+              </motion.p>
+            </div>
+
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.2 }}
               variants={containerVariants}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: '24px',
+              }}
             >
-              <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
-                WHERE WE CRAFT
-              </motion.span>
-
-              <motion.h2 variants={itemVariants} className="section-title text-white" style={{ marginBottom: '20px' }}>
-                A 20,000 Sq. Ft. Facility Built for Precision
-              </motion.h2>
-
-              <motion.p variants={itemVariants} className="description" style={{ margin: '0 auto 40px', color: 'var(--color-text-secondary)' }}>
-                Spanning 20,000 sq. ft., our in-house facility powers the precision behind every LEOZ Cucine project. Equipped with:
-              </motion.p>
-
-              <motion.div
-                variants={itemVariants}
-                className="about-fusion-grid"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-                  gap: '20px',
-                  textAlign: 'left',
-                  marginBottom: '40px',
-                }}
-              >
-                {[
-                  'European-grade automated machinery',
-                  'Dedicated quality control & R&D teams',
-                  'Bulk production capabilities',
-                ].map((item) => (
-                  <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <div
-                      style={{
-                        width: '26px',
-                        height: '26px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: 'rgba(182, 154, 107, 0.15)',
-                        color: '#B69A6B',
-                        flexShrink: 0,
-                        marginTop: '2px',
-                      }}
-                    >
-                      <Check size={14} strokeWidth={2.5} />
-                    </div>
-                    <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+              {[
+                { title: 'Advanced Machinery', desc: 'European-grade automated machinery for flawless cuts and edge-banding.' },
+                { title: 'Quality Control', desc: 'Dedicated quality control & R&D teams monitoring every step of production.' },
+                { title: 'Scale & Speed', desc: 'Bulk production capabilities ensuring on-time delivery without compromising craft.' },
+              ].map((item) => (
+                <motion.div
+                  key={item.title}
+                  variants={itemVariants}
+                  whileHover={{ 
+                    y: -8, 
+                    boxShadow: '0 20px 40px rgba(182,154,107,0.15)',
+                    borderColor: 'rgba(182,154,107,0.4)',
+                    backgroundColor: 'rgba(255,255,255,0.08)'
+                  }}
+                  transition={{ duration: 0.3 }}
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '16px',
+                    padding: 'clamp(30px, 4vw, 40px)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '16px',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '48px',
+                      height: '48px',
+                      borderRadius: '12px',
+                      backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#B69A6B',
+                    }}
+                  >
+                    <Check size={24} strokeWidth={2} />
                   </div>
-                ))}
-              </motion.div>
-
-              <motion.p variants={itemVariants} className="description" style={{ margin: '0 auto', color: 'var(--color-text-secondary)' }}>
-                We manufacture modular kitchens and wardrobes under one roof, ensuring consistent quality, on-time delivery, and competitive pricing.
-              </motion.p>
+                  <h3 className="sub-title text-white" style={{ margin: 0, fontSize: '20px' }}>{item.title}</h3>
+                  <p className="small-description" style={{ margin: 0, color: '#B0ABA2', lineHeight: 1.6 }}>{item.desc}</p>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </section>
 
         {/* ==========================================================================
-           SECTION 3.6: OUR GLOBAL PRESENCE
+           SECTION 3.6: OUR GLOBAL PRESENCE (REDESIGNED)
            ========================================================================== */}
         <section
           aria-label="Our Global Presence"
           style={{
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
+            position: 'relative',
+            paddingTop: 'clamp(80px, 10vw, 120px)',
+            paddingBottom: 'clamp(80px, 10vw, 120px)',
             paddingLeft: '6vw',
             paddingRight: '6vw',
             backgroundColor: 'var(--color-surface-light)',
-            color: 'var(--color-text-dark)',
-            textAlign: 'center',
+            overflow: 'hidden',
           }}
         >
-          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          {/* Abstract Grid / Map Pattern */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              backgroundImage: 'linear-gradient(rgba(182, 154, 107, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(182, 154, 107, 0.05) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+              opacity: 0.8,
+            }}
+          />
+
+          <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
-              variants={containerVariants}
+              initial={{ opacity: 0, scale: 0.98, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: luxuryEase }}
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: '24px',
+                padding: 'clamp(40px, 6vw, 60px)',
+                boxShadow: '0 30px 60px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(182, 154, 107, 0.2)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+              }}
             >
+              <div
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(182, 154, 107, 0.1)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#B69A6B',
+                  marginBottom: '24px',
+                }}
+              >
+                <Globe size={32} strokeWidth={1.5} />
+              </div>
               <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                 OUR GLOBAL PRESENCE
               </motion.span>
               <motion.h2 variants={itemVariants} className="section-title" style={{ marginBottom: '20px' }}>
                 Serving Markets, Near and Far
               </motion.h2>
-              <motion.p variants={itemVariants} className="description" style={{ margin: '0 auto' }}>
+              <motion.p variants={itemVariants} className="description" style={{ margin: '0 auto', maxWidth: '680px' }}>
                 We are equipped to handle export-import operations with ease. We specialize exclusively in premium modular kitchens and customized wardrobes for residential projects, architects, interior designers, builders, and developers.
               </motion.p>
             </motion.div>
@@ -633,7 +705,7 @@ export const About: React.FC = () => {
         </section>
 
         {/* ==========================================================================
-           SECTION 3.7: WHY HOMEOWNERS & PROFESSIONALS TRUST US
+           SECTION 3.7: WHY HOMEOWNERS & PROFESSIONALS TRUST US (REDESIGNED)
            ========================================================================== */}
         <section
           aria-label="Why Homeowners & Professionals Trust Us"
@@ -654,18 +726,17 @@ export const About: React.FC = () => {
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.8, ease: luxuryEase }}
               >
                 Why Homeowners &amp; Professionals Trust Us.
               </motion.h2>
             </div>
 
             <div
-              className="about-standapart-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: 'clamp(24px, 3vw, 40px)',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '24px',
               }}
             >
               {[
@@ -673,7 +744,7 @@ export const About: React.FC = () => {
                 { icon: Factory, title: 'Own Manufacturing Facility', description: 'Complete control over quality and craftsmanship.' },
                 { icon: ShieldCheck, title: 'Comprehensive Warranty', description: 'Confidence backed by commitment.' },
                 { icon: Wrench, title: 'In-House Installation Team', description: 'Consistent quality from factory to final fit.' },
-                { icon: Handshake, title: 'Trusted by Trade Professionals', description: 'Architects, interior designers, and builders across Gujarat rely on us for client projects.' },
+                { icon: Handshake, title: 'Trusted by Professionals', description: 'Architects, interior designers, and builders rely on us.' },
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -681,27 +752,46 @@ export const About: React.FC = () => {
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                    style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
+                    viewport={{ once: true, amount: 0.1 }}
+                    transition={{ duration: 0.6, delay: idx * 0.1, ease: luxuryEase }}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      borderColor: 'rgba(182,154,107,0.5)',
+                      boxShadow: '0 20px 40px rgba(182,154,107,0.1)',
+                      backgroundColor: 'rgba(255,255,255,0.06)'
+                    }}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      gap: '16px',
+                      padding: '32px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      borderRadius: '20px',
+                      cursor: 'default',
+                      transition: 'all 0.3s ease',
+                    }}
                   >
                     <div
+                      className="trust-icon-wrapper"
                       style={{
-                        width: '52px',
-                        height: '52px',
-                        borderRadius: '50%',
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '14px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: 'rgba(182, 154, 107, 0.12)',
                         color: '#B69A6B',
-                        marginBottom: '6px',
+                        marginBottom: '8px',
+                        transition: 'transform 0.4s ease',
                       }}
                     >
-                      <Icon size={22} strokeWidth={1.5} />
+                      <Icon size={26} strokeWidth={1.5} />
                     </div>
                     <h3 className="sub-title text-white" style={{ fontSize: '18px', margin: 0 }}>{item.title}</h3>
-                    <p className="small-description" style={{ color: 'var(--color-text-secondary)', margin: 0 }}>{item.description}</p>
+                    <p className="small-description" style={{ color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.6 }}>{item.description}</p>
                   </motion.div>
                 );
               })}
@@ -731,7 +821,7 @@ export const About: React.FC = () => {
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.8, ease: luxuryEase }}
               >
                 A Track Record of Growth.
               </motion.h2>
@@ -786,15 +876,15 @@ export const About: React.FC = () => {
         </section>
 
         {/* ==========================================================================
-           SECTION 4: FINAL CTA
+           SECTION 4: FINAL CTA (REDESIGNED: GLOWING GRADIENT)
            ========================================================================== */}
         <section
           id="contact"
           aria-label="Experience the Leoz Cucine Standard"
           style={{
             position: 'relative',
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
+            paddingTop: 'clamp(100px, 15vw, 200px)',
+            paddingBottom: 'clamp(100px, 15vw, 200px)',
             paddingLeft: '6vw',
             paddingRight: '6vw',
             backgroundColor: '#181818',
@@ -806,9 +896,10 @@ export const About: React.FC = () => {
             textAlign: 'center',
           }}
         >
+          {/* Background Image */}
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
-            whileInView={{ opacity: 0.15, scale: 1.00 }}
+            whileInView={{ opacity: 0.2, scale: 1.00 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
@@ -821,12 +912,35 @@ export const About: React.FC = () => {
               willChange: 'transform, opacity',
             }}
           />
+          
+          {/* Base Dark Overlay */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(circle at center, rgba(24,24,24,0.6) 0%, rgba(24,24,24,0.98) 100%)',
+              background: 'radial-gradient(circle at center, rgba(24,24,24,0.5) 0%, rgba(24,24,24,0.98) 100%)',
               pointerEvents: 'none',
+            }}
+          />
+
+          {/* Dynamic Glowing Accent */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: luxuryEase }}
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '60vw',
+              height: '60vw',
+              maxWidth: '800px',
+              maxHeight: '800px',
+              background: 'radial-gradient(circle at center, rgba(182, 154, 107, 0.15) 0%, transparent 70%)',
+              pointerEvents: 'none',
+              filter: 'blur(40px)',
             }}
           />
 
@@ -850,7 +964,7 @@ export const About: React.FC = () => {
             <motion.h2
               variants={itemVariants}
               className="section-title text-white"
-              style={{ marginBottom: '20px' }}
+              style={{ marginBottom: '40px', fontSize: 'clamp(36px, 5vw, 56px)' }}
             >
               Experience the LEOZ Cucine Standard
             </motion.h2>
@@ -885,19 +999,26 @@ export const About: React.FC = () => {
             min-height: auto !important;
             width: 100% !important;
           }
-          .hero-split-container > div:first-child {
-            min-height: 360px !important;
-            height: 45vh !important;
-            order: 2 !important;
-          }
-          .hero-split-container > div:last-child {
-            padding: 110px 24px 40px 24px !important;
-            min-height: auto !important;
-            order: 1 !important;
-          }
+              .hero-split-container > div:first-of-type {
+                min-height: 360px !important;
+                height: 45vh !important;
+                order: 1 !important;
+              }
+              .hero-split-container > div:last-of-type {
+                padding-top: clamp(40px, 8vw, 60px) !important;
+                padding-bottom: clamp(40px, 8vw, 60px) !important;
+                padding-left: clamp(20px, 4vw, 40px) !important;
+                padding-right: clamp(20px, 4vw, 40px) !important;
+                order: 2 !important;
+              }
         }
         @media (max-width: 767px) {
-          .about-craftsmanship-grid, .about-founder-grid, .about-approach-grid, .about-fusion-grid, .about-standapart-grid {
+          .about-craftsmanship-grid, .about-founder-grid {
+            display: flex !important;
+            flex-direction: column-reverse !important;
+            gap: 32px !important;
+          }
+          .about-approach-grid, .about-fusion-grid, .about-standapart-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }

@@ -8,11 +8,6 @@ import { Award, Factory, Compass, GraduationCap, ShieldCheck, CheckCircle } from
 
 const luxuryEase = [0.16, 1, 0.3, 1];
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: luxuryEase } },
-};
-
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -24,6 +19,16 @@ const staggerContainer = {
 const staggerItem = {
   hidden: { opacity: 0, y: 15 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: luxuryEase } },
+};
+
+const imageRevealVariants = {
+  hidden: { opacity: 0, scale: 1.03, clipPath: 'inset(0% 0% 100% 0%)' },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    clipPath: 'inset(0% 0% 0% 0%)',
+    transition: { duration: 0.9, ease: luxuryEase, delay: 0.1 },
+  },
 };
 
 const whyPartnerCards = [
@@ -62,10 +67,17 @@ export const FranchiseOpportunities: React.FC = () => {
     email: '',
     message: '',
   });
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Parallax transform calculation for Hero image
+  const parallaxY = Math.min(scrollY * 0.15, 120);
 
   useDocumentMeta(
     'Franchise Enquiry | Leoz Cucine',
@@ -92,59 +104,124 @@ export const FranchiseOpportunities: React.FC = () => {
       <Header />
 
       <main id="main-content" style={{ paddingTop: '75px' }}>
-        {/* HERO */}
+        {/* HERO — 50/50 split (left: full-height image, right: content), matching Modular Kitchens */}
         <section
+          id="hero"
           aria-label="Franchise Enquiry Hero"
+          className="hero-split-container"
           style={{
             position: 'relative',
-            minHeight: '70vh',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'flex-end',
+            minHeight: '100vh',
+            width: '100vw',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            backgroundColor: '#F7F5F1',
             overflow: 'hidden',
           }}
         >
-          <img
-            src={images.franchiseHero}
-            alt="Bring LEOZ Cucine to your city"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-            }}
-          />
+          {/* --- LEFT COLUMN: FULL-HEIGHT EDGE-TO-EDGE IMAGE --- */}
           <div
             style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'rgba(24, 24, 24, 0.55)',
-            }}
-          />
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            style={{
               position: 'relative',
-              padding: 'clamp(48px, 6vw, 90px) 6vw',
-              maxWidth: '900px',
+              height: '100%',
+              minHeight: '100vh',
+              width: '100%',
+              overflow: 'hidden',
+              backgroundColor: '#181818',
             }}
           >
-            <span className="section-label text-white" style={{ display: 'block', marginBottom: '16px' }}>
-              FRANCHISE ENQUIRY
-            </span>
-            <h1 className="page-title text-white" style={{ marginBottom: '16px' }}>
-              Bring LEOZ Cucine to Your City
-            </h1>
-            <p className="hero-description text-light" style={{ marginBottom: '32px' }}>
-              Partner with a premium, German-precision kitchen and wardrobe brand backed by 20+ years of manufacturing expertise.
-            </p>
-            <a href="#franchise-enquiry-form" onClick={scrollToForm} className="btn btn-primary">
-              Enquire About Franchise Opportunities
-            </a>
-          </motion.div>
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={imageRevealVariants}
+              style={{
+                width: '100%',
+                height: '100%',
+                position: 'relative',
+                transform: `translateY(${parallaxY}px)`,
+                willChange: 'transform, clip-path',
+              }}
+            >
+              <img
+                src={images.franchiseHero}
+                alt="Bring LEOZ Cucine to your city"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center center',
+                  display: 'block',
+                }}
+              />
+              {/* Subtle Ambient Vignette Overlay */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(180deg, rgba(24, 24, 24, 0.15) 0%, transparent 60%, rgba(24, 24, 24, 0.3) 100%)',
+                  pointerEvents: 'none',
+                }}
+              />
+            </motion.div>
+          </div>
+
+          {/* --- RIGHT COLUMN: EDITORIAL TYPOGRAPHY --- */}
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              textAlign: 'center',
+              paddingTop: 'clamp(130px, 15vh, 170px)',
+              paddingBottom: '80px',
+              paddingLeft: 'clamp(32px, 5vw, 60px)',
+              paddingRight: 'clamp(32px, 5vw, 60px)',
+              position: 'relative',
+              zIndex: 10,
+            }}
+          >
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              style={{
+                maxWidth: '620px',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+              }}
+            >
+              <motion.span variants={staggerItem} className="section-label" style={{ marginBottom: '16px' }}>
+                FRANCHISE ENQUIRY
+              </motion.span>
+
+              <motion.h1
+                variants={staggerItem}
+                className="page-title"
+                style={{ marginBottom: '20px' }}
+              >
+                Bring LEOZ Cucine to Your City
+              </motion.h1>
+
+              <motion.p
+                variants={staggerItem}
+                className="hero-description"
+                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)', marginBottom: '32px' }}
+              >
+                Partner with a premium, German-precision kitchen and wardrobe brand backed by 20+ years of manufacturing expertise.
+              </motion.p>
+
+              <motion.div variants={staggerItem}>
+                <a href="#franchise-enquiry-form" onClick={scrollToForm} className="btn btn-primary">
+                  Enquire About Franchise Opportunities
+                </a>
+              </motion.div>
+            </motion.div>
+          </div>
         </section>
 
         {/* WHY PARTNER WITH LEOZ CUCINE */}
@@ -425,6 +502,26 @@ export const FranchiseOpportunities: React.FC = () => {
         }
         .contact-submit-btn:active {
           transform: translateY(0px) scale(0.96) !important;
+        }
+        @media (max-width: 1023px) {
+          .hero-split-container {
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: auto !important;
+            width: 100% !important;
+          }
+          .hero-split-container > div:first-of-type {
+            min-height: 360px !important;
+            height: 45vh !important;
+            order: 1 !important;
+          }
+          .hero-split-container > div:last-of-type {
+            padding-top: clamp(40px, 8vw, 60px) !important;
+            padding-bottom: clamp(40px, 8vw, 60px) !important;
+            padding-left: clamp(20px, 4vw, 40px) !important;
+            padding-right: clamp(20px, 4vw, 40px) !important;
+            order: 2 !important;
+          }
         }
         @media (max-width: 767px) {
           .why-partner-grid {

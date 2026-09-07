@@ -146,10 +146,13 @@ export const ModularWardrobes: React.FC = () => {
               backgroundColor: '#FFFFFF',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
               alignItems: 'center',
               textAlign: 'center',
-              padding: '80px clamp(32px, 5vw, 60px)',
+              paddingTop: 'clamp(130px, 15vh, 170px)',
+              paddingBottom: '80px',
+              paddingLeft: 'clamp(32px, 5vw, 60px)',
+              paddingRight: 'clamp(32px, 5vw, 60px)',
               position: 'relative',
               zIndex: 10,
             }}
@@ -286,6 +289,7 @@ export const ModularWardrobes: React.FC = () => {
                 variants={itemVariants}
                 style={{
                   position: 'relative',
+                  width: '100%',
                   height: 'clamp(400px, 55vh, 640px)',
                   borderRadius: 'var(--radius-sm)',
                   overflow: 'hidden',
@@ -456,7 +460,7 @@ export const ModularWardrobes: React.FC = () => {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '20px',
+                gap: '14px',
                 textAlign: 'left',
               }}
             >
@@ -466,12 +470,24 @@ export const ModularWardrobes: React.FC = () => {
                 'Premium German-grade sliding and hinge hardware for long-term durability',
                 'Internal organizers — drawers, shelves, trouser racks, accessory units',
               ].map((item) => (
-                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <div
+                  key={item}
+                  className="mw-check-row"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '14px',
+                    padding: '14px 18px',
+                    borderLeft: '3px solid var(--color-accent-gold)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                  }}
+                >
                   <div
+                    className="mw-check-badge"
                     style={{
-                      width: '26px',
-                      height: '26px',
-                      borderRadius: '50%',
+                      width: '24px',
+                      height: '24px',
+                      borderRadius: '6px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -481,7 +497,7 @@ export const ModularWardrobes: React.FC = () => {
                       marginTop: '2px',
                     }}
                   >
-                    <Check size={14} strokeWidth={2.5} />
+                    <Check size={13} strokeWidth={2.5} />
                   </div>
                   <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
                 </div>
@@ -519,11 +535,13 @@ export const ModularWardrobes: React.FC = () => {
             </div>
 
             <div
-              className="mw-standapart-grid"
+              className="mw-pillar-list"
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: 'clamp(24px, 3vw, 40px)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+                maxWidth: '900px',
+                margin: '0 auto',
               }}
             >
               {[
@@ -537,29 +555,48 @@ export const ModularWardrobes: React.FC = () => {
                 return (
                   <motion.div
                     key={item.title}
+                    className="mw-pillar-row"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                    style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
+                    whileHover={{
+                      x: 6,
+                      borderColor: 'rgba(182, 154, 107, 0.5)',
+                      boxShadow: '0 14px 34px -14px rgba(182, 154, 107, 0.28)',
+                      transition: { duration: 0.3, ease: luxuryEase },
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '20px',
+                      textAlign: 'left',
+                      padding: 'clamp(20px, 2.4vw, 28px)',
+                      backgroundColor: 'var(--color-surface-light)',
+                      border: '1px solid var(--color-border-gold)',
+                      borderRadius: 'var(--radius-md)',
+                    }}
                   >
                     <div
+                      className="mw-pillar-icon"
                       style={{
                         width: '52px',
                         height: '52px',
-                        borderRadius: '50%',
+                        borderRadius: 'var(--radius-sm)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: 'rgba(182, 154, 107, 0.12)',
                         color: '#B69A6B',
-                        marginBottom: '6px',
+                        flexShrink: 0,
                       }}
                     >
                       <Icon size={22} strokeWidth={1.5} />
                     </div>
-                    <h3 className="sub-title" style={{ fontSize: '18px', margin: 0 }}>{item.title}</h3>
-                    <p className="small-description" style={{ margin: 0 }}>{item.description}</p>
+                    <div>
+                      <h3 className="sub-title" style={{ fontSize: '18px', marginBottom: '4px' }}>{item.title}</h3>
+                      <p className="small-description" style={{ margin: 0 }}>{item.description}</p>
+                    </div>
                   </motion.div>
                 );
               })}
@@ -595,14 +632,8 @@ export const ModularWardrobes: React.FC = () => {
               </motion.h2>
             </div>
 
-            <div
-              className="mw-process-grid"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: 'clamp(24px, 3vw, 40px)',
-              }}
-            >
+            <div className="mw-process-grid">
+              <div className="mw-process-line" aria-hidden="true" />
               {[
                 { step: '01', title: 'Space Assessment & Measurement', desc: 'We assess your space and take precise measurements.' },
                 { step: '02', title: 'Custom Design', desc: 'A design based on your storage needs.' },
@@ -613,29 +644,80 @@ export const ModularWardrobes: React.FC = () => {
               ].map((item, idx) => (
                 <motion.div
                   key={item.step}
+                  className="mw-process-step"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
+                  style={{
+                    position: 'relative',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '10px',
+                  }}
                 >
                   <span
+                    className="mw-process-number"
                     style={{
-                      fontFamily: 'var(--font-family-sans)',
-                      fontSize: '13px',
-                      fontWeight: 600,
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: 'var(--radius-sm)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'var(--color-surface-dark)',
+                      border: '2px solid var(--color-accent)',
                       color: 'var(--color-accent)',
-                      display: 'block',
-                      marginBottom: '10px',
+                      fontFamily: 'var(--font-family-sans)',
+                      fontWeight: 700,
+                      fontSize: '14px',
+                      position: 'relative',
+                      zIndex: 1,
                     }}
                   >
                     {item.step}
                   </span>
-                  <h3 className="sub-title text-white" style={{ marginBottom: '8px' }}>{item.title}</h3>
-                  <p className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item.desc}</p>
+                  <h3 className="sub-title text-white" style={{ fontSize: '16px', margin: 0 }}>{item.title}</h3>
+                  <p className="small-description" style={{ color: 'var(--color-text-secondary)', margin: 0 }}>{item.desc}</p>
                 </motion.div>
               ))}
             </div>
           </div>
+
+          <style>{`
+            .mw-process-grid {
+              position: relative;
+              display: grid;
+              grid-template-columns: repeat(6, 1fr);
+              gap: clamp(12px, 2vw, 20px);
+              row-gap: clamp(36px, 5vw, 56px);
+            }
+            .mw-process-line {
+              position: absolute;
+              top: 20px;
+              left: calc(100% / 12);
+              right: calc(100% / 12);
+              height: 1px;
+              background: var(--color-border-gold-medium);
+              z-index: 0;
+            }
+            @media (max-width: 1279px) {
+              .mw-process-grid {
+                grid-template-columns: repeat(3, 1fr);
+              }
+              .mw-process-line {
+                display: none;
+              }
+            }
+            @media (max-width: 767px) {
+              .mw-process-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+              }
+            }
+          `}</style>
         </section>
 
         {/* ==========================================================================
@@ -1175,19 +1257,24 @@ export const ModularWardrobes: React.FC = () => {
             min-height: auto !important;
             width: 100% !important;
           }
-          .hero-split-container > div:first-child {
+          .hero-split-container > div:first-of-type {
             padding: 110px 24px 40px 24px !important;
             min-height: auto !important;
             order: 1 !important;
           }
-          .hero-split-container > div:last-child {
+          .hero-split-container > div:last-of-type {
             min-height: 360px !important;
             height: 45vh !important;
             order: 2 !important;
           }
         }
         @media (max-width: 767px) {
-          .mw-intro-grid, .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid, .mw-fusion-grid, .mw-styles-grid, .mw-standapart-grid, .mw-process-grid {
+          .mw-intro-grid {
+            display: flex !important;
+            flex-direction: column-reverse !important;
+            gap: 28px !important;
+          }
+          .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid, .mw-fusion-grid, .mw-styles-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
           }
@@ -1195,6 +1282,41 @@ export const ModularWardrobes: React.FC = () => {
         @media (min-width: 768px) and (max-width: 1023px) {
           .mw-layouts-grid, .mw-materials-grid, .mw-interior-grid, .mw-styles-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+
+        /* Materials & Finishes checklist rows */
+        .mw-check-row {
+          transition: transform 0.3s var(--motion-ease-luxury), background-color 0.3s ease, border-left-color 0.3s ease;
+        }
+        .mw-check-row:hover {
+          transform: translateX(4px);
+          background-color: rgba(182, 154, 107, 0.08);
+          border-left-color: var(--color-accent-gold-hover);
+        }
+        .mw-check-badge {
+          transition: transform 0.3s var(--motion-ease-luxury);
+        }
+        .mw-check-row:hover .mw-check-badge {
+          transform: scale(1.1);
+        }
+
+        /* Why Leoz Wardrobes feature-list rows */
+        .mw-pillar-icon {
+          transition: transform 0.35s var(--motion-ease-luxury), background-color 0.35s ease;
+        }
+        .mw-pillar-row:hover .mw-pillar-icon {
+          transform: scale(1.1);
+          background-color: rgba(182, 154, 107, 0.22);
+        }
+        @media (max-width: 479px) {
+          .mw-pillar-row {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 12px !important;
+          }
+          .mw-pillar-row > div:last-child {
+            text-align: center;
           }
         }
       `}</style>

@@ -374,12 +374,12 @@ export const FranchiseEnquiry: React.FC = () => {
                 min-height: auto !important;
                 width: 100% !important;
               }
-              .hero-split-container > div:first-child {
+              .hero-split-container > div:first-of-type {
                 min-height: 360px !important;
                 height: 45vh !important;
                 order: 2 !important;
               }
-              .hero-split-container > div:last-child {
+              .hero-split-container > div:last-of-type {
                 padding-top: 110px !important;
                 padding-bottom: 40px !important;
                 padding-left: clamp(20px, 4vw, 40px) !important;

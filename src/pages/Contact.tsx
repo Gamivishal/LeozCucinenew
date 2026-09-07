@@ -100,7 +100,59 @@ export const Contact: React.FC = () => {
             overflow: 'hidden',
           }}
         >
-          {/* --- LEFT COLUMN: FULL-HEIGHT EDGE-TO-EDGE LIFESTYLE IMAGE (~50%) --- */}
+          {/* --- LEFT COLUMN: EDITORIAL TYPOGRAPHY --- */}
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              textAlign: 'center',
+              paddingTop: 'clamp(130px, 15vh, 170px)',
+              paddingBottom: '80px',
+              paddingLeft: 'clamp(32px, 5vw, 80px)',
+              paddingRight: 'clamp(32px, 5vw, 80px)',
+              position: 'relative',
+              zIndex: 10,
+            }}
+          >
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              style={{
+                maxWidth: '480px',
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+              }}
+            >
+              <motion.span variants={itemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+                CONTACT
+              </motion.span>
+
+              <motion.h1
+                variants={itemVariants}
+                className="page-title"
+                style={{ marginBottom: '20px' }}
+              >
+                Let's Talk About Your Kitchen or Wardrobe
+              </motion.h1>
+
+              <motion.p
+                variants={itemVariants}
+                className="hero-description"
+                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
+              >
+                Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients across Ahmedabad and throughout Gujarat.
+              </motion.p>
+            </motion.div>
+          </div>
+
+          {/* --- RIGHT COLUMN: FULL-HEIGHT EDGE-TO-EDGE LIFESTYLE IMAGE (~50%) --- */}
           <div
             style={{
               position: 'relative',
@@ -146,55 +198,6 @@ export const Contact: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* --- RIGHT COLUMN: EDITORIAL TYPOGRAPHY MATCHING MASTER KITCHENS TEMPLATE --- */}
-          <div
-            style={{
-              backgroundColor: '#FFFFFF',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              padding: 'clamp(140px, 14vh, 200px) clamp(32px, 5vw, 80px)',
-              position: 'relative',
-              zIndex: 10,
-            }}
-          >
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-              style={{
-                maxWidth: '480px',
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-              }}
-            >
-              <motion.span variants={itemVariants} className="section-label" style={{ marginBottom: '16px' }}>
-                CONTACT
-              </motion.span>
-
-              <motion.h1
-                variants={itemVariants}
-                className="page-title"
-                style={{ marginBottom: '20px' }}
-              >
-                Let's Talk About Your Kitchen or Wardrobe
-              </motion.h1>
-
-              <motion.p
-                variants={itemVariants}
-                className="hero-description"
-                style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
-              >
-                Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients across Ahmedabad and throughout Gujarat.
-              </motion.p>
-            </motion.div>
-          </div>
-
           {/* Responsive CSS Overrides for Split Layout */}
           <style>{`
             @media (max-width: 1023px) {
@@ -204,17 +207,17 @@ export const Contact: React.FC = () => {
                 min-height: auto !important;
                 width: 100% !important;
               }
-              .hero-split-container > div:first-child {
-                min-height: 360px !important;
-                height: 45vh !important;
-                order: 2 !important;
-              }
-              .hero-split-container > div:last-child {
+              .hero-split-container > div:first-of-type {
                 padding-top: 110px !important;
                 padding-bottom: 40px !important;
                 padding-left: clamp(20px, 4vw, 40px) !important;
                 padding-right: clamp(20px, 4vw, 40px) !important;
                 order: 1 !important;
+              }
+              .hero-split-container > div:last-of-type {
+                min-height: 360px !important;
+                height: 45vh !important;
+                order: 2 !important;
               }
             }
           `}</style>
@@ -230,8 +233,8 @@ export const Contact: React.FC = () => {
             paddingBottom: 'var(--space-section-padding-desktop)',
             paddingLeft: '6vw',
             paddingRight: '6vw',
-            backgroundColor: '#181818',
-            color: '#FFFFFF',
+            backgroundColor: '#FFFFFF',
+            color: '#181818',
           }}
         >
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
@@ -257,7 +260,7 @@ export const Contact: React.FC = () => {
                 <motion.h2
                   variants={staggerItem}
                   className="section-title"
-                  style={{ color: '#FFFFFF', marginBottom: '36px' }}
+                  style={{ color: '#181818', marginBottom: '36px' }}
                 >
                   Visit Leoz Cucine.
                 </motion.h2>
@@ -272,7 +275,7 @@ export const Contact: React.FC = () => {
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
                         Email
                       </h4>
-                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
                         Info@leozcucine.com
                       </p>
                     </div>
@@ -287,7 +290,7 @@ export const Contact: React.FC = () => {
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
                         Sales &amp; Inquiry
                       </h4>
-                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
                         93131 51559
                       </p>
                     </div>
@@ -302,7 +305,7 @@ export const Contact: React.FC = () => {
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
                         Customer Care
                       </h4>
-                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
                         8758 551552
                       </p>
                     </div>
@@ -317,7 +320,7 @@ export const Contact: React.FC = () => {
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
                         Head Office / Showroom (Ahmedabad)
                       </h4>
-                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
                         Sankalp Square 3B, 509, Sindhu Bhavan Marg, beside Taj Sky line, PRL Colony, Thaltej, Ahmedabad, Gujarat 380059
                       </p>
                     </div>
@@ -332,7 +335,7 @@ export const Contact: React.FC = () => {
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
                         Business Hours
                       </h4>
-                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#FFFFFF', margin: 0, lineHeight: '1.6' }}>
+                      <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
                         Monday – Saturday: 10:00 AM – 7:00 PM<br />Sunday: By appointment only
                       </p>
                     </div>
@@ -347,27 +350,27 @@ export const Contact: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.15, ease: luxuryEase }}
                 style={{
-                  backgroundColor: '#202020',
+                  backgroundColor: '#F7F5F1',
                   padding: 'clamp(32px, 4vw, 48px)',
                   borderRadius: '16px',
                   border: '1px solid rgba(182, 154, 107, 0.2)',
-                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4)',
+                  boxShadow: '0 20px 50px rgba(0, 0, 0, 0.05)',
                 }}
               >
                 {formSubmitted ? (
                   <div style={{ textAlign: 'center', padding: '40px 20px' }}>
                     <CheckCircle size={54} color="#B69A6B" style={{ marginBottom: '20px' }} />
-                    <h3 style={{ fontFamily: 'var(--font-family-serif)', fontSize: '28px', color: '#FFFFFF', marginBottom: '12px' }}>
+                    <h3 style={{ fontFamily: 'var(--font-family-serif)', fontSize: '28px', color: '#181818', marginBottom: '12px' }}>
                       Enquiry Received
                     </h3>
-                    <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', color: '#B0ABA2', fontWeight: 300, lineHeight: '1.6' }}>
+                    <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', color: '#4A4A4A', fontWeight: 300, lineHeight: '1.6' }}>
                       Thank you for contacting Leoz Cucine. Our team will get back to you shortly.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     <span className="section-label" style={{ display: 'block' }}>ENQUIRY FORM</span>
-                    <h3 style={{ fontFamily: 'var(--font-family-serif)', fontSize: '24px', fontWeight: 500, color: '#FFFFFF', marginBottom: '8px' }}>
+                    <h3 style={{ fontFamily: 'var(--font-family-serif)', fontSize: '24px', fontWeight: 500, color: '#181818', marginBottom: '8px' }}>
                       Send Us a Message
                     </h3>
 
@@ -388,10 +391,10 @@ export const Contact: React.FC = () => {
                           width: '100%',
                           height: '52px',
                           padding: '0 18px',
-                          backgroundColor: '#181818',
-                          border: '1px solid rgba(182, 154, 107, 0.25)',
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid rgba(182, 154, 107, 0.4)',
                           borderRadius: '8px',
-                          color: '#FFFFFF',
+                          color: '#181818',
                           fontFamily: 'var(--font-family-sans)',
                           fontSize: '14px',
                           outline: 'none',
@@ -417,10 +420,10 @@ export const Contact: React.FC = () => {
                             width: '100%',
                             height: '52px',
                             padding: '0 18px',
-                            backgroundColor: '#181818',
-                            border: '1px solid rgba(182, 154, 107, 0.25)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid rgba(182, 154, 107, 0.4)',
                             borderRadius: '8px',
-                            color: '#FFFFFF',
+                            color: '#181818',
                             fontFamily: 'var(--font-family-sans)',
                             fontSize: '14px',
                             outline: 'none',
@@ -443,10 +446,10 @@ export const Contact: React.FC = () => {
                             width: '100%',
                             height: '52px',
                             padding: '0 18px',
-                            backgroundColor: '#181818',
-                            border: '1px solid rgba(182, 154, 107, 0.25)',
+                            backgroundColor: '#FFFFFF',
+                            border: '1px solid rgba(182, 154, 107, 0.4)',
                             borderRadius: '8px',
-                            color: '#FFFFFF',
+                            color: '#181818',
                             fontFamily: 'var(--font-family-sans)',
                             fontSize: '14px',
                             outline: 'none',
@@ -469,10 +472,10 @@ export const Contact: React.FC = () => {
                           width: '100%',
                           height: '52px',
                           padding: '0 18px',
-                          backgroundColor: '#181818',
-                          border: '1px solid rgba(182, 154, 107, 0.25)',
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid rgba(182, 154, 107, 0.4)',
                           borderRadius: '8px',
-                          color: '#FFFFFF',
+                          color: '#181818',
                           fontFamily: 'var(--font-family-sans)',
                           fontSize: '14px',
                           outline: 'none',
@@ -500,10 +503,10 @@ export const Contact: React.FC = () => {
                         style={{
                           width: '100%',
                           padding: '14px 18px',
-                          backgroundColor: '#181818',
-                          border: '1px solid rgba(182, 154, 107, 0.25)',
+                          backgroundColor: '#FFFFFF',
+                          border: '1px solid rgba(182, 154, 107, 0.4)',
                           borderRadius: '8px',
-                          color: '#FFFFFF',
+                          color: '#181818',
                           fontFamily: 'var(--font-family-sans)',
                           fontSize: '14px',
                           outline: 'none',
@@ -518,8 +521,8 @@ export const Contact: React.FC = () => {
                       className="contact-submit-btn"
                       style={{
                         height: '54px',
-                        backgroundColor: '#B69A6B',
-                        color: '#181818',
+                        backgroundColor: '#181818',
+                        color: '#FFFFFF',
                         border: 'none',
                         borderRadius: '2px',
                         fontFamily: 'var(--font-family-sans)',
@@ -641,14 +644,11 @@ export const Contact: React.FC = () => {
         <section
           aria-label="Google Map Showroom Location"
           style={{
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
-            paddingLeft: '6vw',
-            paddingRight: '6vw',
             backgroundColor: '#181818',
+            paddingBottom: '30px', // Small padding for the link below
           }}
         >
-          <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
+          <div style={{ width: '100%' }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -656,11 +656,10 @@ export const Contact: React.FC = () => {
               transition={{ duration: 0.8, ease: luxuryEase }}
               style={{
                 width: '100%',
-                height: '450px',
-                borderRadius: '16px',
+                height: '500px',
                 overflow: 'hidden',
-                border: '1px solid rgba(182, 154, 107, 0.25)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
+                borderTop: '1px solid rgba(182, 154, 107, 0.25)',
+                borderBottom: '1px solid rgba(182, 154, 107, 0.25)',
                 backgroundColor: '#2a2a2a',
               }}
             >
@@ -676,7 +675,7 @@ export const Contact: React.FC = () => {
               />
             </motion.div>
 
-            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=Sankalp+Square+3B%2C+509%2C+Sindhu+Bhavan+Marg%2C+Thaltej%2C+Ahmedabad%2C+Gujarat+380059"
                 target="_blank"
@@ -780,15 +779,15 @@ export const Contact: React.FC = () => {
             min-height: auto !important;
             width: 100% !important;
           }
-          .hero-split-container > div:first-child {
-            min-height: 360px !important;
-            height: 45vh !important;
-            order: 2 !important;
-          }
-          .hero-split-container > div:last-child {
+          .hero-split-container > div:first-of-type {
             padding: 110px 24px 40px 24px !important;
             min-height: auto !important;
             order: 1 !important;
+          }
+          .hero-split-container > div:last-of-type {
+            min-height: 360px !important;
+            height: 45vh !important;
+            order: 2 !important;
           }
         }
         @media (max-width: 767px) {

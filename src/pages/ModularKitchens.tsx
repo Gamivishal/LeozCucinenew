@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '../components/common/Header';
 import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
@@ -52,6 +52,197 @@ const imageRevealVariants = {
     clipPath: 'inset(0% 0% 0% 0%)',
     transition: { duration: 0.9, ease: luxuryEase, delay: 0.1 }
   }
+};
+
+/* ==========================================================================
+   OUR PROCESS — vertical timeline (replaces the auto-fit grid, which broke
+   into a mismatched 4+2 layout on tablet/small-laptop widths)
+   ========================================================================== */
+const ProcessTimelineSection: React.FC = () => {
+  const timelineRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start center', 'end center'],
+  });
+  const timelineProgressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
+  const steps = [
+    { step: '01', title: 'Site Visit & Measurement', desc: 'We visit your space and take precise measurements.' },
+    { step: '02', title: 'Custom Layout & 3D Design', desc: 'A layout and 3D design tailored to your space.' },
+    { step: '03', title: 'Material & Finish Selection', desc: 'Choose the materials and finishes that suit you.' },
+    { step: '04', title: 'In-House Manufacturing', desc: 'Your kitchen is built at our own factory.' },
+    { step: '05', title: 'Professional Installation', desc: 'Installed by our own in-house team.' },
+    { step: '06', title: 'Post-Installation Quality Check', desc: 'A final check to ensure everything is right.' },
+  ];
+
+  return (
+    <section
+      aria-label="Our Process"
+      style={{
+        paddingTop: 'var(--space-section-padding-desktop)',
+        paddingBottom: 'var(--space-section-padding-desktop)',
+        paddingLeft: '6vw',
+        paddingRight: '6vw',
+        backgroundColor: 'var(--color-surface-dark)',
+        color: 'var(--color-text-primary)',
+      }}
+    >
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
+          <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR PROCESS</span>
+          <motion.h2
+            className="section-title text-white"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: luxuryEase }}
+          >
+            From Consultation to Installation.
+          </motion.h2>
+        </div>
+
+        <div ref={timelineRef} className="mk-timeline">
+          <div className="mk-timeline-track" aria-hidden="true" />
+          <motion.div
+            className="mk-timeline-progress"
+            style={{ height: timelineProgressHeight }}
+            aria-hidden="true"
+          />
+
+          {steps.map((item, idx) => {
+            const isLeft = idx % 2 === 0;
+            return (
+              <div
+                key={item.step}
+                className={`mk-timeline-row ${isLeft ? 'is-left' : 'is-right'}`}
+              >
+                <motion.div
+                  className="mk-timeline-content"
+                  initial={{ opacity: 0, x: isLeft ? -36 : 36 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.7, ease: luxuryEase }}
+                >
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-family-sans)',
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: 'var(--color-accent)',
+                      display: 'block',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    {item.step}
+                  </span>
+                  <h3 className="sub-title text-white" style={{ marginBottom: '8px' }}>{item.title}</h3>
+                  <p className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item.desc}</p>
+                </motion.div>
+
+                <motion.span
+                  className="mk-timeline-dot"
+                  initial={{ backgroundColor: 'var(--color-surface-dark)', scale: 0.7 }}
+                  whileInView={{ backgroundColor: '#B69A6B', scale: 1 }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.4, ease: luxuryEase }}
+                  aria-hidden="true"
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <style>{`
+        .mk-timeline {
+          position: relative;
+          padding: 12px 0;
+        }
+        .mk-timeline-track {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: 2px;
+          background: var(--color-border-gold-medium);
+          transform: translateX(-50%);
+        }
+        .mk-timeline-progress {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 2px;
+          background: var(--color-accent);
+          transform: translateX(-50%);
+          transform-origin: top;
+        }
+        .mk-timeline-row {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 32px 1fr;
+          align-items: center;
+          column-gap: clamp(24px, 4vw, 56px);
+          padding: clamp(24px, 3.5vw, 40px) 0;
+        }
+        .mk-timeline-row.is-left .mk-timeline-content {
+          grid-column: 1;
+          text-align: right;
+        }
+        .mk-timeline-row.is-right .mk-timeline-content {
+          grid-column: 3;
+          text-align: left;
+        }
+        .mk-timeline-dot {
+          grid-column: 2;
+          justify-self: center;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          border: 2px solid var(--color-accent);
+          position: relative;
+          z-index: 2;
+        }
+
+        @media (max-width: 767px) {
+          .mk-timeline-row {
+            grid-template-columns: 1fr 20px 1fr;
+            column-gap: clamp(10px, 3.5vw, 18px);
+            padding: clamp(18px, 5vw, 28px) 0;
+          }
+          .mk-timeline-dot {
+            width: 10px;
+            height: 10px;
+          }
+          .mk-timeline-content .sub-title {
+            font-size: 18px;
+            margin-bottom: 6px !important;
+          }
+          .mk-timeline-content .small-description {
+            font-size: 12.5px;
+            line-height: 1.5;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .mk-timeline-row {
+            grid-template-columns: 1fr 16px 1fr;
+            column-gap: 8px;
+          }
+          .mk-timeline-dot {
+            width: 9px;
+            height: 9px;
+          }
+          .mk-timeline-content .sub-title {
+            font-size: 16px;
+          }
+          .mk-timeline-content .small-description {
+            font-size: 11.5px;
+            line-height: 1.45;
+          }
+        }
+      `}</style>
+    </section>
+  );
 };
 
 export const ModularKitchens: React.FC = () => {
@@ -146,10 +337,13 @@ export const ModularKitchens: React.FC = () => {
               backgroundColor: '#FFFFFF',
               display: 'flex',
               flexDirection: 'column',
-              justifyContent: 'center',
+              justifyContent: 'flex-start',
               alignItems: 'center',
               textAlign: 'center',
-              padding: '80px clamp(32px, 5vw, 60px)',
+              paddingTop: 'clamp(130px, 15vh, 170px)',
+              paddingBottom: '80px',
+              paddingLeft: 'clamp(32px, 5vw, 60px)',
+              paddingRight: 'clamp(32px, 5vw, 60px)',
               position: 'relative',
               zIndex: 10,
             }}
@@ -212,17 +406,17 @@ export const ModularKitchens: React.FC = () => {
                 min-height: auto !important;
                 width: 100% !important;
               }
-              .hero-split-container > div:first-child {
+              .hero-split-container > div:first-of-type {
                 min-height: 360px !important;
                 height: 45vh !important;
-                order: 2 !important;
+                order: 1 !important;
               }
-              .hero-split-container > div:last-child {
-                padding-top: 110px !important;
-                padding-bottom: 40px !important;
+              .hero-split-container > div:last-of-type {
+                padding-top: clamp(40px, 8vw, 60px) !important;
+                padding-bottom: clamp(40px, 8vw, 60px) !important;
                 padding-left: clamp(20px, 4vw, 40px) !important;
                 padding-right: clamp(20px, 4vw, 40px) !important;
-                order: 1 !important;
+                order: 2 !important;
               }
             }
           `}</style>
@@ -283,6 +477,7 @@ export const ModularKitchens: React.FC = () => {
                 variants={itemVariants}
                 style={{
                   position: 'relative',
+                  width: '100%',
                   height: 'clamp(400px, 55vh, 640px)',
                   borderRadius: 'var(--radius-sm)',
                   overflow: 'hidden',
@@ -342,38 +537,58 @@ export const ModularKitchens: React.FC = () => {
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '20px',
+                  gap: '16px',
                   textAlign: 'left',
                   marginBottom: '40px',
                 }}
               >
-                {[
-                  'Ergonomic Flow',
-                  'Ample Storage',
-                  'Easy Maintenance',
-                  'Moisture-resistant carcass and finishes',
-                  'Customizable layouts',
-                ].map((item) => (
-                  <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <div
-                      style={{
-                        width: '26px',
-                        height: '26px',
-                        borderRadius: '50%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: 'rgba(182, 154, 107, 0.15)',
-                        color: '#B69A6B',
-                        flexShrink: 0,
-                        marginTop: '2px',
-                      }}
-                    >
-                      <Check size={14} strokeWidth={2.5} />
-                    </div>
-                    <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
-                  </div>
-                ))}
+                {(() => {
+                  const fusionItems = [
+                    'Ergonomic Flow',
+                    'Ample Storage',
+                    'Easy Maintenance',
+                    'Moisture-resistant carcass and finishes',
+                    'Customizable layouts',
+                  ];
+                  return fusionItems.map((item, idx) => {
+                    const isOrphan = fusionItems.length % 2 !== 0 && idx === fusionItems.length - 1;
+                    return (
+                      <div
+                        key={item}
+                        className="mk-check-card"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                          padding: '16px 18px',
+                          border: '1px solid var(--color-border-gold)',
+                          borderRadius: 'var(--radius-md)',
+                          backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                          gridColumn: isOrphan ? '1 / -1' : undefined,
+                        }}
+                      >
+                        <div
+                          className="mk-check-icon"
+                          style={{
+                            width: '26px',
+                            height: '26px',
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                            color: '#B69A6B',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                          }}
+                        >
+                          <Check size={14} strokeWidth={2.5} />
+                        </div>
+                        <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+                      </div>
+                    );
+                  });
+                })()}
               </motion.div>
 
               <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto', color: 'var(--color-text-secondary)' }}>
@@ -478,7 +693,7 @@ export const ModularKitchens: React.FC = () => {
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '20px',
+                gap: '16px',
                 textAlign: 'left',
               }}
             >
@@ -488,8 +703,21 @@ export const ModularKitchens: React.FC = () => {
                 'German-grade hardware for smooth, long-lasting function',
                 "Anti-scratch, moisture-resistant surfaces suited to Gujarat's climate",
               ].map((item) => (
-                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                <div
+                  key={item}
+                  className="mk-check-card"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '12px',
+                    padding: '16px 18px',
+                    border: '1px solid var(--color-border-gold)',
+                    borderRadius: 'var(--radius-md)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                  }}
+                >
                   <div
+                    className="mk-check-icon"
                     style={{
                       width: '26px',
                       height: '26px',
@@ -544,8 +772,8 @@ export const ModularKitchens: React.FC = () => {
               className="mk-standapart-grid"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: 'clamp(24px, 3vw, 40px)',
+                gridTemplateColumns: 'repeat(5, 1fr)',
+                gap: 'clamp(20px, 2.4vw, 28px)',
               }}
             >
               {[
@@ -559,13 +787,35 @@ export const ModularKitchens: React.FC = () => {
                 return (
                   <motion.div
                     key={item.title}
+                    className="mk-pillar-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                    style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
+                    whileHover={{
+                      y: -8,
+                      borderColor: 'rgba(182, 154, 107, 0.5)',
+                      boxShadow: '0 18px 40px -14px rgba(182, 154, 107, 0.28)',
+                      transition: { duration: 0.35, ease: luxuryEase },
+                    }}
+                    style={{
+                      position: 'relative',
+                      overflow: 'hidden',
+                      textAlign: 'center',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '10px',
+                      padding: 'clamp(24px, 2.6vw, 32px) clamp(16px, 2vw, 22px)',
+                      backgroundColor: 'var(--color-surface-light)',
+                      border: '1px solid var(--color-border-gold)',
+                      borderRadius: 'var(--radius-md)',
+                      boxShadow: 'var(--shadow-subtle)',
+                    }}
                   >
+                    <span className="mk-pillar-card-bar" aria-hidden="true" />
                     <div
+                      className="mk-pillar-icon"
                       style={{
                         width: '52px',
                         height: '52px',
@@ -592,73 +842,7 @@ export const ModularKitchens: React.FC = () => {
         {/* ==========================================================================
            SECTION 2.9: OUR PROCESS
            ========================================================================== */}
-        <section
-          aria-label="Our Process"
-          style={{
-            paddingTop: 'var(--space-section-padding-desktop)',
-            paddingBottom: 'var(--space-section-padding-desktop)',
-            paddingLeft: '6vw',
-            paddingRight: '6vw',
-            backgroundColor: 'var(--color-surface-dark)',
-            color: 'var(--color-text-primary)',
-          }}
-        >
-          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR PROCESS</span>
-              <motion.h2 
-                className="section-title text-white"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                From Consultation to Installation.
-              </motion.h2>
-            </div>
-
-            <div
-              className="mk-process-grid"
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                gap: 'clamp(24px, 3vw, 40px)',
-              }}
-            >
-              {[
-                { step: '01', title: 'Site Visit & Measurement', desc: 'We visit your space and take precise measurements.' },
-                { step: '02', title: 'Custom Layout & 3D Design', desc: 'A layout and 3D design tailored to your space.' },
-                { step: '03', title: 'Material & Finish Selection', desc: 'Choose the materials and finishes that suit you.' },
-                { step: '04', title: 'In-House Manufacturing', desc: 'Your kitchen is built at our own factory.' },
-                { step: '05', title: 'Professional Installation', desc: 'Installed by our own in-house team.' },
-                { step: '06', title: 'Post-Installation Quality Check', desc: 'A final check to ensure everything is right.' },
-              ].map((item, idx) => (
-                <motion.div
-                  key={item.step}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-family-sans)',
-                      fontSize: '13px',
-                      fontWeight: 600,
-                      color: 'var(--color-accent)',
-                      display: 'block',
-                      marginBottom: '10px',
-                    }}
-                  >
-                    {item.step}
-                  </span>
-                  <h3 className="sub-title text-white" style={{ marginBottom: '8px' }}>{item.title}</h3>
-                  <p className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProcessTimelineSection />
 
         {/* ==========================================================================
            SECTION 2.10: FAQ
@@ -825,27 +1009,80 @@ export const ModularKitchens: React.FC = () => {
             min-height: auto !important;
             width: 100% !important;
           }
-          .hero-split-container > div:first-child {
+          .hero-split-container > div:first-of-type {
             min-height: 360px !important;
             height: 45vh !important;
-            order: 2 !important;
-          }
-          .hero-split-container > div:last-child {
-            padding: 110px 24px 40px 24px !important;
-            min-height: auto !important;
             order: 1 !important;
+          }
+          .hero-split-container > div:last-of-type {
+            padding-top: clamp(40px, 8vw, 60px) !important;
+            padding-bottom: clamp(40px, 8vw, 60px) !important;
+            padding-left: clamp(20px, 4vw, 40px) !important;
+            padding-right: clamp(20px, 4vw, 40px) !important;
+            order: 2 !important;
           }
         }
         @media (max-width: 767px) {
-          .mk-intro-grid, .mk-fusion-grid, .mk-styles-grid, .mk-standapart-grid, .mk-process-grid {
+          .mk-intro-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 28px !important;
+          }
+          .mk-fusion-grid, .mk-styles-grid, .mk-standapart-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
-          .mk-styles-grid {
+          .mk-styles-grid, .mk-standapart-grid {
             grid-template-columns: repeat(2, 1fr) !important;
           }
+        }
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          .mk-standapart-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+          }
+        }
+
+        /* Checklist item cards — Modular Kitchens & Materials/Finishes sections */
+        .mk-check-card {
+          transition: transform 0.35s var(--motion-ease-luxury), border-color 0.35s ease, background-color 0.35s ease, box-shadow 0.35s var(--motion-ease-luxury);
+        }
+        .mk-check-card:hover {
+          transform: translateY(-3px);
+          border-color: var(--color-border-gold-medium);
+          background-color: rgba(182, 154, 107, 0.07);
+          box-shadow: 0 12px 28px -12px rgba(182, 154, 107, 0.3);
+        }
+        .mk-check-icon {
+          transition: transform 0.35s var(--motion-ease-luxury), background-color 0.35s ease;
+        }
+        .mk-check-card:hover .mk-check-icon {
+          transform: scale(1.12);
+          background-color: rgba(182, 154, 107, 0.28);
+        }
+
+        /* "Why Leoz Kitchens" pillar cards */
+        .mk-pillar-card-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: var(--color-accent-gold);
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 0.5s var(--motion-ease-luxury);
+        }
+        .mk-pillar-card:hover .mk-pillar-card-bar {
+          transform: scaleX(1);
+        }
+        .mk-pillar-icon {
+          transition: transform 0.4s var(--motion-ease-luxury), background-color 0.4s ease;
+        }
+        .mk-pillar-card:hover .mk-pillar-icon {
+          transform: scale(1.12);
+          background-color: rgba(182, 154, 107, 0.24);
         }
       `}</style>
     </div>
