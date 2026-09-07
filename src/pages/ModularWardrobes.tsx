@@ -54,6 +54,17 @@ const imageRevealVariants = {
   }
 };
 
+/* Directional entrance variants — Introduction section: image slides in from
+   the left, its companion text slides in from the right */
+const fromLeftVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: luxuryEase } }
+};
+const fromRightVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: luxuryEase } }
+};
+
 export const ModularWardrobes: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -271,7 +282,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
+              viewport={{ once: false, margin: '-100px' }}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
@@ -284,9 +295,9 @@ export const ModularWardrobes: React.FC = () => {
                 alignItems: 'center',
               }}
             >
-              {/* Image Left Column */}
+              {/* Image Left Column — enters sliding in from the left */}
               <motion.div
-                variants={itemVariants}
+                variants={fromLeftVariants}
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -307,8 +318,8 @@ export const ModularWardrobes: React.FC = () => {
                 </ParallaxImage>
               </motion.div>
 
-              {/* Text Right Column */}
-              <motion.div variants={itemVariants}>
+              {/* Text Right Column — enters sliding in from the right */}
+              <motion.div variants={fromRightVariants}>
                 <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                   INTRODUCTION
                 </span>
@@ -347,7 +358,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
             >
               <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -405,25 +416,29 @@ export const ModularWardrobes: React.FC = () => {
                 { title: 'Sliding Wardrobes', description: 'Space-efficient designs ideal for compact bedrooms, with smooth, durable sliding mechanisms.' },
                 { title: 'Hinged Wardrobes', description: 'Classic, spacious wardrobes with full access — customizable in finish and internal layout.' },
                 { title: 'Walk-In Wardrobes', description: 'Premium walk-in storage solutions for larger spaces, designed for organization and display.' },
-              ].map((style, idx) => (
-                <motion.div
-                  key={style.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                  style={{
-                    padding: 'clamp(32px, 3.5vw, 44px)',
-                    backgroundColor: 'var(--color-surface-stone)',
-                    border: '1px solid var(--color-border-gold)',
-                    borderRadius: 'var(--radius-sm)',
-                    boxShadow: 'var(--shadow-subtle)',
-                  }}
-                >
-                  <h3 className="sub-title" style={{ marginBottom: '12px' }}>{style.title}</h3>
-                  <p className="description" style={{ margin: 0 }}>{style.description}</p>
-                </motion.div>
-              ))}
+              ].map((style, idx) => {
+                /* Card 1 enters from the right, card 2 from below, card 3 from the left */
+                const cardOffset = idx === 0 ? { x: 80 } : idx === 2 ? { x: -80 } : { y: 60 };
+                return (
+                  <motion.div
+                    key={style.title}
+                    initial={{ opacity: 0, x: 0, y: 0, ...cardOffset }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.7, delay: idx * 0.08, ease: luxuryEase }}
+                    style={{
+                      padding: 'clamp(32px, 3.5vw, 44px)',
+                      backgroundColor: 'var(--color-surface-stone)',
+                      border: '1px solid var(--color-border-gold)',
+                      borderRadius: 'var(--radius-sm)',
+                      boxShadow: 'var(--shadow-subtle)',
+                    }}
+                  >
+                    <h3 className="sub-title" style={{ marginBottom: '12px' }}>{style.title}</h3>
+                    <p className="description" style={{ margin: 0 }}>{style.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -469,39 +484,47 @@ export const ModularWardrobes: React.FC = () => {
                 'Laminate, veneer, acrylic and PU finish options',
                 'Premium German-grade sliding and hinge hardware for long-term durability',
                 'Internal organizers — drawers, shelves, trouser racks, accessory units',
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="mw-check-row"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '14px',
-                    padding: '14px 18px',
-                    borderLeft: '3px solid var(--color-accent-gold)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.02)',
-                  }}
-                >
-                  <div
-                    className="mw-check-badge"
+              ].map((item, idx) => {
+                /* Item 1 from top, item 2 from bottom, item 3 from left, item 4 from right */
+                const lineOffset = [{ y: -60 }, { y: 60 }, { x: -60 }, { x: 60 }][idx] || {};
+                return (
+                  <motion.div
+                    key={item}
+                    className="mw-check-row"
+                    initial={{ opacity: 0, x: 0, y: 0, ...lineOffset }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '6px',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: 'rgba(182, 154, 107, 0.15)',
-                      color: '#B69A6B',
-                      flexShrink: 0,
-                      marginTop: '2px',
+                      alignItems: 'flex-start',
+                      gap: '14px',
+                      padding: '14px 18px',
+                      borderLeft: '3px solid var(--color-accent-gold)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.02)',
                     }}
                   >
-                    <Check size={13} strokeWidth={2.5} />
-                  </div>
-                  <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
-                </div>
-              ))}
+                    <div
+                      className="mw-check-badge"
+                      style={{
+                        width: '24px',
+                        height: '24px',
+                        borderRadius: '6px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                        color: '#B69A6B',
+                        flexShrink: 0,
+                        marginTop: '2px',
+                      }}
+                    >
+                      <Check size={13} strokeWidth={2.5} />
+                    </div>
+                    <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -558,7 +581,7 @@ export const ModularWardrobes: React.FC = () => {
                     className="mw-pillar-row"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     whileHover={{
                       x: 6,
@@ -647,7 +670,7 @@ export const ModularWardrobes: React.FC = () => {
                   className="mw-process-step"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     position: 'relative',
@@ -771,7 +794,7 @@ export const ModularWardrobes: React.FC = () => {
                   key={item.q}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     padding: 'clamp(24px, 3vw, 32px)',
@@ -813,7 +836,7 @@ export const ModularWardrobes: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 0.15, scale: 1.00 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -837,7 +860,7 @@ export const ModularWardrobes: React.FC = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={staggerContainer}
             style={{
               position: 'relative',
@@ -898,7 +921,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}
             >
@@ -930,7 +953,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               className="mw-layouts-grid"
               style={{
@@ -1057,7 +1080,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}
             >
@@ -1088,7 +1111,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               className="mw-materials-grid"
               style={{
@@ -1226,7 +1249,7 @@ export const ModularWardrobes: React.FC = () => {
                   key={feature}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.06, ease: luxuryEase }}
                   style={{
                     padding: '28px 20px',

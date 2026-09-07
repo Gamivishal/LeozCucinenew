@@ -248,22 +248,7 @@ export const BookConsultation: React.FC = () => {
                     SUBMIT
                   </button>
 
-                  {/* Privacy Disclaimer */}
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-family-sans)',
-                      fontSize: '11px',
-                      color: '#768192',
-                      textAlign: 'center',
-                      lineHeight: '1.5',
-                      marginTop: '12px',
-                    }}
-                  >
-                    By submitting this form, you agree to our{' '}
-                    <a href="/contact" target="_blank" rel="noopener noreferrer" style={{ color: '#B69A6B', textDecoration: 'underline' }}>privacy policy</a>
-                    {' '}&amp;{' '}
-                    <a href="/contact" target="_blank" rel="noopener noreferrer" style={{ color: '#B69A6B', textDecoration: 'underline' }}>terms and conditions</a>
-                  </p>
+
                 </form>
               )}
             </motion.div>

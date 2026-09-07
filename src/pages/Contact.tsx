@@ -42,6 +42,17 @@ const imageRevealVariants = {
   }
 };
 
+/* Directional entrance variants — Visit Us section: the eyebrow label slides
+   in from the left, the heading and contact details slide in from the right */
+const fromLeftVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: luxuryEase } }
+};
+const fromRightVariants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: luxuryEase } }
+};
+
 export const Contact: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -251,14 +262,14 @@ export const Contact: React.FC = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={staggerContainer}
               >
-                <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                   VISIT US
                 </motion.span>
                 <motion.h2
-                  variants={staggerItem}
+                  variants={fromRightVariants}
                   className="section-title"
                   style={{ color: '#181818', marginBottom: '36px' }}
                 >
@@ -267,7 +278,7 @@ export const Contact: React.FC = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
                   {/* Email */}
-                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                  <motion.div variants={fromRightVariants} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
                     <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
                       <Mail size={22} strokeWidth={1.5} />
                     </div>
@@ -282,7 +293,7 @@ export const Contact: React.FC = () => {
                   </motion.div>
 
                   {/* Sales & Inquiry */}
-                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                  <motion.div variants={fromRightVariants} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
                     <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
                       <Phone size={22} strokeWidth={1.5} />
                     </div>
@@ -297,7 +308,7 @@ export const Contact: React.FC = () => {
                   </motion.div>
 
                   {/* Customer Care */}
-                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                  <motion.div variants={fromRightVariants} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
                     <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
                       <Headphones size={22} strokeWidth={1.5} />
                     </div>
@@ -312,7 +323,7 @@ export const Contact: React.FC = () => {
                   </motion.div>
 
                   {/* Address */}
-                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                  <motion.div variants={fromRightVariants} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
                     <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
                       <MapPin size={22} strokeWidth={1.5} />
                     </div>
@@ -327,7 +338,7 @@ export const Contact: React.FC = () => {
                   </motion.div>
 
                   {/* Working Hours */}
-                  <motion.div variants={staggerItem} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
+                  <motion.div variants={fromRightVariants} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px' }}>
                     <div style={{ padding: '12px', borderRadius: '50%', backgroundColor: 'rgba(182, 154, 107, 0.1)', color: '#B69A6B' }}>
                       <Clock size={22} strokeWidth={1.5} />
                     </div>
@@ -347,7 +358,7 @@ export const Contact: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, delay: 0.15, ease: luxuryEase }}
                 style={{
                   backgroundColor: '#F7F5F1',
@@ -567,7 +578,7 @@ export const Contact: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{
                 display: 'flex',
@@ -652,7 +663,7 @@ export const Contact: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{ duration: 0.8, ease: luxuryEase }}
               style={{
                 width: '100%',
@@ -708,7 +719,7 @@ export const Contact: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{
                 display: 'flex',

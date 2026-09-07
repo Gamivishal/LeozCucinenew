@@ -254,7 +254,7 @@ export const FranchiseOpportunities: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               className="why-partner-grid"
               style={{
@@ -323,7 +323,7 @@ export const FranchiseOpportunities: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.7, ease: luxuryEase }}
               style={{
                 backgroundColor: '#202020',

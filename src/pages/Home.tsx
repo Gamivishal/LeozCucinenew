@@ -5,7 +5,6 @@ import { Footer } from '../components/common/Footer';
 import { Preloader, checkShouldRunPreloader, markPreloaderSeen } from '../components/common/Preloader';
 import { images } from '../assets/images';
 import { ShieldCheck, Award, Factory, Globe, Compass, Clock, Wrench, ChefHat, Shirt, Handshake } from 'lucide-react';
-import { ParallaxImage } from '../components/ui/ParallaxImage';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import {
   staggerContainer,
@@ -425,13 +424,13 @@ const HighlightsBarSection: React.FC = () => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
                 <span
+                  className="home-stat-value"
                   style={{
                     fontFamily: 'var(--font-family-serif)',
-                    fontSize: 'clamp(20px, 2vw, 28px)',
+                    fontSize: 'clamp(18px, 2vw, 28px)',
                     fontWeight: 300,
                     color: '#B69A6B',
-                    lineHeight: '1.1',
-                    whiteSpace: 'nowrap',
+                    lineHeight: '1.15',
                   }}
                 >
                   <AnimatedCounter value={item.value} />
@@ -459,7 +458,20 @@ const HighlightsBarSection: React.FC = () => {
         @media (max-width: 900px) {
           section[aria-label="Highlights Bar"] > div > div {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 24px 20px !important;
+            gap: 20px 14px !important;
+          }
+          .home-stat-card {
+            gap: 10px !important;
+            padding: 14px 12px !important;
+          }
+          .home-stat-card .home-pillar-icon {
+            width: 38px !important;
+            height: 38px !important;
+          }
+        }
+        @media (max-width: 400px) {
+          .home-stat-value {
+            font-size: 16px !important;
           }
         }
       `}</style>
@@ -514,7 +526,7 @@ const CollectionsSection: React.FC = () => {
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(70px, 9vw, 130px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR COLLECTIONS</span>
-          <motion.h2 
+          <motion.h2
             className="section-title"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -657,7 +669,7 @@ const ProductHighlightsSection: React.FC = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>PRODUCT HIGHLIGHTS</span>
-          <motion.h2 
+          <motion.h2
             className="section-title"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -935,7 +947,7 @@ const WhyLeozSection: React.FC = () => {
       <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY CHOOSE LEOZ CUCINE</span>
-          <motion.h2 
+          <motion.h2
             className="section-title text-white"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -1226,7 +1238,7 @@ const ConsultationSection: React.FC = () => {
           ))}
         </div>
 
-        <motion.div 
+        <motion.div
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }

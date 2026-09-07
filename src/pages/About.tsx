@@ -40,6 +40,16 @@ const imageRevealVariants = {
   }
 };
 
+/* Directional entrance variants — used across Our Story / Leadership / Philosophy */
+const fromLeftVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: luxuryEase } }
+};
+const fromRightVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: luxuryEase } }
+};
+
 export const About: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -227,12 +237,12 @@ export const About: React.FC = () => {
                 alignItems: 'center',
               }}
             >
-              {/* Large Premium Image */}
+              {/* Large Premium Image — enters sliding in from the right */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.6, ease: luxuryEase }}
+                initial={{ opacity: 0, x: 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ duration: 0.7, ease: luxuryEase }}
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -252,18 +262,19 @@ export const About: React.FC = () => {
                 </ParallaxImage>
               </motion.div>
 
+              {/* Text block — enters sliding in from the left */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={containerVariants}
               >
-                <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                   OUR STORY
                 </motion.span>
 
                 <motion.h2
-                  variants={itemVariants}
+                  variants={fromLeftVariants}
                   className="section-title text-white"
                   style={{ marginBottom: '20px' }}
                 >
@@ -271,7 +282,7 @@ export const About: React.FC = () => {
                 </motion.h2>
 
                 <motion.p
-                  variants={itemVariants}
+                  variants={fromLeftVariants}
                   className="description"
                   style={{ color: '#B0ABA2' }}
                 >
@@ -300,7 +311,7 @@ export const About: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               variants={containerVariants}
               style={{
                 display: 'grid',
@@ -309,13 +320,13 @@ export const About: React.FC = () => {
                 alignItems: 'center',
               }}
             >
-              {/* Left Column: Title */}
+              {/* Left Column: Title — enters sliding in from the left */}
               <div>
-                <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                   OUR PHILOSOPHY
                 </motion.span>
                 <motion.h2
-                  variants={itemVariants}
+                  variants={fromLeftVariants}
                   className="section-title"
                   style={{ margin: 0 }}
                 >
@@ -323,9 +334,9 @@ export const About: React.FC = () => {
                 </motion.h2>
               </div>
 
-              {/* Right Column: Description with elegant styling */}
+              {/* Right Column: Description with elegant styling — enters sliding in from the right */}
               <motion.div
-                variants={itemVariants}
+                variants={fromRightVariants}
                 style={{
                   borderLeft: '2px solid #B69A6B',
                   paddingLeft: '32px',
@@ -398,7 +409,7 @@ export const About: React.FC = () => {
                   key={step.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{ textAlign: 'center' }}
                 >
@@ -436,11 +447,12 @@ export const About: React.FC = () => {
                 alignItems: 'center',
               }}
             >
+              {/* Director portrait — enters sliding in from the right */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.6, ease: luxuryEase }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ duration: 0.7, ease: luxuryEase }}
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -463,19 +475,19 @@ export const About: React.FC = () => {
                 />
               </motion.div>
 
-              {/* Minimal Founder Message (Max 80 words) */}
+              {/* Minimal Founder Message (Max 80 words) — enters sliding in from the left */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={containerVariants}
               >
-                <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                   LEADERSHIP
                 </motion.span>
 
                 <motion.h2
-                  variants={itemVariants}
+                  variants={fromLeftVariants}
                   style={{
                     fontFamily: 'var(--font-family-serif)',
                     fontSize: 'clamp(30px, 3.2vw, 44px)',
@@ -488,7 +500,7 @@ export const About: React.FC = () => {
                 </motion.h2>
 
                 <motion.p
-                  variants={itemVariants}
+                  variants={fromLeftVariants}
                   style={{
                     fontFamily: 'var(--font-family-sans)',
                     fontSize: 'clamp(15px, 1.2vw, 17px)',
@@ -501,7 +513,7 @@ export const About: React.FC = () => {
                   Mayur Vadhiya brings over 20 years of expertise to LEOZ Cucine's production and quality systems. Known as one of Ahmedabad's leading modular kitchen and wardrobe specialists, he ensures every product meets world-class standards. His leadership has helped LEOZ Cucine grow into one of Gujarat's most trusted modular kitchen manufacturers, serving Gujarat's markets with precision, efficiency, and seamless execution.
                 </motion.p>
 
-                <motion.div variants={itemVariants}>
+                <motion.div variants={fromLeftVariants}>
                   <h4
                     style={{
                       fontFamily: 'var(--font-family-serif)',
@@ -563,13 +575,13 @@ export const About: React.FC = () => {
 
           <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 80px)' }}>
-              <motion.span variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+              <motion.span variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                 WHERE WE CRAFT
               </motion.span>
-              <motion.h2 variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-title text-white" style={{ marginBottom: '20px' }}>
+              <motion.h2 variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="section-title text-white" style={{ marginBottom: '20px' }}>
                 A 20,000 Sq. Ft. Facility Built for Precision
               </motion.h2>
-              <motion.p variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="description" style={{ margin: '0 auto', color: '#B0ABA2', maxWidth: '700px' }}>
+              <motion.p variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="description" style={{ margin: '0 auto', color: '#B0ABA2', maxWidth: '700px' }}>
                 Spanning 20,000 sq. ft., our in-house facility powers the precision behind every LEOZ Cucine project. We manufacture modular kitchens and wardrobes under one roof, ensuring consistent quality, on-time delivery, and competitive pricing.
               </motion.p>
             </div>
@@ -577,7 +589,7 @@ export const About: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               variants={containerVariants}
               style={{
                 display: 'grid',
@@ -589,11 +601,16 @@ export const About: React.FC = () => {
                 { title: 'Advanced Machinery', desc: 'European-grade automated machinery for flawless cuts and edge-banding.' },
                 { title: 'Quality Control', desc: 'Dedicated quality control & R&D teams monitoring every step of production.' },
                 { title: 'Scale & Speed', desc: 'Bulk production capabilities ensuring on-time delivery without compromising craft.' },
-              ].map((item) => (
+              ].map((item, idx) => {
+                /* Card 1 from the left, card 2 from below, card 3 from the right */
+                const craftOffset = idx === 0 ? { x: -80 } : idx === 2 ? { x: 80 } : { y: 60 };
+                return (
                 <motion.div
                   key={item.title}
-                  variants={itemVariants}
-                  whileHover={{ 
+                  initial={{ opacity: 0, x: 0, y: 0, ...craftOffset }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: false, amount: 0.2 }}
+                  whileHover={{
                     y: -8, 
                     boxShadow: '0 20px 40px rgba(182,154,107,0.15)',
                     borderColor: 'rgba(182,154,107,0.4)',
@@ -627,7 +644,8 @@ export const About: React.FC = () => {
                   <h3 className="sub-title text-white" style={{ margin: 0, fontSize: '20px' }}>{item.title}</h3>
                   <p className="small-description" style={{ margin: 0, color: '#B0ABA2', lineHeight: 1.6 }}>{item.desc}</p>
                 </motion.div>
-              ))}
+                );
+              })}
             </motion.div>
           </div>
         </section>
@@ -662,7 +680,7 @@ export const About: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.98, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.8, ease: luxuryEase }}
               style={{
                 backgroundColor: '#FFFFFF',
@@ -752,7 +770,7 @@ export const About: React.FC = () => {
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
+                    viewport={{ once: false, amount: 0.1 }}
                     transition={{ duration: 0.6, delay: idx * 0.1, ease: luxuryEase }}
                     whileHover={{ 
                       scale: 1.02, 
@@ -837,7 +855,7 @@ export const About: React.FC = () => {
                   key={item}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     display: 'flex',
@@ -864,7 +882,7 @@ export const About: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, ease: luxuryEase }}
               style={{ textAlign: 'center' }}
             >
@@ -900,7 +918,7 @@ export const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 0.2, scale: 1.00 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -927,7 +945,7 @@ export const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 1.5, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -947,7 +965,7 @@ export const About: React.FC = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={containerVariants}
             style={{
               position: 'relative',

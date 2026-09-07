@@ -408,7 +408,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(48px, 6vw, 72px)' }}
             >
@@ -446,7 +446,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               className="why-partner-grid"
               style={{
@@ -541,7 +541,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(48px, 6vw, 72px)' }}
             >
@@ -579,7 +579,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               className="ideal-partners-grid"
               style={{
@@ -680,7 +680,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(48px, 6vw, 72px)' }}
             >
@@ -718,7 +718,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               className="advantage-grid"
               style={{
@@ -819,7 +819,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(48px, 6vw, 80px)' }}
             >
@@ -872,7 +872,7 @@ export const FranchiseEnquiry: React.FC = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={staggerContainer}
                 className="timeline-steps-grid"
                 style={{
@@ -982,7 +982,7 @@ export const FranchiseEnquiry: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 transition={{ duration: 0.6, ease: luxuryEase }}
                 style={{
                   position: 'relative',
@@ -1007,7 +1007,7 @@ export const FranchiseEnquiry: React.FC = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={containerVariants}
               >
                 <motion.h2
@@ -1101,7 +1101,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: '44px' }}
             >
@@ -1535,7 +1535,7 @@ export const FranchiseEnquiry: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
             >
               <motion.h2

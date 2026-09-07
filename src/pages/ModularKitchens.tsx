@@ -54,6 +54,17 @@ const imageRevealVariants = {
   }
 };
 
+/* Directional entrance variants — Introduction section: image slides in from
+   the left, its companion text slides in from the right */
+const fromLeftVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: luxuryEase } }
+};
+const fromRightVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: luxuryEase } }
+};
+
 /* ==========================================================================
    OUR PROCESS — vertical timeline (replaces the auto-fit grid, which broke
    into a mismatched 4+2 layout on tablet/small-laptop widths)
@@ -440,7 +451,7 @@ export const ModularKitchens: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-100px' }}
+              viewport={{ once: false, margin: '-100px' }}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
@@ -453,8 +464,8 @@ export const ModularKitchens: React.FC = () => {
                 alignItems: 'center',
               }}
             >
-              {/* Text Left Column */}
-              <motion.div variants={itemVariants}>
+              {/* Text Left Column — enters sliding in from the right */}
+              <motion.div variants={fromRightVariants}>
                 <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                   INTRODUCTION
                 </span>
@@ -472,9 +483,9 @@ export const ModularKitchens: React.FC = () => {
                 </p>
               </motion.div>
 
-              {/* Image Right Column */}
+              {/* Image Right Column — enters sliding in from the left */}
               <motion.div
-                variants={itemVariants}
+                variants={fromLeftVariants}
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -516,7 +527,7 @@ export const ModularKitchens: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
             >
               <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -638,25 +649,29 @@ export const ModularKitchens: React.FC = () => {
                 { title: 'Modern Minimalist', description: 'Clean lines, handle-less shutters, and a restrained material palette for a contemporary look.' },
                 { title: 'German Classic', description: 'Precision-engineered cabinetry and refined finishes inspired by German kitchen design.' },
                 { title: 'Contemporary Fusion', description: "A balance of bold and understated — built for Gujarati households that entertain often." },
-              ].map((style, idx) => (
-                <motion.div
-                  key={style.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                  style={{
-                    padding: 'clamp(32px, 3.5vw, 44px)',
-                    backgroundColor: 'var(--color-surface-stone)',
-                    border: '1px solid var(--color-border-gold)',
-                    borderRadius: 'var(--radius-sm)',
-                    boxShadow: 'var(--shadow-subtle)',
-                  }}
-                >
-                  <h3 className="sub-title" style={{ marginBottom: '12px' }}>{style.title}</h3>
-                  <p className="description" style={{ margin: 0 }}>{style.description}</p>
-                </motion.div>
-              ))}
+              ].map((style, idx) => {
+                /* Card 1 enters from the right, card 2 from below, card 3 from the left */
+                const cardOffset = idx === 0 ? { x: 80 } : idx === 2 ? { x: -80 } : { y: 60 };
+                return (
+                  <motion.div
+                    key={style.title}
+                    initial={{ opacity: 0, x: 0, y: 0, ...cardOffset }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.7, delay: idx * 0.08, ease: luxuryEase }}
+                    style={{
+                      padding: 'clamp(32px, 3.5vw, 44px)',
+                      backgroundColor: 'var(--color-surface-stone)',
+                      border: '1px solid var(--color-border-gold)',
+                      borderRadius: 'var(--radius-sm)',
+                      boxShadow: 'var(--shadow-subtle)',
+                    }}
+                  >
+                    <h3 className="sub-title" style={{ marginBottom: '12px' }}>{style.title}</h3>
+                    <p className="description" style={{ margin: 0 }}>{style.description}</p>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -702,40 +717,48 @@ export const ModularKitchens: React.FC = () => {
                 'Premium laminate, acrylic, and PU finish options',
                 'German-grade hardware for smooth, long-lasting function',
                 "Anti-scratch, moisture-resistant surfaces suited to Gujarat's climate",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="mk-check-card"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '12px',
-                    padding: '16px 18px',
-                    border: '1px solid var(--color-border-gold)',
-                    borderRadius: 'var(--radius-md)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                  }}
-                >
-                  <div
-                    className="mk-check-icon"
+              ].map((item, idx) => {
+                /* Item 1 from top, item 2 from bottom, item 3 from left, item 4 from right */
+                const lineOffset = [{ y: -60 }, { y: 60 }, { x: -60 }, { x: 60 }][idx] || {};
+                return (
+                  <motion.div
+                    key={item}
+                    className="mk-check-card"
+                    initial={{ opacity: 0, x: 0, y: 0, ...lineOffset }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     style={{
-                      width: '26px',
-                      height: '26px',
-                      borderRadius: '50%',
                       display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: 'rgba(182, 154, 107, 0.15)',
-                      color: '#B69A6B',
-                      flexShrink: 0,
-                      marginTop: '2px',
+                      alignItems: 'flex-start',
+                      gap: '12px',
+                      padding: '16px 18px',
+                      border: '1px solid var(--color-border-gold)',
+                      borderRadius: 'var(--radius-md)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.03)',
                     }}
                   >
-                    <Check size={14} strokeWidth={2.5} />
-                  </div>
-                  <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
-                </div>
-              ))}
+                    <div
+                      className="mk-check-icon"
+                      style={{
+                        width: '26px',
+                        height: '26px',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        backgroundColor: 'rgba(182, 154, 107, 0.15)',
+                        color: '#B69A6B',
+                        flexShrink: 0,
+                        marginTop: '2px',
+                      }}
+                    >
+                      <Check size={14} strokeWidth={2.5} />
+                    </div>
+                    <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -790,7 +813,7 @@ export const ModularKitchens: React.FC = () => {
                     className="mk-pillar-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     whileHover={{
                       y: -8,
@@ -891,7 +914,7 @@ export const ModularKitchens: React.FC = () => {
                   key={item.q}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     padding: 'clamp(24px, 3vw, 32px)',
@@ -933,7 +956,7 @@ export const ModularKitchens: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 0.15, scale: 1.00 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -957,7 +980,7 @@ export const ModularKitchens: React.FC = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={staggerContainer}
             style={{
               position: 'relative',
