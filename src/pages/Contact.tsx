@@ -32,14 +32,22 @@ const itemVariants = {
 const staggerContainer = containerVariants;
 const staggerItem = itemVariants;
 
+/* Hero image sits on the RIGHT, so it enters from the LEFT (opposite side) */
 const imageRevealVariants = {
-  hidden: { opacity: 0, scale: 1.03, clipPath: 'inset(0% 0% 100% 0%)' },
+  hidden: { opacity: 0, scale: 1.03, x: -70, clipPath: 'inset(0% 0% 100% 0%)' },
   visible: {
     opacity: 1,
     scale: 1,
+    x: 0,
     clipPath: 'inset(0% 0% 0% 0%)',
     transition: { duration: 0.9, ease: luxuryEase, delay: 0.1 }
   }
+};
+
+/* Hero text sits on the LEFT, so it enters from the RIGHT (opposite side) */
+const heroTextItemVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: luxuryEase } }
 };
 
 /* Directional entrance variants — Visit Us section: the eyebrow label slides
@@ -141,20 +149,18 @@ export const Contact: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={itemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
                 CONTACT
               </motion.span>
 
-              <motion.h1
-                variants={itemVariants}
-                className="page-title"
-                style={{ marginBottom: '20px' }}
-              >
-                Let's Talk About Your Kitchen or Wardrobe
-              </motion.h1>
+              <h1 className="page-title" style={{ marginBottom: '20px' }}>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Let's Talk About</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Your Kitchen or</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>Wardrobe</motion.span>
+              </h1>
 
               <motion.p
-                variants={itemVariants}
+                variants={heroTextItemVariants}
                 className="hero-description"
                 style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
               >

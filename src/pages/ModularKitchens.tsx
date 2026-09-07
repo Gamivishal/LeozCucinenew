@@ -23,35 +23,34 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 15 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: luxuryEase }
+    transition: { duration: 0.8, ease: luxuryEase }
   }
 };
 
 const staggerContainer = containerVariants;
 const staggerItem = itemVariants;
 
-/* Heading-specific mask reveal — for h2/h3 inside stagger containers */
-const headingMaskVariant = {
-  hidden: { clipPath: 'inset(100% 0% 0% 0%)', opacity: 0 },
-  visible: {
-    clipPath: 'inset(0% 0% 0% 0%)',
-    opacity: 1,
-    transition: { duration: 0.8, ease: luxuryEase },
-  },
-};
 
+/* Hero image sits on the LEFT, so it enters from the RIGHT (opposite side) */
 const imageRevealVariants = {
-  hidden: { opacity: 0, scale: 1.03, clipPath: 'inset(0% 0% 100% 0%)' },
+  hidden: { opacity: 0, scale: 1.03, x: 70, clipPath: 'inset(0% 0% 100% 0%)' },
   visible: {
     opacity: 1,
     scale: 1,
+    x: 0,
     clipPath: 'inset(0% 0% 0% 0%)',
     transition: { duration: 0.9, ease: luxuryEase, delay: 0.1 }
   }
+};
+
+/* Hero text sits on the RIGHT, so it enters from the LEFT (opposite side) */
+const heroTextItemVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: luxuryEase } }
 };
 
 /* Directional entrance variants — Introduction section: image slides in from
@@ -103,12 +102,13 @@ const ProcessTimelineSection: React.FC = () => {
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR PROCESS</span>
           <motion.h2
             className="section-title text-white"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: luxuryEase }}
+            variants={staggerContainer}
           >
-            From Consultation to Installation.
+            <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>From Consultation</motion.span>
+            <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>to Installation.</motion.span>
           </motion.h2>
         </div>
 
@@ -372,27 +372,25 @@ export const ModularKitchens: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={itemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
                 LEOZ KITCHENS
               </motion.span>
 
-              <motion.h1
-                variants={itemVariants}
-                className="page-title"
-                style={{ marginBottom: '20px' }}
-              >
-                Modular Kitchens, Designed Around Your Life
-              </motion.h1>
+              <h1 className="page-title" style={{ marginBottom: '20px' }}>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Modular Kitchens,</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Designed Around</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>Your Life</motion.span>
+              </h1>
 
               <motion.p
-                variants={itemVariants}
+                variants={heroTextItemVariants}
                 className="hero-description"
                 style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)', marginBottom: '32px' }}
               >
                 Experience German Precision – Premium Modular Kitchens from Design to Installation.
               </motion.p>
 
-              <motion.div variants={itemVariants}>
+              <motion.div variants={heroTextItemVariants}>
                 <a
                   href="/talk-to-us"
                   onClick={(e) => {
@@ -471,11 +469,15 @@ export const ModularKitchens: React.FC = () => {
                 </span>
 
                 <motion.h2
-                  variants={headingMaskVariant}
                   className="section-title"
-                  style={{ marginBottom: '20px', willChange: 'clip-path' }}
+                  style={{ marginBottom: '20px' }}
+                  variants={staggerContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
                 >
-                  A Kitchen Should Work as Beautifully as It Looks
+                  <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>A Kitchen Should</motion.span>
+                  <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Work as Beautifully as It Looks</motion.span>
                 </motion.h2>
 
                 <p className="description" style={{ marginBottom: 0 }}>
@@ -534,9 +536,10 @@ export const ModularKitchens: React.FC = () => {
                 MODULAR KITCHENS
               </motion.span>
 
-              <motion.h2 variants={staggerItem} className="section-title text-white" style={{ marginBottom: '20px' }}>
-                German Precision, Indian Sensibility
-              </motion.h2>
+              <h2 className="section-title text-white" style={{ marginBottom: '20px' }}>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>German Precision,</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Indian Sensibility</motion.span>
+              </h2>
 
               <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto 40px', color: 'var(--color-text-secondary)' }}>
                 Our kitchens blend German-grade hardware with Indian sensibilities, offering a smart fusion of:
@@ -564,9 +567,13 @@ export const ModularKitchens: React.FC = () => {
                   return fusionItems.map((item, idx) => {
                     const isOrphan = fusionItems.length % 2 !== 0 && idx === fusionItems.length - 1;
                     return (
-                      <div
+                      <motion.div
                         key={item}
                         className="mk-check-card"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                         style={{
                           display: 'flex',
                           alignItems: 'flex-start',
@@ -596,7 +603,7 @@ export const ModularKitchens: React.FC = () => {
                           <Check size={14} strokeWidth={2.5} />
                         </div>
                         <span className="small-description" style={{ color: 'var(--color-text-secondary)' }}>{item}</span>
-                      </div>
+                      </motion.div>
                     );
                   });
                 })()}
@@ -628,12 +635,13 @@ export const ModularKitchens: React.FC = () => {
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>KITCHEN COLLECTIONS</span>
               <motion.h2 
                 className="section-title"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                variants={staggerContainer}
               >
-                Find Your Kitchen Style.
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Find Your</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Kitchen Style.</motion.span>
               </motion.h2>
             </div>
 
@@ -695,12 +703,13 @@ export const ModularKitchens: React.FC = () => {
             <motion.h2 
               className="section-title text-white" 
               style={{ marginBottom: '40px' }}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              variants={staggerContainer}
             >
-              Built for Performance. Finished for Life.
+              <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Built for Performance.</motion.span>
+              <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Finished for Life.</motion.span>
             </motion.h2>
 
             <div
@@ -782,12 +791,13 @@ export const ModularKitchens: React.FC = () => {
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ KITCHENS</span>
               <motion.h2 
                 className="section-title"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                variants={staggerContainer}
               >
-                Why Our Kitchens Stand Apart.
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Why Our Kitchens</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Stand Apart.</motion.span>
               </motion.h2>
             </div>
 
@@ -886,12 +896,14 @@ export const ModularKitchens: React.FC = () => {
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
               <motion.h2 
                 className="section-title"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                variants={staggerContainer}
               >
-                Frequently Asked Questions
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Frequently</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Asked</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Questions</motion.span>
               </motion.h2>
             </div>
 
@@ -994,13 +1006,13 @@ export const ModularKitchens: React.FC = () => {
               textAlign: 'center',
             }}
           >
-            <motion.h2
-              variants={staggerItem}
+            <h2
               className="section-title text-white"
               style={{ marginBottom: '20px' }}
             >
-              Ready to Design Your Kitchen?
-            </motion.h2>
+              <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Ready to Design</motion.span>
+              <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Your Kitchen?</motion.span>
+            </h2>
 
             {/* 4. Single Premium Button */}
             <motion.div

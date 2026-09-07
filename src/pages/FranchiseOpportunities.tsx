@@ -21,14 +21,22 @@ const staggerItem = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: luxuryEase } },
 };
 
+/* Hero image sits on the LEFT, so it enters from the RIGHT (opposite side) */
 const imageRevealVariants = {
-  hidden: { opacity: 0, scale: 1.03, clipPath: 'inset(0% 0% 100% 0%)' },
+  hidden: { opacity: 0, scale: 1.03, x: 70, clipPath: 'inset(0% 0% 100% 0%)' },
   visible: {
     opacity: 1,
     scale: 1,
+    x: 0,
     clipPath: 'inset(0% 0% 0% 0%)',
     transition: { duration: 0.9, ease: luxuryEase, delay: 0.1 },
   },
+};
+
+/* Hero text sits on the RIGHT, so it enters from the LEFT (opposite side) */
+const heroTextItemVariants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: luxuryEase } },
 };
 
 const whyPartnerCards = [
@@ -195,27 +203,24 @@ export const FranchiseOpportunities: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={staggerItem} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
                 FRANCHISE ENQUIRY
               </motion.span>
 
-              <motion.h1
-                variants={staggerItem}
-                className="page-title"
-                style={{ marginBottom: '20px' }}
-              >
-                Bring LEOZ Cucine to Your City
-              </motion.h1>
+              <h1 className="page-title" style={{ marginBottom: '20px' }}>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Bring LEOZ Cucine</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>to Your City</motion.span>
+              </h1>
 
               <motion.p
-                variants={staggerItem}
+                variants={heroTextItemVariants}
                 className="hero-description"
                 style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)', marginBottom: '32px' }}
               >
                 Partner with a premium, German-precision kitchen and wardrobe brand backed by 20+ years of manufacturing expertise.
               </motion.p>
 
-              <motion.div variants={staggerItem}>
+              <motion.div variants={heroTextItemVariants}>
                 <a href="#franchise-enquiry-form" onClick={scrollToForm} className="btn btn-primary">
                   Enquire About Franchise Opportunities
                 </a>
