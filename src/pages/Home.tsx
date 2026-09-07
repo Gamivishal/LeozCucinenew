@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { Header } from '../components/common/Header';
 import { Footer } from '../components/common/Footer';
 import { Preloader, checkShouldRunPreloader, markPreloaderSeen } from '../components/common/Preloader';
@@ -18,6 +18,29 @@ const luxuryEase = [0.16, 1, 0.3, 1];
    1. HERO — static image, dark overlay, short copy (Redesigne.md §10)
    ========================================================================== */
 const HeroSection: React.FC = () => {
+  const heroContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const heroItemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.0,
+        ease: luxuryEase,
+      },
+    },
+  };
+
   return (
     <section
       id="hero"
@@ -58,11 +81,25 @@ const HeroSection: React.FC = () => {
           background: 'radial-gradient(ellipse 60% 55% at 50% 48%, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 100%)',
         }}
       />
+      {/* Bottom fade — softens the seam into the next section instead of a hard cut */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '14vh',
+          background: 'linear-gradient(180deg, transparent 0%, var(--color-surface-light) 100%)',
+          pointerEvents: 'none',
+        }}
+      />
 
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: luxuryEase }}
+        variants={heroContainerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.15 }}
         style={{
           position: 'relative',
           zIndex: 2,
@@ -74,51 +111,57 @@ const HeroSection: React.FC = () => {
           alignItems: 'center',
         }}
       >
-        <span
+        <motion.span
+          variants={heroItemVariants}
           className="section-label text-white"
           style={{ display: 'block', marginBottom: '22px', textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)' }}
         >
           KITCHENS &amp; WARDROBES
-        </span>
+        </motion.span>
         <h1
           className="hero-title text-white"
           style={{ marginBottom: '22px', textShadow: '0 4px 30px rgba(0, 0, 0, 0.45)' }}
         >
-          German-Engineered Kitchens &amp; Wardrobes, Crafted in Gujarat
+          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>German-Engineered</motion.span>
+          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Kitchens &amp; Wardrobes,</motion.span>
+          <motion.span variants={heroItemVariants} style={{ display: 'inline-block' }}>Crafted in Gujarat</motion.span>
         </h1>
-        <p
+        <motion.p
+          variants={heroItemVariants}
           className="hero-description text-light"
           style={{ margin: '0 auto 36px', maxWidth: '620px', textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)' }}
         >
           LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes across Ahmedabad and throughout Gujarat — designed, built, and installed entirely in-house.
-        </p>
+        </motion.p>
 
         <div
           className="hero-cta-container"
           style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}
         >
-          <a
+          <motion.a
+            variants={heroItemVariants}
             href="/talk-to-us"
             onClick={(e) => {
               e.preventDefault();
               window.history.pushState({}, '', '/talk-to-us');
               window.dispatchEvent(new Event('popstate'));
             }}
-            className="btn btn-light"
+            className="btn btn-light home-cta-btn"
           >
             Book a Free Consultation
-          </a>
-          <a
+          </motion.a>
+          <motion.a
+            variants={heroItemVariants}
             href="#collections"
             onClick={(e) => {
               e.preventDefault();
               document.getElementById('collections')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="btn btn-outline"
+            className="btn btn-outline home-cta-btn home-cta-btn-outline"
             style={{ borderColor: '#FFFFFF', color: '#FFFFFF' }}
           >
             Explore Our Collections
-          </a>
+          </motion.a>
         </div>
       </motion.div>
 
@@ -169,38 +212,38 @@ const BrandIntroSection: React.FC = () => {
         }}
       >
         <motion.div
+          className="home-media-frame"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           transition={{ duration: 0.6, ease: luxuryEase }}
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '4 / 3',
+            height: 'auto',
             overflow: 'hidden',
-            borderRadius: 'var(--radius-sm)',
+            borderRadius: 'var(--radius-md)',
             boxShadow: 'var(--shadow-subtle)',
             border: '1px solid var(--color-border-gold)',
           }}
         >
-          <ParallaxImage yOffset={30}>
-            <img
-              src="/PHILOSOPHY.png"
-              alt="LEOZ CUCINE Joinery Detail Craftsmanship"
-              loading="lazy"
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-              }}
-            />
-          </ParallaxImage>
+          <img
+            src="/PHILOSOPHY.png"
+            alt="LEOZ CUCINE Joinery Detail Craftsmanship"
+            loading="lazy"
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              objectFit: 'contain',
+            }}
+          />
         </motion.div>
 
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           variants={staggerContainer}
         >
           <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -255,7 +298,7 @@ const BrandIntroSection: React.FC = () => {
 const AnimatedCounter: React.FC<{ value: string }> = ({ value }) => {
   const [displayValue, setDisplayValue] = React.useState('0');
   const ref = React.useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
 
   React.useEffect(() => {
     if (!isInView) return;
@@ -317,7 +360,7 @@ const HighlightsBarSection: React.FC = () => {
     <section
       aria-label="Highlights Bar"
       style={{
-        backgroundColor: '#181818',
+        backgroundColor: 'var(--color-surface-dark-secondary)',
         color: '#FFFFFF',
         padding: '36px 5vw',
         borderTop: '1px solid rgba(182, 154, 107, 0.25)',
@@ -329,7 +372,7 @@ const HighlightsBarSection: React.FC = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{ once: false, amount: 0.15 }}
           variants={staggerContainer}
           style={{
             display: 'grid',
@@ -341,15 +384,30 @@ const HighlightsBarSection: React.FC = () => {
           {highlights.map((item, idx) => (
             <motion.div
               key={idx}
+              className="home-stat-card"
               variants={staggerItem}
+              whileHover={{
+                y: -6,
+                borderColor: 'rgba(182, 154, 107, 0.45)',
+                backgroundColor: 'rgba(182, 154, 107, 0.07)',
+                boxShadow: '0 14px 34px -12px rgba(182, 154, 107, 0.3)',
+                transition: { duration: 0.35, ease: luxuryEase },
+              }}
               style={{
+                position: 'relative',
+                overflow: 'hidden',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '14px',
+                padding: 'clamp(16px, 2vw, 22px) clamp(14px, 2vw, 20px)',
+                border: '1px solid rgba(182, 154, 107, 0.15)',
+                borderRadius: 'var(--radius-md)',
               }}
             >
+              <span className="home-stat-card-bar" aria-hidden="true" />
               <div
+                className="home-pillar-icon"
                 style={{
                   width: '46px',
                   height: '46px',
@@ -449,14 +507,22 @@ const CollectionsSection: React.FC = () => {
         paddingBottom: 'var(--space-section-padding-desktop)',
         paddingLeft: '6vw',
         paddingRight: '6vw',
-        backgroundColor: 'var(--color-light)',
+        backgroundColor: 'var(--color-surface-stone)',
         color: 'var(--color-heading)',
       }}
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(70px, 9vw, 130px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR COLLECTIONS</span>
-          <h2 className="section-title">Two Spaces. One Standard of Craft.</h2>
+          <motion.h2 
+            className="section-title"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Two Spaces. One Standard of Craft.
+          </motion.h2>
         </div>
 
         {collections.map((item, idx) => {
@@ -509,7 +575,7 @@ const CollectionsSection: React.FC = () => {
 
               {/* IMAGE BLOCK — directional reveal: slides in from the side it visually sits on */}
               <motion.div
-                className="collections-editorial-image"
+                className="collections-editorial-image home-media-frame"
                 initial={{ opacity: 0, x: isImageLeft ? -slideDistance : slideDistance }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
@@ -517,19 +583,19 @@ const CollectionsSection: React.FC = () => {
                 style={{
                   order: isImageLeft ? 1 : 2,
                   position: 'relative',
-                  height: 'clamp(360px, 58vh, 620px)',
-                  borderRadius: 'var(--radius-sm)',
+                  height: 'auto',
+                  borderRadius: 'var(--radius-md)',
                   overflow: 'hidden',
+                  border: '1px solid var(--color-border-gold)',
+                  boxShadow: 'var(--shadow-subtle)',
                 }}
               >
-                <ParallaxImage yOffset={30}>
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  />
-                </ParallaxImage>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
+                />
               </motion.div>
             </div>
           );
@@ -591,7 +657,15 @@ const ProductHighlightsSection: React.FC = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>PRODUCT HIGHLIGHTS</span>
-          <h2 className="section-title">Premium Solutions for Kitchens &amp; Wardrobes</h2>
+          <motion.h2 
+            className="section-title"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Premium Solutions for Kitchens &amp; Wardrobes
+          </motion.h2>
         </div>
 
         <div
@@ -607,37 +681,47 @@ const ProductHighlightsSection: React.FC = () => {
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '18px',
-                  padding: 'clamp(32px, 3.5vw, 44px)',
-                  backgroundColor: 'var(--color-surface-stone)',
-                  border: '1px solid var(--color-border-gold)',
-                  borderRadius: 'var(--radius-sm)',
-                  boxShadow: 'var(--shadow-subtle)',
-                }}
+                className="home-highlight-card"
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: luxuryEase }}
+                style={{ position: 'relative' }}
               >
-                <div
+                <motion.div
+                  whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(182,154,107,0.15)', borderColor: 'rgba(182,154,107,0.6)' }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
                   style={{
-                    width: '56px',
-                    height: '56px',
-                    borderRadius: '50%',
+                    position: 'relative',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'rgba(182, 154, 107, 0.12)',
-                    color: '#B69A6B',
+                    flexDirection: 'column',
+                    gap: '18px',
+                    padding: 'clamp(32px, 3.5vw, 44px)',
+                    backgroundColor: 'var(--color-surface-stone)',
+                    border: '1px solid var(--color-border-gold)',
+                    borderRadius: 'var(--radius-md)',
+                    boxShadow: 'var(--shadow-subtle)',
+                    overflow: 'hidden',
                   }}
                 >
-                  <Icon size={26} strokeWidth={1.5} />
-                </div>
-                <h3 className="sub-title" style={{ margin: 0 }}>{item.title}</h3>
-                <p className="description" style={{ margin: 0 }}>{item.description}</p>
+                  <span className="home-highlight-card-bar" aria-hidden="true" />
+                  <div
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(182, 154, 107, 0.12)',
+                      color: '#B69A6B',
+                    }}
+                  >
+                    <Icon size={26} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="sub-title" style={{ margin: 0 }}>{item.title}</h3>
+                  <p className="description" style={{ margin: 0 }}>{item.description}</p>
+                </motion.div>
               </motion.div>
             );
           })}
@@ -651,12 +735,19 @@ const ProductHighlightsSection: React.FC = () => {
    4.5 OUR PROCESS SECTION (Redesigne.md §17)
    ========================================================================== */
 const ProcessSection: React.FC = () => {
+  const timelineRef = React.useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start center', 'end center'],
+  });
+  const timelineProgressHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+
   const steps = [
-    { step: '01', title: 'Consultation', desc: 'We understand your kitchen or wardrobe space, needs, and style.' },
-    { step: '02', title: 'Design', desc: 'Our team creates a kitchen or wardrobe layout tailored to your requirements.' },
-    { step: '03', title: 'Manufacturing', desc: 'Your kitchen or wardrobe is built at our own 20,000 sq. ft. facility.' },
-    { step: '04', title: 'Installation', desc: 'Our in-house team installs and finishes the project.' },
-    { step: '05', title: 'After-Sales Support', desc: 'Warranty-backed service, long after installation.' },
+    { title: 'Consultation', desc: 'We understand your kitchen or wardrobe space, needs, and style.' },
+    { title: 'Design', desc: 'Our team creates a kitchen or wardrobe layout tailored to your requirements.' },
+    { title: 'Manufacturing', desc: 'Your kitchen or wardrobe is built at our own 20,000 sq. ft. facility.' },
+    { title: 'Installation', desc: 'Our in-house team installs and finishes the project.' },
+    { title: 'After-Sales Support', desc: 'Warranty-backed service, long after installation.' },
   ];
 
   return (
@@ -671,46 +762,148 @@ const ProcessSection: React.FC = () => {
         color: 'var(--color-heading)',
       }}
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>HOW WE WORK</span>
-          <h2 className="section-title">From Idea to Installation.</h2>
+          <motion.h2
+            className="section-title"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: luxuryEase }}
+          >
+            From Idea to Installation.
+          </motion.h2>
         </div>
 
-        <div
-          className="home-process-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-            gap: 'clamp(24px, 3vw, 40px)',
-          }}
-        >
-          {steps.map((item, idx) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-            >
-              <span
-                style={{
-                  fontFamily: 'var(--font-family-sans)',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  color: 'var(--color-accent)',
-                  display: 'block',
-                  marginBottom: '10px',
-                }}
+        <div ref={timelineRef} className="home-timeline">
+          <div className="home-timeline-track" aria-hidden="true" />
+          <motion.div
+            className="home-timeline-progress"
+            style={{ height: timelineProgressHeight }}
+            aria-hidden="true"
+          />
+
+          {steps.map((item, idx) => {
+            const isLeft = idx % 2 === 0;
+            return (
+              <div
+                key={item.title}
+                className={`home-timeline-row ${isLeft ? 'is-left' : 'is-right'}`}
               >
-                {item.step}
-              </span>
-              <h3 className="sub-title" style={{ marginBottom: '8px' }}>{item.title}</h3>
-              <p className="small-description">{item.desc}</p>
-            </motion.div>
-          ))}
+                <motion.div
+                  className="home-timeline-content"
+                  initial={{ opacity: 0, x: isLeft ? -36 : 36 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.7, ease: luxuryEase }}
+                >
+                  <h3 className="sub-title" style={{ marginBottom: '8px' }}>{item.title}</h3>
+                  <p className="small-description">{item.desc}</p>
+                </motion.div>
+
+                <motion.span
+                  className="home-timeline-dot"
+                  initial={{ backgroundColor: '#F7F5F1', scale: 0.7 }}
+                  whileInView={{ backgroundColor: '#B69A6B', scale: 1 }}
+                  viewport={{ once: false, amount: 0.5 }}
+                  transition={{ duration: 0.4, ease: luxuryEase }}
+                  aria-hidden="true"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
+
+      <style>{`
+        .home-timeline {
+          position: relative;
+          padding: 12px 0;
+        }
+        .home-timeline-track {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: 2px;
+          background: var(--color-border-gold-medium);
+          transform: translateX(-50%);
+        }
+        .home-timeline-progress {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 2px;
+          background: var(--color-accent);
+          transform: translateX(-50%);
+          transform-origin: top;
+        }
+        .home-timeline-row {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 32px 1fr;
+          align-items: center;
+          column-gap: clamp(24px, 4vw, 56px);
+          padding: clamp(24px, 3.5vw, 40px) 0;
+        }
+        .home-timeline-row.is-left .home-timeline-content {
+          grid-column: 1;
+          text-align: right;
+        }
+        .home-timeline-row.is-right .home-timeline-content {
+          grid-column: 3;
+          text-align: left;
+        }
+        .home-timeline-dot {
+          grid-column: 2;
+          justify-self: center;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          border: 2px solid var(--color-accent);
+          position: relative;
+          z-index: 2;
+        }
+
+        @media (max-width: 767px) {
+          .home-timeline-row {
+            grid-template-columns: 1fr 20px 1fr;
+            column-gap: clamp(10px, 3.5vw, 18px);
+            padding: clamp(18px, 5vw, 28px) 0;
+          }
+          .home-timeline-dot {
+            width: 10px;
+            height: 10px;
+          }
+          .home-timeline-content .sub-title {
+            font-size: 18px;
+            margin-bottom: 6px !important;
+          }
+          .home-timeline-content .small-description {
+            font-size: 12.5px;
+            line-height: 1.5;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .home-timeline-row {
+            grid-template-columns: 1fr 16px 1fr;
+            column-gap: 8px;
+          }
+          .home-timeline-dot {
+            width: 9px;
+            height: 9px;
+          }
+          .home-timeline-content .sub-title {
+            font-size: 16px;
+          }
+          .home-timeline-content .small-description {
+            font-size: 11.5px;
+            line-height: 1.45;
+          }
+        }
+      `}</style>
     </section>
   );
 };
@@ -742,15 +935,23 @@ const WhyLeozSection: React.FC = () => {
       <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
           <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY CHOOSE LEOZ CUCINE</span>
-          <h2 className="section-title text-white">Built to Be Chosen, Not Just Sold.</h2>
+          <motion.h2 
+            className="section-title text-white"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Built to Be Chosen, Not Just Sold.
+          </motion.h2>
         </div>
 
         <div
           className="home-pillars-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: 'clamp(24px, 3vw, 40px)',
+            gridTemplateColumns: 'repeat(5, 1fr)',
+            gap: 'clamp(20px, 2.4vw, 28px)',
           }}
         >
           {pillars.map((pillar, idx) => {
@@ -758,13 +959,35 @@ const WhyLeozSection: React.FC = () => {
             return (
               <motion.div
                 key={pillar.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
-                style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}
+                className="home-pillar-card"
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: idx * 0.08, ease: luxuryEase }}
+                whileHover={{
+                  y: -8,
+                  borderColor: 'rgba(182, 154, 107, 0.45)',
+                  backgroundColor: '#242424',
+                  boxShadow: '0 18px 40px -14px rgba(182, 154, 107, 0.3)',
+                  transition: { duration: 0.35, ease: luxuryEase },
+                }}
+                style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: 'clamp(24px, 2.6vw, 32px) clamp(16px, 2vw, 22px)',
+                  backgroundColor: 'var(--color-surface-dark-secondary)',
+                  border: '1px solid var(--color-border-gold)',
+                  borderRadius: 'var(--radius-md)',
+                }}
               >
+                <span className="home-pillar-card-bar" aria-hidden="true" />
                 <div
+                  className="home-pillar-icon"
                   style={{
                     width: '52px',
                     height: '52px',
@@ -775,11 +998,12 @@ const WhyLeozSection: React.FC = () => {
                     backgroundColor: 'rgba(182, 154, 107, 0.12)',
                     color: '#B69A6B',
                     marginBottom: '6px',
+                    flexShrink: 0,
                   }}
                 >
                   <Icon size={22} strokeWidth={1.5} />
                 </div>
-                <h3 className="sub-title text-white" style={{ fontSize: '18px', margin: 0 }}>{pillar.title}</h3>
+                <h3 className="sub-title text-white" style={{ fontSize: '18px', margin: 0, minHeight: '48px', display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>{pillar.title}</h3>
                 <p className="small-description" style={{ color: 'var(--color-text-secondary)', margin: 0 }}>{pillar.description}</p>
               </motion.div>
             );
@@ -809,11 +1033,7 @@ const TradeProfessionalsSection: React.FC = () => {
         alignItems: 'center',
       }}
     >
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={staggerContainer}
+      <div
         style={{
           maxWidth: '760px',
           width: '100%',
@@ -824,7 +1044,10 @@ const TradeProfessionalsSection: React.FC = () => {
         }}
       >
         <motion.div
-          variants={staggerItem}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: luxuryEase }}
           style={{
             width: '56px',
             height: '56px',
@@ -840,19 +1063,54 @@ const TradeProfessionalsSection: React.FC = () => {
           <Handshake size={26} strokeWidth={1.5} />
         </motion.div>
 
-        <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: luxuryEase }}
+          className="section-label"
+          style={{ display: 'block', marginBottom: '16px' }}
+        >
           FOR TRADE PROFESSIONALS
         </motion.span>
 
-        <motion.h2 variants={staggerItem} className="section-title text-white" style={{ marginBottom: '20px' }}>
+        <motion.h2
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 1, ease: luxuryEase }}
+          className="section-title text-white"
+          style={{ marginBottom: '24px' }}
+        >
           Partnering with Architects, Interior Designers &amp; Builders
         </motion.h2>
 
-        <motion.p variants={staggerItem} className="description text-light" style={{ margin: '0 auto', marginBottom: 'clamp(28px, 4vw, 44px)' }}>
-          We work closely with design and construction professionals across Gujarat, offering dedicated support, technical specifications, and reliable timelines for client projects.
-        </motion.p>
+        <div style={{ margin: '0 auto', marginBottom: 'clamp(28px, 4vw, 44px)' }}>
+          {[
+            "We work closely with design and construction professionals",
+            "across Gujarat, offering dedicated support, technical",
+            "specifications, and reliable timelines for client projects."
+          ].map((line, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: luxuryEase }}
+            >
+              <span className="description text-light" style={{ display: 'block', margin: 0 }}>
+                {line}
+              </span>
+            </motion.div>
+          ))}
+        </div>
 
-        <motion.div variants={staggerItem}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: luxuryEase }}
+        >
           <a
             href="/contact"
             onClick={(e) => {
@@ -860,12 +1118,12 @@ const TradeProfessionalsSection: React.FC = () => {
               window.history.pushState({}, '', '/contact');
               window.dispatchEvent(new Event('popstate'));
             }}
-            className="btn btn-light"
+            className="btn btn-light home-cta-btn"
           >
             Partner With Us
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 };
@@ -893,7 +1151,7 @@ const ConsultationSection: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 1.03 }}
         whileInView={{ opacity: 0.45, scale: 1.00 }}
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: false, amount: 0.15 }}
         transition={{ duration: 1.0, ease: luxuryEase }}
         style={{
           position: 'absolute',
@@ -916,8 +1174,15 @@ const ConsultationSection: React.FC = () => {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-        variants={staggerContainer}
+        viewport={{ once: false, amount: 0.3 }}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.2,
+            }
+          }
+        }}
         style={{
           position: 'relative',
           zIndex: 10,
@@ -930,22 +1195,43 @@ const ConsultationSection: React.FC = () => {
         }}
       >
         <motion.h2
-          variants={staggerItem}
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="section-title text-white"
-          style={{ marginBottom: '16px' }}
+          style={{ marginBottom: '24px' }}
         >
           Let's Design Your Kitchen or Wardrobe
         </motion.h2>
 
-        <motion.p
-          variants={staggerItem}
-          className="description text-light"
-          style={{ margin: '0 auto', marginBottom: 'clamp(28px, 4vw, 44px)' }}
-        >
-          Whether you're planning a new kitchen, upgrading your wardrobe, or specifying kitchens and wardrobes for a residential project, our team is ready to help.
-        </motion.p>
+        <div style={{ margin: '0 auto', marginBottom: 'clamp(28px, 4vw, 44px)' }}>
+          {[
+            "Whether you're planning a new kitchen,",
+            "upgrading your wardrobe, or specifying",
+            "kitchens and wardrobes for a residential project,",
+            "our team is ready to help."
+          ].map((line, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="description text-light" style={{ display: 'block', margin: 0 }}>
+                {line}
+              </span>
+            </motion.div>
+          ))}
+        </div>
 
-        <motion.div variants={staggerItem}>
+        <motion.div 
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+          }}
+        >
           <a
             href="/talk-to-us"
             onClick={(e) => {
@@ -953,7 +1239,7 @@ const ConsultationSection: React.FC = () => {
               window.history.pushState({}, '', '/talk-to-us');
               window.dispatchEvent(new Event('popstate'));
             }}
-            className="btn btn-light"
+            className="btn btn-light home-cta-btn"
           >
             Talk to Us Today
           </a>
@@ -1039,15 +1325,95 @@ export const Home: React.FC = () => {
       </main>
       <Footer />
       <style>{`
+        /* Premium pill CTA treatment — scoped to Home's own content buttons only */
+        .home-cta-btn {
+          border-radius: var(--radius-full);
+          padding: 14px 32px;
+          transition: transform 0.4s var(--motion-ease-luxury), box-shadow 0.4s var(--motion-ease-luxury), background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        .home-cta-btn:hover,
+        .home-cta-btn:focus-visible {
+          transform: translateY(-2px);
+        }
+        .home-cta-btn.btn-light:hover,
+        .home-cta-btn.btn-light:focus-visible {
+          box-shadow: 0 14px 32px -10px rgba(0, 0, 0, 0.35);
+        }
+        .home-cta-btn-outline:hover,
+        .home-cta-btn-outline:focus-visible {
+          box-shadow: 0 14px 32px -10px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Soft zoom-on-hover for editorial images */
+        .home-media-frame {
+          transition: box-shadow 0.4s var(--motion-ease-luxury);
+        }
+        .home-media-frame img {
+          transition: transform 0.7s var(--motion-ease-luxury);
+        }
+        .home-media-frame:hover img {
+          transform: scale(1.045);
+        }
+
+        /* Top accent bar on Product Highlight cards */
+        .home-highlight-card-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: var(--color-accent-gold);
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 0.5s var(--motion-ease-luxury);
+        }
+        .home-highlight-card:hover .home-highlight-card-bar {
+          transform: scaleX(1);
+        }
+        .home-highlight-card:hover > div {
+          border-color: var(--color-border-gold-medium) !important;
+        }
+
+        /* Top accent bar shared by the "Why Choose Leoz" pillar cards and the stat cards in the Highlights Bar */
+        .home-pillar-card-bar,
+        .home-stat-card-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: var(--color-accent-gold);
+          transform: scaleX(0);
+          transform-origin: left center;
+          transition: transform 0.5s var(--motion-ease-luxury);
+        }
+        .home-pillar-card:hover .home-pillar-card-bar,
+        .home-stat-card:hover .home-stat-card-bar {
+          transform: scaleX(1);
+        }
+        .home-pillar-icon {
+          transition: transform 0.4s var(--motion-ease-luxury), background-color 0.4s ease;
+        }
+        .home-pillar-card:hover .home-pillar-icon,
+        .home-stat-card:hover .home-pillar-icon {
+          transform: scale(1.12);
+          background-color: rgba(182, 154, 107, 0.24) !important;
+        }
+
         @media (max-width: 767px) {
-          .home-pillars-grid, .home-process-grid, .home-highlights-grid {
+          .home-pillars-grid, .home-highlights-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {
-          .home-pillars-grid, .home-process-grid, .home-highlights-grid {
+          .home-pillars-grid, .home-highlights-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (min-width: 1024px) and (max-width: 1279px) {
+          .home-pillars-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
           }
         }
       `}</style>

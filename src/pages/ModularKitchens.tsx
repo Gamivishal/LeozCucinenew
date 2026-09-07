@@ -400,7 +400,15 @@ export const ModularKitchens: React.FC = () => {
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>KITCHEN COLLECTIONS</span>
-              <h2 className="section-title">Find Your Kitchen Style.</h2>
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Find Your Kitchen Style.
+              </motion.h2>
             </div>
 
             <div
@@ -454,7 +462,16 @@ export const ModularKitchens: React.FC = () => {
         >
           <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
             <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>MATERIALS &amp; FINISHES</span>
-            <h2 className="section-title text-white" style={{ marginBottom: '40px' }}>Built for Performance. Finished for Life.</h2>
+            <motion.h2 
+              className="section-title text-white" 
+              style={{ marginBottom: '40px' }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              Built for Performance. Finished for Life.
+            </motion.h2>
 
             <div
               className="mk-fusion-grid"
@@ -512,7 +529,15 @@ export const ModularKitchens: React.FC = () => {
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ KITCHENS</span>
-              <h2 className="section-title">Why Our Kitchens Stand Apart.</h2>
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Why Our Kitchens Stand Apart.
+              </motion.h2>
             </div>
 
             <div
@@ -581,7 +606,15 @@ export const ModularKitchens: React.FC = () => {
           <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR PROCESS</span>
-              <h2 className="section-title text-white">From Consultation to Installation.</h2>
+              <motion.h2 
+                className="section-title text-white"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                From Consultation to Installation.
+              </motion.h2>
             </div>
 
             <div
@@ -644,7 +677,15 @@ export const ModularKitchens: React.FC = () => {
           <div style={{ maxWidth: '860px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
-              <h2 className="section-title">Frequently Asked Questions</h2>
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Frequently Asked Questions
+              </motion.h2>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>

@@ -163,7 +163,15 @@ export const FranchiseOpportunities: React.FC = () => {
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                 PARTNERSHIP
               </span>
-              <h2 className="section-title">Why Partner With LEOZ Cucine</h2>
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Why Partner With LEOZ Cucine
+              </motion.h2>
             </div>
 
             <motion.div

@@ -432,7 +432,11 @@ export const BookConsultation: React.FC = () => {
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             {/* Title */}
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-              <h2
+              <motion.h2
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 style={{
                   fontFamily: 'var(--font-family-serif)',
                   fontSize: 'clamp(32px, 4vw, 48px)',
@@ -443,7 +447,7 @@ export const BookConsultation: React.FC = () => {
                 }}
               >
                 Showroom materials &amp; finishes
-              </h2>
+              </motion.h2>
             </div>
 
             {/* Filter Pills Container */}

@@ -344,7 +344,15 @@ export const About: React.FC = () => {
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                 OUR APPROACH
               </span>
-              <h2 className="section-title">Designed with Purpose.</h2>
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Designed with Purpose.
+              </motion.h2>
             </div>
 
             <div
@@ -641,7 +649,15 @@ export const About: React.FC = () => {
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY TRUST LEOZ CUCINE</span>
-              <h2 className="section-title text-white">Why Homeowners &amp; Professionals Trust Us.</h2>
+              <motion.h2 
+                className="section-title text-white"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Why Homeowners &amp; Professionals Trust Us.
+              </motion.h2>
             </div>
 
             <div
@@ -710,7 +726,15 @@ export const About: React.FC = () => {
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
               <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>MILESTONES</span>
-              <h2 className="section-title">A Track Record of Growth.</h2>
+              <motion.h2 
+                className="section-title"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
+                A Track Record of Growth.
+              </motion.h2>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', marginBottom: '48px' }}>

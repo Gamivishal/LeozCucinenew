@@ -152,6 +152,19 @@ h4,
 }
 
 /* ==========================================================================
+   BODY-COPY JUSTIFICATION — site-wide
+   ========================================================================== */
+#main-content p {
+  text-align: justify;
+}
+
+/* Hero intro paragraphs stay centered — justify reads awkwardly on a short,
+   large-type marketing line meant to sit as one centered block. */
+#main-content p.hero-description {
+  text-align: center;
+}
+
+/* ==========================================================================
    COMMON BUTTON STYLE (Redesigne.md §9)
    ========================================================================== */
 

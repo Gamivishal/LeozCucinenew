@@ -1,5 +1,6 @@
 import React from 'react';
 import { Logo } from './Logo';
+import { motion } from 'framer-motion';
 
 export const Footer: React.FC = () => {
   return (
@@ -27,10 +28,32 @@ export const Footer: React.FC = () => {
             marginBottom: 'clamp(60px, 8vw, 100px)',
           }}
         >
-          {/* Brand Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <Logo variant="dark" />
-            <p
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 }
+              }
+            }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
+          >
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+              }}
+            >
+              <Logo variant="dark" />
+            </motion.div>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+              }}
               style={{
                 fontFamily: 'var(--font-family-sans)',
                 fontSize: 'var(--font-size-sm)',
@@ -41,11 +64,16 @@ export const Footer: React.FC = () => {
               }}
             >
               Thoughtfully designed for modern living.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
             <h4
               style={{
                 fontFamily: 'var(--font-family-sans)',
@@ -92,10 +120,15 @@ export const Footer: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Direct Contact Details */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          >
             <h4
               style={{
                 fontFamily: 'var(--font-family-sans)',
@@ -126,11 +159,15 @@ export const Footer: React.FC = () => {
               <p>Studio: Sankalp Square 3B, 509, Sindhu Bhavan Marg, Thaltej, Ahmedabad, Gujarat 380059</p>
               <p>Hours: Mon–Sat 10 AM–7 PM, Sun by appointment</p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Copyright Bar */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="footer-bottom-bar"
           style={{
             borderTop: '1px solid var(--color-border-gold)',
@@ -148,7 +185,7 @@ export const Footer: React.FC = () => {
         >
           <p>© {new Date().getFullYear()} LEOZ CUCINE. All Rights Reserved.</p>
           <p>Kitchens &amp; Wardrobes</p>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
