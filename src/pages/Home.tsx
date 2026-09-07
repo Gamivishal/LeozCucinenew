@@ -98,7 +98,7 @@ const HeroSection: React.FC = () => {
         variants={heroContainerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.15 }}
         style={{
           position: 'relative',
           zIndex: 2,
@@ -214,7 +214,7 @@ const BrandIntroSection: React.FC = () => {
           className="home-media-frame"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6, ease: luxuryEase }}
           style={{
             position: 'relative',
@@ -242,7 +242,7 @@ const BrandIntroSection: React.FC = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
         >
           <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -297,7 +297,7 @@ const BrandIntroSection: React.FC = () => {
 const AnimatedCounter: React.FC<{ value: string }> = ({ value }) => {
   const [displayValue, setDisplayValue] = React.useState('0');
   const ref = React.useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   React.useEffect(() => {
     if (!isInView) return;
@@ -371,7 +371,7 @@ const HighlightsBarSection: React.FC = () => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
           style={{
             display: 'grid',
@@ -530,7 +530,7 @@ const CollectionsSection: React.FC = () => {
             className="section-title"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             Two Spaces. One Standard of Craft.
@@ -556,7 +556,7 @@ const CollectionsSection: React.FC = () => {
                 className="collections-editorial-text"
                 initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.7, ease: luxuryEase }}
                 style={{ order: isImageLeft ? 2 : 1 }}
               >
@@ -590,7 +590,7 @@ const CollectionsSection: React.FC = () => {
                 className="collections-editorial-image home-media-frame"
                 initial={{ opacity: 0, x: isImageLeft ? -slideDistance : slideDistance }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.9, ease: luxuryEase }}
                 style={{
                   order: isImageLeft ? 1 : 2,
@@ -673,7 +673,7 @@ const ProductHighlightsSection: React.FC = () => {
             className="section-title"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             Premium Solutions for Kitchens &amp; Wardrobes
@@ -696,7 +696,7 @@ const ProductHighlightsSection: React.FC = () => {
                 className="home-highlight-card"
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: luxuryEase }}
                 style={{ position: 'relative' }}
               >
@@ -781,7 +781,7 @@ const ProcessSection: React.FC = () => {
             className="section-title"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: luxuryEase }}
           >
             From Idea to Installation.
@@ -807,7 +807,7 @@ const ProcessSection: React.FC = () => {
                   className="home-timeline-content"
                   initial={{ opacity: 0, x: isLeft ? -36 : 36 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.7, ease: luxuryEase }}
                 >
                   <h3 className="sub-title" style={{ marginBottom: '8px' }}>{item.title}</h3>
@@ -818,7 +818,7 @@ const ProcessSection: React.FC = () => {
                   className="home-timeline-dot"
                   initial={{ backgroundColor: '#F7F5F1', scale: 0.7 }}
                   whileInView={{ backgroundColor: '#B69A6B', scale: 1 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, ease: luxuryEase }}
                   aria-hidden="true"
                 />
@@ -951,7 +951,7 @@ const WhyLeozSection: React.FC = () => {
             className="section-title text-white"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             Built to Be Chosen, Not Just Sold.
@@ -974,7 +974,7 @@ const WhyLeozSection: React.FC = () => {
                 className="home-pillar-card"
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: idx * 0.08, ease: luxuryEase }}
                 whileHover={{
                   y: -8,
@@ -1058,7 +1058,7 @@ const TradeProfessionalsSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease: luxuryEase }}
           style={{
             width: '56px',
@@ -1078,7 +1078,7 @@ const TradeProfessionalsSection: React.FC = () => {
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: luxuryEase }}
           className="section-label"
           style={{ display: 'block', marginBottom: '16px' }}
@@ -1089,7 +1089,7 @@ const TradeProfessionalsSection: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1, ease: luxuryEase }}
           className="section-title text-white"
           style={{ marginBottom: '24px' }}
@@ -1107,7 +1107,7 @@ const TradeProfessionalsSection: React.FC = () => {
               key={i}
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: luxuryEase }}
             >
               <span className="description text-light" style={{ display: 'block', margin: 0 }}>
@@ -1120,7 +1120,7 @@ const TradeProfessionalsSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.8, ease: luxuryEase }}
         >
           <a
@@ -1163,7 +1163,7 @@ const ConsultationSection: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 1.03 }}
         whileInView={{ opacity: 0.45, scale: 1.00 }}
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 1.0, ease: luxuryEase }}
         style={{
           position: 'absolute',
@@ -1186,7 +1186,7 @@ const ConsultationSection: React.FC = () => {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         variants={{
           hidden: {},
           visible: {
@@ -1209,7 +1209,7 @@ const ConsultationSection: React.FC = () => {
         <motion.h2
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="section-title text-white"
           style={{ marginBottom: '24px' }}
@@ -1228,7 +1228,7 @@ const ConsultationSection: React.FC = () => {
               key={i}
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="description text-light" style={{ display: 'block', margin: 0 }}>
@@ -1285,13 +1285,13 @@ export const Home: React.FC = () => {
     const exitTimer = setTimeout(() => {
       setIsCurtainExiting(true);
       setShowHeader(true);
-    }, 1500);
+    }, 400);
 
     const completeTimer = setTimeout(() => {
       setIsPreloaderActive(false);
       document.body.style.overflow = '';
       markPreloaderSeen();
-    }, 1500 + 1100);
+    }, 400 + 800);
 
     return () => {
       clearTimeout(exitTimer);

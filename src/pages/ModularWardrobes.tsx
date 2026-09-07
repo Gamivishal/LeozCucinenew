@@ -288,7 +288,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: '-100px' }}
+              viewport={{ once: true, margin: '-100px' }}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
@@ -364,7 +364,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
             >
               <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -403,7 +403,7 @@ export const ModularWardrobes: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 Find Your Wardrobe Style.
@@ -430,7 +430,7 @@ export const ModularWardrobes: React.FC = () => {
                     key={style.title}
                     initial={{ opacity: 0, x: 0, y: 0, ...cardOffset }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7, delay: idx * 0.08, ease: luxuryEase }}
                     style={{
                       padding: 'clamp(32px, 3.5vw, 44px)',
@@ -470,7 +470,7 @@ export const ModularWardrobes: React.FC = () => {
               style={{ marginBottom: '40px' }}
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               Built for Performance. Finished for Life.
@@ -499,7 +499,7 @@ export const ModularWardrobes: React.FC = () => {
                     className="mw-check-row"
                     initial={{ opacity: 0, x: 0, y: 0, ...lineOffset }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     style={{
                       display: 'flex',
@@ -556,7 +556,7 @@ export const ModularWardrobes: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 Why Our Wardrobes Stand Apart.
@@ -587,7 +587,7 @@ export const ModularWardrobes: React.FC = () => {
                     className="mw-pillar-row"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     whileHover={{
                       x: 6,
@@ -654,7 +654,7 @@ export const ModularWardrobes: React.FC = () => {
                 className="section-title text-white"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 From Consultation to Installation.
@@ -676,7 +676,7 @@ export const ModularWardrobes: React.FC = () => {
                   className="mw-process-step"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     position: 'relative',
@@ -770,7 +770,7 @@ export const ModularWardrobes: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 Frequently Asked Questions
@@ -789,7 +789,7 @@ export const ModularWardrobes: React.FC = () => {
                 },
                 {
                   q: 'What warranty applies to wardrobes?',
-                  a: '[Client Confirmation Required: wardrobe warranty duration and coverage terms]',
+                  a: 'A comprehensive 10-year warranty covering manufacturing defects and hardware performance.',
                 },
                 {
                   q: 'Do you handle both design and installation?',
@@ -800,7 +800,7 @@ export const ModularWardrobes: React.FC = () => {
                   key={item.q}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     padding: 'clamp(24px, 3vw, 32px)',
@@ -842,7 +842,7 @@ export const ModularWardrobes: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 0.15, scale: 1.00 }}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -866,7 +866,7 @@ export const ModularWardrobes: React.FC = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             variants={staggerContainer}
             style={{
               position: 'relative',
@@ -927,7 +927,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}
             >
@@ -959,7 +959,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
               className="mw-layouts-grid"
               style={{
@@ -1086,7 +1086,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
               style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}
             >
@@ -1117,7 +1117,7 @@ export const ModularWardrobes: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
               className="mw-materials-grid"
               style={{
@@ -1227,7 +1227,7 @@ export const ModularWardrobes: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 A Place for Everything.
@@ -1255,7 +1255,7 @@ export const ModularWardrobes: React.FC = () => {
                   key={feature}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.06, ease: luxuryEase }}
                   style={{
                     padding: '28px 20px',

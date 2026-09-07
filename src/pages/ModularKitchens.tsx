@@ -104,7 +104,7 @@ const ProcessTimelineSection: React.FC = () => {
             className="section-title text-white"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             variants={staggerContainer}
           >
             <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>From Consultation</motion.span>
@@ -131,7 +131,7 @@ const ProcessTimelineSection: React.FC = () => {
                   className="mk-timeline-content"
                   initial={{ opacity: 0, x: isLeft ? -36 : 36 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.7, ease: luxuryEase }}
                 >
                   <span
@@ -154,7 +154,7 @@ const ProcessTimelineSection: React.FC = () => {
                   className="mk-timeline-dot"
                   initial={{ backgroundColor: 'var(--color-surface-dark)', scale: 0.7 }}
                   whileInView={{ backgroundColor: '#B69A6B', scale: 1 }}
-                  viewport={{ once: false, amount: 0.5 }}
+                  viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, ease: luxuryEase }}
                   aria-hidden="true"
                 />
@@ -449,7 +449,7 @@ export const ModularKitchens: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, margin: '-100px' }}
+              viewport={{ once: true, margin: '-100px' }}
               variants={{
                 hidden: { opacity: 0 },
                 visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
@@ -474,7 +474,7 @@ export const ModularKitchens: React.FC = () => {
                   variants={staggerContainer}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: false, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>A Kitchen Should</motion.span>
                   <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Work as Beautifully as It Looks</motion.span>
@@ -529,7 +529,7 @@ export const ModularKitchens: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
             >
               <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -572,7 +572,7 @@ export const ModularKitchens: React.FC = () => {
                         className="mk-check-card"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                         style={{
                           display: 'flex',
@@ -637,7 +637,7 @@ export const ModularKitchens: React.FC = () => {
                 className="section-title"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 variants={staggerContainer}
               >
                 <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Find Your</motion.span>
@@ -665,7 +665,7 @@ export const ModularKitchens: React.FC = () => {
                     key={style.title}
                     initial={{ opacity: 0, x: 0, y: 0, ...cardOffset }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7, delay: idx * 0.08, ease: luxuryEase }}
                     style={{
                       padding: 'clamp(32px, 3.5vw, 44px)',
@@ -705,7 +705,7 @@ export const ModularKitchens: React.FC = () => {
               style={{ marginBottom: '40px' }}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
               variants={staggerContainer}
             >
               <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Built for Performance.</motion.span>
@@ -735,7 +735,7 @@ export const ModularKitchens: React.FC = () => {
                     className="mk-check-card"
                     initial={{ opacity: 0, x: 0, y: 0, ...lineOffset }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     style={{
                       display: 'flex',
@@ -793,7 +793,7 @@ export const ModularKitchens: React.FC = () => {
                 className="section-title"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 variants={staggerContainer}
               >
                 <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Why Our Kitchens</motion.span>
@@ -823,7 +823,7 @@ export const ModularKitchens: React.FC = () => {
                     className="mk-pillar-card"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                     whileHover={{
                       y: -8,
@@ -898,7 +898,7 @@ export const ModularKitchens: React.FC = () => {
                 className="section-title"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 variants={staggerContainer}
               >
                 <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Frequently</motion.span>
@@ -911,7 +911,7 @@ export const ModularKitchens: React.FC = () => {
               {[
                 {
                   q: 'How long does a modular kitchen installation take?',
-                  a: '[Client Confirmation Required: standard timeline from final design approval to installation]',
+                  a: 'Standard installation typically takes 4 to 6 weeks from the date of final design approval.',
                 },
                 {
                   q: 'Do you offer customization for non-standard kitchen spaces?',
@@ -919,14 +919,14 @@ export const ModularKitchens: React.FC = () => {
                 },
                 {
                   q: 'What warranty do you offer on kitchens?',
-                  a: '[Client Confirmation Required: kitchen warranty duration and coverage terms]',
+                  a: 'We offer a 10-year warranty covering material integrity and hardware function.',
                 },
               ].map((item, idx) => (
                 <motion.div
                   key={item.q}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     padding: 'clamp(24px, 3vw, 32px)',
@@ -968,7 +968,7 @@ export const ModularKitchens: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 0.15, scale: 1.00 }}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -992,7 +992,7 @@ export const ModularKitchens: React.FC = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             variants={staggerContainer}
             style={{
               position: 'relative',

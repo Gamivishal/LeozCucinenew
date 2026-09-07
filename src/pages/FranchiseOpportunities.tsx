@@ -249,7 +249,7 @@ export const FranchiseOpportunities: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 Why Partner With LEOZ Cucine
@@ -259,7 +259,7 @@ export const FranchiseOpportunities: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15 }}
               variants={staggerContainer}
               className="why-partner-grid"
               style={{
@@ -328,7 +328,7 @@ export const FranchiseOpportunities: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={{ once: true }}
               transition={{ duration: 0.7, ease: luxuryEase }}
               style={{
                 backgroundColor: '#202020',
