@@ -53,7 +53,7 @@ export const RevealText: React.FC<RevealTextProps> = ({
     <motion.div
       initial={{ clipPath: 'inset(100% 0% 0% 0%)', opacity: 0 }}
       whileInView={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
-      viewport={{ once: true, amount: 0.15, margin: '-20px' }}
+      viewport={{ once: false, amount: 0.15, margin: '-20px' }}
       transition={{ duration, delay, ease: LUXURY_EASE }}
       style={{
         willChange: 'clip-path',
@@ -105,7 +105,7 @@ export const RevealLines: React.FC<RevealLinesProps> = ({
           key={i}
           initial={{ clipPath: 'inset(100% 0% 0% 0%)', opacity: 0 }}
           whileInView={{ clipPath: 'inset(0% 0% 0% 0%)', opacity: 1 }}
-          viewport={{ once: true, amount: 0.15, margin: '-20px' }}
+          viewport={{ once: false, amount: 0.15, margin: '-20px' }}
           transition={{ duration, delay: delay + i * stagger, ease: LUXURY_EASE }}
           style={{
             willChange: 'clip-path',

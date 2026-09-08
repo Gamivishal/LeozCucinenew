@@ -247,7 +247,7 @@ export const About: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 transition={{ duration: 0.7, ease: luxuryEase }}
                 style={{
                   position: 'relative',
@@ -272,7 +272,7 @@ export const About: React.FC = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={containerVariants}
               >
                 <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
@@ -317,7 +317,7 @@ export const About: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               variants={containerVariants}
               style={{
                 display: 'grid',
@@ -390,7 +390,7 @@ export const About: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 Designed with Purpose.
@@ -415,7 +415,7 @@ export const About: React.FC = () => {
                   key={step.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{ textAlign: 'center' }}
                 >
@@ -457,7 +457,7 @@ export const About: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 transition={{ duration: 0.7, ease: luxuryEase }}
                 style={{
                   position: 'relative',
@@ -485,7 +485,7 @@ export const About: React.FC = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={containerVariants}
               >
                 <motion.span variants={fromLeftVariants} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
@@ -581,13 +581,13 @@ export const About: React.FC = () => {
 
           <div style={{ maxWidth: '1300px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 80px)' }}>
-              <motion.span variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+              <motion.span variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
                 WHERE WE CRAFT
               </motion.span>
-              <motion.h2 variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="section-title text-white" style={{ marginBottom: '20px' }}>
+              <motion.h2 variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="section-title text-white" style={{ marginBottom: '20px' }}>
                 A 20,000 Sq. Ft. Facility Built for Precision
               </motion.h2>
-              <motion.p variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="description" style={{ margin: '0 auto', color: '#B0ABA2', maxWidth: '700px' }}>
+              <motion.p variants={itemVariants} initial="hidden" whileInView="visible" viewport={{ once: false }} className="description" style={{ margin: '0 auto', color: '#B0ABA2', maxWidth: '700px' }}>
                 Spanning 20,000 sq. ft., our in-house facility powers the precision behind every LEOZ Cucine project. We manufacture modular kitchens and wardrobes under one roof, ensuring consistent quality, on-time delivery, and competitive pricing.
               </motion.p>
             </div>
@@ -595,7 +595,7 @@ export const About: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               variants={containerVariants}
               style={{
                 display: 'grid',
@@ -615,7 +615,7 @@ export const About: React.FC = () => {
                   key={item.title}
                   initial={{ opacity: 0, x: 0, y: 0, ...craftOffset }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  viewport={{ once: false, amount: 0.2 }}
                   whileHover={{
                     y: -8, 
                     boxShadow: '0 20px 40px rgba(182,154,107,0.15)',
@@ -686,7 +686,7 @@ export const About: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.98, y: 20 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 0.8, ease: luxuryEase }}
               style={{
                 backgroundColor: '#FFFFFF',
@@ -749,7 +749,7 @@ export const About: React.FC = () => {
                 className="section-title text-white"
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: luxuryEase }}
               >
                 Why Homeowners &amp; Professionals Trust Us.
@@ -776,7 +776,7 @@ export const About: React.FC = () => {
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
+                    viewport={{ once: false, amount: 0.1 }}
                     transition={{ duration: 0.6, delay: idx * 0.1, ease: luxuryEase }}
                     whileHover={{ 
                       scale: 1.02, 
@@ -844,7 +844,7 @@ export const About: React.FC = () => {
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.8, ease: luxuryEase }}
               >
                 A Track Record of Growth.
@@ -861,7 +861,7 @@ export const About: React.FC = () => {
                   key={item}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: idx * 0.08, ease: luxuryEase }}
                   style={{
                     display: 'flex',
@@ -888,7 +888,7 @@ export const About: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, ease: luxuryEase }}
               style={{
                 textAlign: 'center',
@@ -930,7 +930,7 @@ export const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 1.03 }}
             whileInView={{ opacity: 0.2, scale: 1.00 }}
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 1.0, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -957,7 +957,7 @@ export const About: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 1.5, ease: luxuryEase }}
             style={{
               position: 'absolute',
@@ -977,7 +977,7 @@ export const About: React.FC = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={containerVariants}
             style={{
               position: 'relative',

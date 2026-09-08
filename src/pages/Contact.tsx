@@ -268,7 +268,7 @@ export const Contact: React.FC = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.15 }}
+                viewport={{ once: false, amount: 0.15 }}
                 variants={staggerContainer}
               >
                 <motion.span variants={fromLeftVariants} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
@@ -364,7 +364,7 @@ export const Contact: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, delay: 0.15, ease: luxuryEase }}
                 style={{
                   backgroundColor: '#F7F5F1',
@@ -584,7 +584,7 @@ export const Contact: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{
                 display: 'flex',
@@ -669,7 +669,7 @@ export const Contact: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               transition={{ duration: 0.8, ease: luxuryEase }}
               style={{
                 width: '100%',
@@ -725,7 +725,7 @@ export const Contact: React.FC = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
+              viewport={{ once: false, amount: 0.15 }}
               variants={staggerContainer}
               style={{
                 display: 'flex',
