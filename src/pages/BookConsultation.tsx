@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Header } from '../components/common/Header';
 import { Footer } from '../components/common/Footer';
-import formImg from '../../form.png';
+import formImg from '../../form.webp';
 
 const luxuryEase = [0.16, 1, 0.3, 1];
 
@@ -273,7 +273,7 @@ export const BookConsultation: React.FC = () => {
                 height: '100%',
               }}
             >
-              <img
+              <img loading="lazy"
                 src={formImg}
                 alt="LEOZ CUCINE Architectural Consultation"
                 style={{

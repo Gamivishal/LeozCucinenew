@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../../../LEOZ logo.png';
+import logoImg from '../../../LEOZ logo.webp';
 
 interface LogoProps {
   variant?: 'dark' | 'light';
@@ -31,7 +31,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '' }) => {
         textDecoration: 'none',
       }}
     >
-      <img
+      <img loading="lazy"
         src={logoImg}
         alt="LEOZ CUCINE — Luxury Kitchen & Wardrobes"
         style={{

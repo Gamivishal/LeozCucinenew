@@ -46,7 +46,7 @@ export const GalleryCard: React.FC<GalleryCardProps> = ({
           position: 'relative',
         }}
       >
-        <img
+        <img loading="lazy"
           src={image}
           alt={name}
           className="leoz-gallery-img"

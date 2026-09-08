@@ -126,7 +126,7 @@ export const ModularWardrobes: React.FC = () => {
       title: 'Floor-to-Ceiling',
       subtitle: 'Maximised storage',
       description: 'Maximum storage with a seamless, uninterrupted look.',
-      image: '/Modular Wardrobe.jpeg'
+      image: '/Modular Wardrobe.webp'
     }
   ];
 
@@ -246,7 +246,7 @@ export const ModularWardrobes: React.FC = () => {
                 willChange: 'transform, clip-path',
               }}
             >
-              <img
+              <img 
                 src={images.modularWardrobeHero}
                 alt="LEOZ CUCINE Architectural Modular Wardrobe"
                 style={{

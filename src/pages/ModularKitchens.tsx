@@ -319,7 +319,7 @@ export const ModularKitchens: React.FC = () => {
                 willChange: 'transform, clip-path',
               }}
             >
-              <img
+              <img 
                 src={images.modularKitchenHero}
                 alt="LEOZ CUCINE Architectural Modular Kitchen"
                 style={{
@@ -500,7 +500,7 @@ export const ModularKitchens: React.FC = () => {
               >
                 <ParallaxImage yOffset={30}>
                   <img
-                    src="/Metal Accents.png"
+                    src="/Metal Accents.webp"
                     alt="LEOZ Architectural Modular Kitchen Detail"
                     loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}

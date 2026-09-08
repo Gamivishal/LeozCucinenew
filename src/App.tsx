@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Home from './pages/Home';
-import ModularKitchens from './pages/ModularKitchens';
-import ModularWardrobes from './pages/ModularWardrobes';
-import BookConsultation from './pages/BookConsultation';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import FranchiseEnquiry from './pages/FranchiseEnquiry';
-import FranchiseOpportunities from './pages/FranchiseOpportunities';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+
+const Home = lazy(() => import('./pages/Home'));
+const ModularKitchens = lazy(() => import('./pages/ModularKitchens'));
+const ModularWardrobes = lazy(() => import('./pages/ModularWardrobes'));
+const BookConsultation = lazy(() => import('./pages/BookConsultation'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const FranchiseEnquiry = lazy(() => import('./pages/FranchiseEnquiry'));
+const FranchiseOpportunities = lazy(() => import('./pages/FranchiseOpportunities'));
 
 import { CinematicPageTransition } from './components/common/CinematicPageTransition';
 import { LenisProvider } from './providers/LenisProvider';
@@ -72,7 +73,9 @@ export const App: React.FC = () => {
     <LenisProvider>
       <CustomCursor />
       <CinematicPageTransition>
-        {renderPage()}
+        <Suspense fallback={<div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F7F5F1' }}></div>}>
+          {renderPage()}
+        </Suspense>
       </CinematicPageTransition>
     </LenisProvider>
   );

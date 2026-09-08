@@ -121,7 +121,7 @@ export const About: React.FC = () => {
                 willChange: 'transform, clip-path',
               }}
             >
-              <img
+              <img loading="lazy"
                 src={images.aboutHero}
                 alt="LEOZ CUCINE Architectural Heritage & Craftsmanship"
                 style={{
@@ -260,7 +260,7 @@ export const About: React.FC = () => {
                 }}
               >
                 <ParallaxImage yOffset={30}>
-                  <img
+                  <img loading="lazy"
                     src={images.modularKitchenHero}
                     alt="LEOZ CUCINE Brand Story"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
@@ -468,8 +468,8 @@ export const About: React.FC = () => {
                   boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
                 }}
               >
-                <img
-                  src="/director.png"
+                <img loading="lazy"
+                  src="/director.webp"
                   alt="Director Portrait"
                   style={{
                     width: '100%',

@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
    Usage (inside an overflow:hidden container):
      <div style={{ overflow: 'hidden', height: '500px', position: 'relative' }}>
        <ParallaxImage yOffset={50}>
-         <img src={...} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+         <img loading="lazy" src={...} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
        </ParallaxImage>
      </div>
 

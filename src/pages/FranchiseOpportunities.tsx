@@ -150,7 +150,7 @@ export const FranchiseOpportunities: React.FC = () => {
                 willChange: 'transform, clip-path',
               }}
             >
-              <img
+              <img loading="lazy"
                 src={images.franchiseHero}
                 alt="Bring LEOZ Cucine to your city"
                 style={{

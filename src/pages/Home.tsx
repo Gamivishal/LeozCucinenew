@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
         justifyContent: 'center',
       }}
     >
-      <img
+      <img 
         src={images.hero}
         alt="Leoz Cucine premium kitchen"
         style={{
@@ -227,9 +227,11 @@ const BrandIntroSection: React.FC = () => {
           }}
         >
           <img
-            src="/PHILOSOPHY.png"
+            src="/PHILOSOPHY.webp"
             alt="LEOZ CUCINE Joinery Detail Craftsmanship"
             loading="lazy"
+            width={1209}
+            height={1301}
             style={{
               width: '100%',
               height: 'auto',
@@ -611,7 +613,14 @@ const CollectionsSection: React.FC = () => {
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
-                  style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
+                  width={item.title === 'Kitchens' ? 1024 : 1080}
+                  height={item.title === 'Kitchens' ? 619 : 720}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    objectFit: 'contain',
+                  }}
                 />
               </motion.div>
             </div>

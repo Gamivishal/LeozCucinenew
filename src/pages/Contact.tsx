@@ -192,7 +192,7 @@ export const Contact: React.FC = () => {
                 willChange: 'transform, clip-path',
               }}
             >
-              <img
+              <img loading="lazy"
                 src={images.contactHero}
                 alt="LEOZ CUCINE Flagship Interior Studio"
                 style={{

@@ -2,24 +2,24 @@
    LEOZ CUCINE — LUXURY IMAGE ASSETS CATALOG
    ========================================================================== */
 
-import heroBannerImg from '../../hero banner.png';
-const brandPhilosophyImg = '/PHILOSOPHY.png';
-import wardrobeDressingImg from './wardrobe_dressing.jpg';
-import kitchenOpusImg from './kitchen_opus.jpg';
-import wardrobeGlassImg from './wardrobe_glass.jpg';
+
+const brandPhilosophyImg = '/PHILOSOPHY.webp';
+import wardrobeDressingImg from './wardrobe_dressing.webp';
+import kitchenOpusImg from './kitchen_opus.webp';
+import wardrobeGlassImg from './wardrobe_glass.webp';
 
 export const images = {
   // Hero Fullscreen Architecture (User Uploaded Hero Banner for Home)
-  hero: heroBannerImg,
+  hero: '/hero banner.webp',
 
   // Page Specific Banners (No longer shared or same)
-  aboutHero: '/about.png',
+  aboutHero: '/about.webp',
   contactHero: kitchenOpusImg,
   franchiseHero: brandPhilosophyImg,
 
   // Dedicated Modular Kitchen Hero & Philosophy
-  modularKitchenHero: '/Gloss Finish.png',
-  modularPhilosophy: '/Metal Accents.png',
+  modularKitchenHero: '/Gloss Finish.webp',
+  modularPhilosophy: '/Metal Accents.webp',
 
   // Dedicated Modular Wardrobes Assets
   modularWardrobeHero: wardrobeDressingImg,
@@ -28,13 +28,13 @@ export const images = {
   // Category & Brand Details for Home page
   brandDetail: brandPhilosophyImg,
   kitchenCategory: '/modular kitchen.webp',
-  wardrobeCategory: '/Modular Wardrobe.jpeg',
+  wardrobeCategory: '/Modular Wardrobe.webp',
   consultationBg: kitchenOpusImg,
 
   wardrobeTypes: {
-    sliding: '/Sliding Wardrobes.jpg',
+    sliding: '/Sliding Wardrobes.webp',
     hinged: '/Hinged Wardrobes.jfif',
-    walkIn: '/Walk-in Wardrobes.jpg',
+    walkIn: '/Walk-in Wardrobes.webp',
   },
 
   wardrobeFittings: [
@@ -69,21 +69,21 @@ export const images = {
   ],
 
   layouts: {
-    lShape: '/L-Shape Layout.png',
-    uShape: '/U -Shape Layout.png',
-    island: '/Island Layout.png',
-    parallel: '/Parallel Layout.png',
-    straight: '/Straight Layout.png',
+    lShape: '/L-Shape Layout.webp',
+    uShape: '/U -Shape Layout.webp',
+    island: '/Island Layout.webp',
+    parallel: '/Parallel Layout.webp',
+    straight: '/Straight Layout.webp',
   },
 
   materials: {
-    matte: '/Matte Finish.png',
-    gloss: '/Gloss Finish.png',
-    woodVeneer: '/Wood Veneer.png',
-    marble: '/Italian Marble.png',
-    quartz: '/Quartz Stone.png',
-    glass: '/Glass Vitrines.png',
-    metal: '/Metal Accents.png',
+    matte: '/Matte Finish.webp',
+    gloss: '/Gloss Finish.webp',
+    woodVeneer: '/Wood Veneer.webp',
+    marble: '/Italian Marble.webp',
+    quartz: '/Quartz Stone.webp',
+    glass: '/Glass Vitrines.webp',
+    metal: '/Metal Accents.webp',
   },
 
   projects: [
@@ -92,7 +92,7 @@ export const images = {
       title: 'Skyline Monolithic Island',
       category: 'LUXURY KITCHEN',
       tag: 'Italian Dark Marble • Soft LED Accent',
-      image: '/Skyline Monolithic Island.jpg',
+      image: '/Skyline Monolithic Island.webp',
       alt: 'Skyline Monolithic Luxury Kitchen',
       link: '/modular-kitchens',
     },
@@ -119,7 +119,7 @@ export const images = {
       title: 'Smoked Glass Vitrine Wardrobe',
       category: 'LUXURY WARDROBE',
       tag: 'Tinted Glass • Anodized Bronze Frame',
-      image: '/Smoked Glass Vitrine Wardrobe.jpg',
+      image: '/Smoked Glass Vitrine Wardrobe.webp',
       alt: 'Smoked Glass Vitrine Modular Wardrobe',
       link: '/modular-wardrobes',
     },
@@ -128,7 +128,7 @@ export const images = {
       title: 'Grand Villa Culinary Atelier',
       category: 'LUXURY KITCHEN',
       tag: 'High Gloss Lacquer • Fluted Glass',
-      image: '/Grand Villa Estate.png',
+      image: '/Grand Villa Estate.webp',
       alt: 'Grand Villa Culinary Atelier Kitchen',
       link: '/modular-kitchens',
     },
@@ -137,7 +137,7 @@ export const images = {
       title: 'Fluted Walnut Executive Wardrobe',
       category: 'LUXURY WARDROBE',
       tag: 'Natural Walnut • Soft-Close Joinery',
-      image: '/Fluted Walnut Executive Wardrobe.jpg',
+      image: '/Fluted Walnut Executive Wardrobe.webp',
       alt: 'Fluted Walnut Executive Wardrobe',
       link: '/modular-wardrobes',
     },

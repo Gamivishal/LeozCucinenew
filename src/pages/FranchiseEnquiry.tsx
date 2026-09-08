@@ -287,7 +287,7 @@ export const FranchiseEnquiry: React.FC = () => {
                 willChange: 'transform, clip-path',
               }}
             >
-              <img
+              <img loading="lazy"
                 src={images.franchiseHero}
                 alt="LEOZ CUCINE Luxury Interior Showroom Architecture"
                 style={{
@@ -1003,7 +1003,7 @@ export const FranchiseEnquiry: React.FC = () => {
                 }}
               >
                 <ParallaxImage yOffset={30}>
-                  <img
+                  <img loading="lazy"
                     src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=90"
                     alt="LEOZ CUCINE Architectural Interior Excellence"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
