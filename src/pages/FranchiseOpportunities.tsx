@@ -5,6 +5,8 @@ import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { Award, Factory, Compass, GraduationCap, ShieldCheck, CheckCircle } from 'lucide-react';
+import { PHONE_SALES_DISPLAY, PHONE_SALES_HREF, buildWhatsAppHref } from '../constants/siteInfo';
+import { submitEnquiryForm } from '../lib/submitEnquiryForm';
 
 const luxuryEase = [0.16, 1, 0.3, 1];
 
@@ -43,7 +45,7 @@ const whyPartnerCards = [
   {
     icon: Award,
     title: 'Established Brand',
-    description: '20+ years of experience and a growing reputation across Gujarat, with an established global export-import presence.',
+    description: '20+ years of experience and a growing reputation across Gujarat, with an established global import-export presence.',
   },
   {
     icon: Factory,
@@ -69,6 +71,7 @@ const whyPartnerCards = [
 
 export const FranchiseOpportunities: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [formData, setFormData] = useState({
     fullName: '',
     mobile: '',
@@ -88,7 +91,7 @@ export const FranchiseOpportunities: React.FC = () => {
   const parallaxY = Math.min(scrollY * 0.15, 120);
 
   useDocumentMeta(
-    'Franchise Enquiry | Leoz Cucine',
+    'Franchise Enquiry | LEOZ Cucine',
     'Partner with LEOZ Cucine — a premium, German-precision kitchen and wardrobe brand backed by 20+ years of manufacturing expertise.'
   );
 
@@ -97,9 +100,16 @@ export const FranchiseOpportunities: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setSubmitStatus('submitting');
+    const result = await submitEnquiryForm('franchise', formData);
+    if (result.ok) {
+      setSubmitStatus('idle');
+      setFormSubmitted(true);
+    } else {
+      setSubmitStatus('error');
+    }
   };
 
   const scrollToForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -208,7 +218,7 @@ export const FranchiseOpportunities: React.FC = () => {
               </motion.span>
 
               <h1 className="page-title" style={{ marginBottom: '20px' }}>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Bring LEOZ Cucine</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Bring LEOZ Cucine</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>to Your City</motion.span>
               </h1>
 
@@ -231,7 +241,7 @@ export const FranchiseOpportunities: React.FC = () => {
 
         {/* WHY PARTNER WITH LEOZ CUCINE */}
         <section
-          aria-label="Why Partner With Leoz Cucine"
+          aria-label="Why Partner With LEOZ Cucine"
           style={{
             paddingTop: 'var(--space-section-padding-desktop)',
             paddingBottom: 'var(--space-section-padding-desktop)',
@@ -465,6 +475,7 @@ export const FranchiseOpportunities: React.FC = () => {
                   <button
                     type="submit"
                     className="contact-submit-btn"
+                    disabled={submitStatus === 'submitting'}
                     style={{
                       height: '54px',
                       backgroundColor: '#B69A6B',
@@ -475,14 +486,24 @@ export const FranchiseOpportunities: React.FC = () => {
                       fontSize: '13px',
                       fontWeight: 600,
                       letterSpacing: '0.5px',
-                      cursor: 'pointer',
+                      cursor: submitStatus === 'submitting' ? 'not-allowed' : 'pointer',
+                      opacity: submitStatus === 'submitting' ? 0.7 : 1,
                       marginTop: '10px',
                       boxShadow: '0 10px 30px rgba(182, 154, 107, 0.3)',
                       transition: 'all 300ms cubic-bezier(0.16, 1, 0.3, 1)',
                     }}
                   >
-                    Submit Enquiry
+                    {submitStatus === 'submitting' ? 'Sending…' : 'Submit Enquiry'}
                   </button>
+
+                  {submitStatus === 'error' && (
+                    <p role="alert" style={{ fontFamily: 'var(--font-family-sans)', fontSize: '13px', color: '#FF8A80', lineHeight: '1.6', margin: 0 }}>
+                      Something went wrong sending your enquiry. Please try again, or reach us directly at{' '}
+                      <a href={PHONE_SALES_HREF} style={{ color: 'inherit', textDecoration: 'underline' }}>{PHONE_SALES_DISPLAY}</a>
+                      {' '}or on{' '}
+                      <a href={buildWhatsAppHref('Hi LEOZ Cucine, my franchise enquiry failed to submit — could you help?')} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>WhatsApp</a>.
+                    </p>
+                  )}
                 </form>
               )}
             </motion.div>

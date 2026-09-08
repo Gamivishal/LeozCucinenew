@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Header } from '../components/common/Header';
 import { Footer } from '../components/common/Footer';
 import formImg from '../../form.webp';
+import { PHONE_SALES_DISPLAY, PHONE_SALES_HREF, buildWhatsAppHref } from '../constants/siteInfo';
+import { submitEnquiryForm } from '../lib/submitEnquiryForm';
 
 const luxuryEase = [0.16, 1, 0.3, 1];
 
@@ -15,6 +17,7 @@ export const BookConsultation: React.FC = () => {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,9 +28,16 @@ export const BookConsultation: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setSubmitStatus('submitting');
+    const result = await submitEnquiryForm('consultation', formData);
+    if (result.ok) {
+      setSubmitStatus('idle');
+      setIsSubmitted(true);
+    } else {
+      setSubmitStatus('error');
+    }
   };
 
   return (
@@ -83,7 +93,7 @@ export const BookConsultation: React.FC = () => {
                   textAlign: 'left',
                 }}
               >
-                Book a showroom consultation
+                Book a Showroom Consultation
               </h1>
 
               {/* Subhead */}
@@ -98,7 +108,7 @@ export const BookConsultation: React.FC = () => {
                   lineHeight: '1.5',
                 }}
               >
-                Share a few details, our team will call you back
+                Share a few details and our team will call you back.
               </p>
 
               {isSubmitted ? (
@@ -227,6 +237,7 @@ export const BookConsultation: React.FC = () => {
                   <button
                     type="submit"
                     className="contact-submit-btn"
+                    disabled={submitStatus === 'submitting'}
                     style={{
                       marginTop: '8px',
                       width: '100%',
@@ -240,15 +251,23 @@ export const BookConsultation: React.FC = () => {
                       fontWeight: 600,
                       letterSpacing: '0.15em',
                       textTransform: 'uppercase',
-                      cursor: 'pointer',
+                      cursor: submitStatus === 'submitting' ? 'not-allowed' : 'pointer',
+                      opacity: submitStatus === 'submitting' ? 0.7 : 1,
                       boxShadow: '0 8px 20px rgba(182, 154, 107, 0.25)',
                       transition: 'transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1)',
                     }}
                   >
-                    SUBMIT
+                    {submitStatus === 'submitting' ? 'Sending…' : 'Submit Enquiry'}
                   </button>
 
-
+                  {submitStatus === 'error' && (
+                    <p role="alert" style={{ fontFamily: 'var(--font-family-sans)', fontSize: '13px', color: '#B3261E', lineHeight: '1.6', margin: 0 }}>
+                      Something went wrong sending your request. Please try again, or reach us directly at{' '}
+                      <a href={PHONE_SALES_HREF} style={{ color: 'inherit', textDecoration: 'underline' }}>{PHONE_SALES_DISPLAY}</a>
+                      {' '}or on{' '}
+                      <a href={buildWhatsAppHref('Hi LEOZ Cucine, my consultation request failed to submit — could you help?')} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>WhatsApp</a>.
+                    </p>
+                  )}
                 </form>
               )}
             </motion.div>
@@ -275,7 +294,7 @@ export const BookConsultation: React.FC = () => {
             >
               <img loading="lazy"
                 src={formImg}
-                alt="LEOZ CUCINE Architectural Consultation"
+                alt="LEOZ Cucine Architectural Consultation"
                 style={{
                   width: '100%',
                   height: '100%',

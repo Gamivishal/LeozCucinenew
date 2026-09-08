@@ -8,10 +8,13 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const FranchiseEnquiry = lazy(() => import('./pages/FranchiseEnquiry'));
 const FranchiseOpportunities = lazy(() => import('./pages/FranchiseOpportunities'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
 import { CinematicPageTransition } from './components/common/CinematicPageTransition';
 import { LenisProvider } from './providers/LenisProvider';
 import { CustomCursor } from './components/common/CustomCursor';
+import { MobileActionBar } from './components/common/MobileActionBar';
+import { Analytics } from './components/common/Analytics';
 
 
 export const App: React.FC = () => {
@@ -66,17 +69,23 @@ export const App: React.FC = () => {
       return <BookConsultation />;
     }
 
+    if (currentPath === '/privacy-policy') {
+      return <PrivacyPolicy />;
+    }
+
     return <Home />;
   };
 
   return (
     <LenisProvider>
+      <Analytics />
       <CustomCursor />
       <CinematicPageTransition>
         <Suspense fallback={<div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F7F5F1' }}></div>}>
           {renderPage()}
         </Suspense>
       </CinematicPageTransition>
+      <MobileActionBar />
     </LenisProvider>
   );
 };

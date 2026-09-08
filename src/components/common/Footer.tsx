@@ -1,6 +1,16 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { motion } from 'framer-motion';
+import {
+  EMAIL,
+  EMAIL_HREF,
+  PHONE_SALES_DISPLAY,
+  PHONE_SALES_HREF,
+  PHONE_CARE_DISPLAY,
+  PHONE_CARE_HREF,
+  ADDRESS_LINE,
+  HOURS_SHORT,
+} from '../../constants/siteInfo';
 
 export const Footer: React.FC = () => {
   return (
@@ -153,11 +163,11 @@ export const Footer: React.FC = () => {
                 color: 'var(--color-text-secondary)',
               }}
             >
-              <p>Email: info@leozcucine.com</p>
-              <p>Sales &amp; Enquiry: 93131 51559</p>
-              <p>Customer Care: 87585 51552</p>
-              <p>Studio: Sankalp Square 3B, 509, Sindhu Bhavan Marg, Thaltej, Ahmedabad, Gujarat 380059</p>
-              <p>Hours: Mon–Sat 10 AM–7 PM, Sun by appointment</p>
+              <p>Email: <a href={EMAIL_HREF} className="footer-link">{EMAIL}</a></p>
+              <p>Sales &amp; Enquiry: <a href={PHONE_SALES_HREF} className="footer-link">{PHONE_SALES_DISPLAY}</a></p>
+              <p>Customer Care: <a href={PHONE_CARE_HREF} className="footer-link">{PHONE_CARE_DISPLAY}</a></p>
+              <p>Studio: {ADDRESS_LINE}</p>
+              <p>Hours: {HOURS_SHORT}</p>
             </div>
           </motion.div>
         </div>
@@ -183,7 +193,18 @@ export const Footer: React.FC = () => {
             letterSpacing: '0.08em',
           }}
         >
-          <p>© {new Date().getFullYear()} LEOZ CUCINE. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} LEOZ Cucine. All Rights Reserved.</p>
+          <a
+            href="/privacy-policy"
+            onClick={(e) => {
+              e.preventDefault();
+              window.history.pushState({}, '', '/privacy-policy');
+              window.dispatchEvent(new Event('popstate'));
+            }}
+            className="footer-link"
+          >
+            Privacy Policy
+          </a>
           <p>Kitchens &amp; Wardrobes</p>
         </motion.div>
       </div>
@@ -202,6 +223,11 @@ export const Footer: React.FC = () => {
             flex-direction: column !important;
             text-align: center !important;
             align-items: center !important;
+          }
+          .footer-link {
+            display: inline-flex !important;
+            align-items: center !important;
+            min-height: 44px !important;
           }
         }
         @media (min-width: 768px) and (max-width: 1023px) {

@@ -43,7 +43,8 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      aria-label="Leoz Cucine Hero"
+      aria-label="LEOZ Cucine Hero"
+      className="home-hero-section"
       style={{
         position: 'relative',
         height: '100vh',
@@ -56,7 +57,7 @@ const HeroSection: React.FC = () => {
     >
       <img 
         src={images.hero}
-        alt="Leoz Cucine premium kitchen"
+        alt="LEOZ Cucine premium kitchen"
         style={{
           position: 'absolute',
           inset: 0,
@@ -121,8 +122,8 @@ const HeroSection: React.FC = () => {
           className="hero-title text-white"
           style={{ marginBottom: '22px', textShadow: '0 4px 30px rgba(0, 0, 0, 0.45)' }}
         >
-          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>German-Engineered</motion.span>
-          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Kitchens &amp; Wardrobes,</motion.span>
+          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>German-Engineered</motion.span><span style={{ fontSize: 0 }}> </span>
+          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Kitchens &amp; Wardrobes,</motion.span><span style={{ fontSize: 0 }}> </span>
           <motion.span variants={heroItemVariants} style={{ display: 'inline-block' }}>Crafted in Gujarat</motion.span>
         </h1>
         <motion.p
@@ -130,7 +131,7 @@ const HeroSection: React.FC = () => {
           className="hero-description text-light"
           style={{ margin: '0 auto 36px', maxWidth: '620px', textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)' }}
         >
-          LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes across Ahmedabad and throughout Gujarat — designed, built, and installed entirely in-house.
+          LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes in Ahmedabad and across Gujarat. Every kitchen and wardrobe is designed, built and installed entirely in-house.
         </motion.p>
 
         <div
@@ -166,6 +167,9 @@ const HeroSection: React.FC = () => {
 
       <style>{`
         @media (max-width: 767px) {
+          .home-hero-section {
+            height: 78vh !important;
+          }
           .hero-cta-container {
             flex-direction: column !important;
             align-items: center !important;
@@ -228,7 +232,7 @@ const BrandIntroSection: React.FC = () => {
         >
           <img
             src="/PHILOSOPHY.webp"
-            alt="LEOZ CUCINE Joinery Detail Craftsmanship"
+            alt="LEOZ Cucine Joinery Detail Craftsmanship"
             loading="lazy"
             width={1209}
             height={1301}
@@ -264,7 +268,7 @@ const BrandIntroSection: React.FC = () => {
             className="description"
             style={{ marginBottom: '16px' }}
           >
-            LEOZ Cucine was founded on a simple belief — a home's kitchen and wardrobes should feel as considered as the rest of the house.
+            LEOZ Cucine was founded on a simple belief — a home’s kitchen and wardrobes should feel as considered as the rest of the house.
           </motion.p>
 
           <motion.p
@@ -659,12 +663,14 @@ const ProductHighlightsSection: React.FC = () => {
     {
       icon: ChefHat,
       title: 'German Style Modular Kitchens',
-      description: 'Experience the perfect blend of sleek design, functionality, and customization. Our modular kitchens are crafted with precision, offering innovative storage solutions and contemporary aesthetics suited to modern lifestyles.',
+      // TODO(QA-G16): unverifiable claim, needs client sign-off before publishing as fact — "Experience the perfect blend of sleek design, functionality, and customization"
+      description: 'Experience the perfect blend of sleek design, functionality, and customisation. Our modular kitchens are crafted with precision, offering innovative storage solutions and contemporary aesthetics suited to modern lifestyles.',
     },
     {
       icon: Shirt,
-      title: 'Customized Wardrobes',
-      description: 'Maximize your space with our innovative wardrobe designs. Tailored to your needs, our wardrobes combine practicality with elegance, ensuring optimal storage and a clutter-free environment.',
+      title: 'Customised Wardrobes',
+      // G-17: rewritten so this no longer duplicates the Wardrobes page's product-highlight paragraph word-for-word
+      description: 'Every wardrobe is planned around how you actually get dressed — smart interior fittings, soft-close hardware and finishes chosen to suit your room, not just the catalogue.',
     },
   ];
 
@@ -939,7 +945,7 @@ const ProcessSection: React.FC = () => {
    ========================================================================== */
 const WhyLeozSection: React.FC = () => {
   const pillars = [
-    { icon: Compass, title: 'German Design Influence', description: 'Precision, engineering, and clean form language adapted for Indian homes and climate.' },
+    { icon: Compass, title: 'German Design Influence', description: 'Precision, engineering, and clean form language adapted for Indian homes and the Indian climate.' },
     { icon: Factory, title: 'Own Manufacturing Factory', description: 'We design and manufacture in-house, giving us complete control over quality, materials, and finish.' },
     { icon: Clock, title: '20+ Years of Experience', description: 'Two decades of refining our craft, materials, and processes.' },
     { icon: ShieldCheck, title: 'Comprehensive Warranty', description: 'Backed by a warranty that reflects our confidence in what we build.' },
@@ -948,7 +954,7 @@ const WhyLeozSection: React.FC = () => {
 
   return (
     <section
-      aria-label="Why Leoz Cucine"
+      aria-label="Why LEOZ Cucine"
       style={{
         paddingTop: 'var(--space-section-padding-desktop)',
         paddingBottom: 'var(--space-section-padding-desktop)',
@@ -1228,12 +1234,12 @@ const ConsultationSection: React.FC = () => {
           className="section-title text-white"
           style={{ marginBottom: '24px' }}
         >
-          Let's Design Your Kitchen or Wardrobe
+          Let’s Design Your Kitchen or Wardrobe
         </motion.h2>
 
         <div style={{ margin: '0 auto', marginBottom: 'clamp(28px, 4vw, 44px)' }}>
           {[
-            "Whether you're planning a new kitchen,",
+            "Whether you’re planning a new kitchen,",
             "upgrading your wardrobe, or specifying",
             "kitchens and wardrobes for a residential project,",
             "our team is ready to help."
@@ -1285,8 +1291,8 @@ export const Home: React.FC = () => {
   const [showHeader, setShowHeader] = useState<boolean>(() => !checkShouldRunPreloader());
 
   useDocumentMeta(
-    'Leoz Cucine | German-Engineered Kitchens & Wardrobes in Gujarat',
-    'LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes across Ahmedabad and throughout Gujarat.'
+    'LEOZ Cucine | German-Engineered Kitchens & Wardrobes in Gujarat',
+    'LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes in Ahmedabad and across Gujarat.'
   );
 
   // Preloader timeline: hold the curtain briefly, slide it up, then reveal the page.

@@ -5,6 +5,19 @@ import { Footer } from '../components/common/Footer';
 import { images } from '../assets/images';
 import { useDocumentMeta } from '../hooks/useDocumentMeta';
 import { Phone, Mail, MapPin, Clock, Headphones, MessageSquare, CheckCircle } from 'lucide-react';
+import {
+  EMAIL,
+  EMAIL_HREF,
+  PHONE_SALES_DISPLAY,
+  PHONE_SALES_HREF,
+  PHONE_CARE_DISPLAY,
+  PHONE_CARE_HREF,
+  ADDRESS_LINE,
+  HOURS_LONG_WEEKDAY,
+  HOURS_LONG_SUNDAY,
+  buildWhatsAppHref,
+} from '../constants/siteInfo';
+import { submitEnquiryForm } from '../lib/submitEnquiryForm';
 
 /* Easing curve token matching Modular Kitchens and Wardrobes pages */
 const luxuryEase = [0.16, 1, 0.3, 1];
@@ -64,6 +77,7 @@ const fromRightVariants = {
 export const Contact: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -80,8 +94,8 @@ export const Contact: React.FC = () => {
   }, []);
 
   useDocumentMeta(
-    'Contact Leoz Cucine | Kitchens & Wardrobes',
-    'Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients across Ahmedabad and throughout Gujarat.'
+    'Contact LEOZ Cucine | Kitchens & Wardrobes',
+    'Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients in Ahmedabad and across Gujarat.'
   );
 
   // Parallax transform calculation for Hero image
@@ -92,9 +106,16 @@ export const Contact: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setSubmitStatus('submitting');
+    const result = await submitEnquiryForm('contact', formData);
+    if (result.ok) {
+      setSubmitStatus('idle');
+      setFormSubmitted(true);
+    } else {
+      setSubmitStatus('error');
+    }
   };
 
   return (
@@ -154,8 +175,8 @@ export const Contact: React.FC = () => {
               </motion.span>
 
               <h1 className="page-title" style={{ marginBottom: '20px' }}>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Let's Talk About</motion.span>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Your Kitchen or</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Let’s Talk About</motion.span><span style={{ fontSize: 0 }}> </span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Your Kitchen or</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>Wardrobe</motion.span>
               </h1>
 
@@ -164,7 +185,7 @@ export const Contact: React.FC = () => {
                 className="hero-description"
                 style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)' }}
               >
-                Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients across Ahmedabad and throughout Gujarat.
+                Reach out to LEOZ Cucine for consultations, project enquiries, or general questions — our team serves clients in Ahmedabad and across Gujarat.
               </motion.p>
             </motion.div>
           </div>
@@ -194,7 +215,7 @@ export const Contact: React.FC = () => {
             >
               <img loading="lazy"
                 src={images.contactHero}
-                alt="LEOZ CUCINE Flagship Interior Studio"
+                alt="LEOZ Cucine Flagship Interior Studio"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -279,7 +300,7 @@ export const Contact: React.FC = () => {
                   className="section-title"
                   style={{ color: '#181818', marginBottom: '36px' }}
                 >
-                  Visit Leoz Cucine.
+                  Visit LEOZ Cucine.
                 </motion.h2>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
@@ -293,7 +314,7 @@ export const Contact: React.FC = () => {
                         Email
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        info@leozcucine.com
+                        <a href={EMAIL_HREF} style={{ color: 'inherit' }}>{EMAIL}</a>
                       </p>
                     </div>
                   </motion.div>
@@ -308,7 +329,7 @@ export const Contact: React.FC = () => {
                         Sales &amp; Enquiry
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        93131 51559
+                        <a href={PHONE_SALES_HREF} style={{ color: 'inherit' }}>{PHONE_SALES_DISPLAY}</a>
                       </p>
                     </div>
                   </motion.div>
@@ -323,7 +344,7 @@ export const Contact: React.FC = () => {
                         Customer Care
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        87585 51552
+                        <a href={PHONE_CARE_HREF} style={{ color: 'inherit' }}>{PHONE_CARE_DISPLAY}</a>
                       </p>
                     </div>
                   </motion.div>
@@ -338,7 +359,7 @@ export const Contact: React.FC = () => {
                         Head Office / Showroom (Ahmedabad)
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        Sankalp Square 3B, 509, Sindhu Bhavan Marg, beside Taj Sky line, PRL Colony, Thaltej, Ahmedabad, Gujarat 380059
+                        {ADDRESS_LINE}
                       </p>
                     </div>
                   </motion.div>
@@ -353,7 +374,7 @@ export const Contact: React.FC = () => {
                         Business Hours
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        Monday – Saturday: 10:00 AM – 7:00 PM<br />Sunday: By appointment only
+                        {HOURS_LONG_WEEKDAY}<br />{HOURS_LONG_SUNDAY}
                       </p>
                     </div>
                   </motion.div>
@@ -381,7 +402,7 @@ export const Contact: React.FC = () => {
                       Enquiry Received
                     </h3>
                     <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', color: '#4A4A4A', fontWeight: 300, lineHeight: '1.6' }}>
-                      Thank you for contacting Leoz Cucine. Our team will get back to you shortly.
+                      Thank you for contacting LEOZ Cucine. Our team will get back to you shortly.
                     </p>
                   </div>
                 ) : (
@@ -536,6 +557,7 @@ export const Contact: React.FC = () => {
                     <button
                       type="submit"
                       className="contact-submit-btn"
+                      disabled={submitStatus === 'submitting'}
                       style={{
                         height: '54px',
                         backgroundColor: '#181818',
@@ -546,14 +568,34 @@ export const Contact: React.FC = () => {
                         fontSize: '13px',
                         fontWeight: 600,
                         letterSpacing: '0.5px',
-                        cursor: 'pointer',
+                        cursor: submitStatus === 'submitting' ? 'not-allowed' : 'pointer',
+                        opacity: submitStatus === 'submitting' ? 0.7 : 1,
                         marginTop: '10px',
                         boxShadow: '0 10px 30px rgba(182, 154, 107, 0.3)',
                         transition: 'all 300ms cubic-bezier(0.16, 1, 0.3, 1)',
                       }}
                     >
-                      Submit Enquiry
+                      {submitStatus === 'submitting' ? 'Sending…' : 'Submit Enquiry'}
                     </button>
+
+                    {submitStatus === 'error' && (
+                      <p
+                        role="alert"
+                        style={{
+                          fontFamily: 'var(--font-family-sans)',
+                          fontSize: '13px',
+                          fontWeight: 400,
+                          color: '#B3261E',
+                          lineHeight: '1.6',
+                          margin: 0,
+                        }}
+                      >
+                        Something went wrong sending your enquiry. Please try again, or reach us directly at{' '}
+                        <a href={PHONE_SALES_HREF} style={{ color: 'inherit', textDecoration: 'underline' }}>{PHONE_SALES_DISPLAY}</a>
+                        {' '}or on{' '}
+                        <a href={buildWhatsAppHref('Hi LEOZ Cucine, my enquiry form submission failed — could you help?')} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>WhatsApp</a>.
+                      </p>
+                    )}
                   </form>
                 )}
               </motion.div>
@@ -681,7 +723,7 @@ export const Contact: React.FC = () => {
               }}
             >
               <iframe
-                title="LEOZ CUCINE Showroom Location"
+                title="LEOZ Cucine Showroom Location"
                 src="https://www.google.com/maps?q=Sankalp+Square+3B%2C+509%2C+Sindhu+Bhavan+Marg%2C+Thaltej%2C+Ahmedabad%2C+Gujarat+380059&output=embed"
                 width="100%"
                 height="100%"
@@ -749,10 +791,10 @@ export const Contact: React.FC = () => {
 
               <motion.div variants={staggerItem}>
                 <a
-                  href="tel:+919313151559"
+                  href={PHONE_SALES_HREF}
                   className="btn btn-light"
                 >
-                  Call Us / Talk to Us
+                  Call Us
                 </a>
               </motion.div>
             </motion.div>
@@ -808,6 +850,13 @@ export const Contact: React.FC = () => {
           }
         }
         @media (max-width: 767px) {
+          .hero-split-container > div:first-of-type {
+            padding: 90px 24px 24px 24px !important;
+          }
+          .hero-split-container > div:last-of-type {
+            min-height: 200px !important;
+            height: 28vh !important;
+          }
           .contact-main-grid {
             grid-template-columns: 1fr !important;
             gap: 32px !important;

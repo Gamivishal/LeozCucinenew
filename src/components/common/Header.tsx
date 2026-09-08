@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
@@ -9,10 +9,14 @@ interface HeaderProps {
   showHeader?: boolean;
 }
 
+const MOBILE_NAV_PANEL_ID = 'mobile-nav-panel';
+
 export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showHeader = true }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { lenis } = useLenisScroll();
+  const hamburgerBtnRef = useRef<HTMLButtonElement>(null);
+  const mobileNavPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +39,59 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
       lenis?.start();
     };
   }, [isMobileMenuOpen, lenis]);
+
+  // Focus management + focus trap + Escape-to-close for the mobile drawer
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const panel = mobileNavPanelRef.current;
+    const getFocusable = () =>
+      panel
+        ? Array.from(
+            panel.querySelectorAll<HTMLElement>('a[href], button, [tabindex]:not([tabindex="-1"])')
+          )
+        : [];
+
+    // Move focus into the panel on open
+    const focusables = getFocusable();
+    focusables[0]?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setIsMobileMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+
+      const items = getFocusable();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      // Return focus to the toggle button on close
+      hamburgerBtnRef.current?.focus();
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close the drawer on route change (back/forward nav, or any other in-app navigation)
+  useEffect(() => {
+    const handleRouteChange = () => setIsMobileMenuOpen(false);
+    window.addEventListener('popstate', handleRouteChange);
+    return () => window.removeEventListener('popstate', handleRouteChange);
+  }, []);
 
   const isVisible = !isPreloaderActive || showHeader;
 
@@ -175,9 +232,12 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
 
           {/* MOBILE HAMBURGER TOGGLE BUTTON */}
           <button
+            ref={hamburgerBtnRef}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="mobile-hamburger-btn"
             aria-label={isMobileMenuOpen ? "Close Menu" : "Open Menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls={MOBILE_NAV_PANEL_ID}
             style={{
               color: 'var(--color-accent)',
               background: 'none',
@@ -197,6 +257,11 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            ref={mobileNavPanelRef}
+            id={MOBILE_NAV_PANEL_ID}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -223,7 +288,7 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
               overflowY: 'auto',
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <nav aria-label="Mobile Navigation" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
               {navItems.map((item) => {
                 const isActive = item.path === currentPath || (item.path === '/' && currentPath === '');
                 return (
@@ -244,7 +309,7 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
                   </a>
                 );
               })}
-            </div>
+            </nav>
 
             <div style={{ marginTop: '24px', paddingTop: '20px', borderTop: '1px solid rgba(182, 154, 107, 0.2)' }}>
               <a
@@ -280,11 +345,15 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
           }
           .mobile-hamburger-btn {
             display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             outline: none !important;
             border: none !important;
             background: transparent !important;
             box-shadow: none !important;
-            padding: 2px !important;
+            padding: 10px !important;
+            width: 44px !important;
+            height: 44px !important;
           }
           .header-right-actions {
             display: flex !important;

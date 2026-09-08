@@ -69,8 +69,8 @@ export const About: React.FC = () => {
   }, []);
 
   useDocumentMeta(
-    'About Leoz Cucine | Kitchens & Wardrobes',
-    'Leoz Cucine creates thoughtfully designed kitchens and wardrobes for contemporary homes.'
+    'About LEOZ Cucine | Kitchens & Wardrobes',
+    'LEOZ Cucine creates thoughtfully designed kitchens and wardrobes for contemporary homes.'
   );
 
   // Parallax transform calculation for Hero image
@@ -86,7 +86,7 @@ export const About: React.FC = () => {
            ========================================================================== */}
         <section
           id="hero"
-          aria-label="About LEOZ CUCINE Split Hero"
+          aria-label="About LEOZ Cucine Split Hero"
           className="hero-split-container"
           style={{
             position: 'relative',
@@ -123,7 +123,7 @@ export const About: React.FC = () => {
             >
               <img loading="lazy"
                 src={images.aboutHero}
-                alt="LEOZ CUCINE Architectural Heritage & Craftsmanship"
+                alt="LEOZ Cucine Architectural Heritage & Craftsmanship"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -179,8 +179,8 @@ export const About: React.FC = () => {
               </motion.span>
 
               <h1 className="page-title" style={{ marginBottom: '20px' }}>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Two Decades of</motion.span>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Crafting Kitchens</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Two Decades of</motion.span><span style={{ fontSize: 0 }}> </span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Crafting Kitchens</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>&amp; Wardrobes</motion.span>
               </h1>
 
@@ -262,7 +262,7 @@ export const About: React.FC = () => {
                 <ParallaxImage yOffset={30}>
                   <img loading="lazy"
                     src={images.modularKitchenHero}
-                    alt="LEOZ CUCINE Brand Story"
+                    alt="LEOZ Cucine Brand Story"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 </ParallaxImage>
@@ -292,7 +292,7 @@ export const About: React.FC = () => {
                   className="description"
                   style={{ color: '#B0ABA2' }}
                 >
-                  For over two decades, LEOZ Cucine has been shaping the way kitchens and wardrobes are designed, built, and installed in Gujarat. What started as a commitment to better manufacturing has grown into a brand trusted by homeowners, architects, and builders across Ahmedabad and throughout Gujarat — without ever outsourcing the work that carries our name.
+                  For over two decades, LEOZ Cucine has been shaping the way kitchens and wardrobes are designed, built, and installed in Gujarat. What started as a commitment to better manufacturing has grown into a brand trusted by homeowners, architects, and builders in Ahmedabad and across Gujarat — without ever outsourcing the work that carries our name.
                 </motion.p>
               </motion.div>
             </div>
@@ -357,7 +357,7 @@ export const About: React.FC = () => {
                     color: '#4A4A4A'
                   }}
                 >
-                  Inspired by German design principles, we combine precision, balanced proportions, and refined finishes with our own manufacturing expertise — thoughtfully crafted for modern Indian homes and everyday living.
+                  Inspired by German design principles, we combine precision, balanced proportions and refined finishes with our own manufacturing expertise, to create kitchens and wardrobes made for modern Indian homes and everyday living.
                 </p>
               </motion.div>
             </motion.div>
@@ -516,7 +516,7 @@ export const About: React.FC = () => {
                     marginBottom: '24px',
                   }}
                 >
-                  Mayur Vadhiya brings over 20 years of expertise to LEOZ Cucine's production and quality systems. Known as one of Ahmedabad's leading modular kitchen and wardrobe specialists, he ensures every product meets world-class standards. His leadership has helped LEOZ Cucine grow into one of Gujarat's most trusted modular kitchen manufacturers, serving Gujarat's markets with precision, efficiency, and seamless execution.
+                  Mayur Vadhiya brings over 20 years of expertise to LEOZ Cucine’s production and quality systems. {/* TODO(QA-G16): unverifiable claim, needs client sign-off before publishing as fact */}Known as one of Ahmedabad’s leading modular kitchen and wardrobe specialists, {/* TODO(QA-G16): unverifiable claim, needs client sign-off before publishing as fact */}he ensures every product meets world-class standards. His leadership has helped LEOZ Cucine grow into one of Gujarat’s most trusted modular kitchen manufacturers, serving clients across the state with precision, efficiency and seamless execution.
                 </motion.p>
 
                 <motion.div variants={fromLeftVariants}>
@@ -719,10 +719,10 @@ export const About: React.FC = () => {
                 OUR GLOBAL PRESENCE
               </motion.span>
               <motion.h2 variants={itemVariants} className="section-title" style={{ marginBottom: '20px' }}>
-                Serving Markets, Near and Far
+                Serving Markets Near and Far
               </motion.h2>
               <motion.p variants={itemVariants} className="description" style={{ margin: '0 auto', maxWidth: '680px' }}>
-                We are equipped to handle export-import operations with ease. We specialize exclusively in premium modular kitchens and customized wardrobes for residential projects, architects, interior designers, builders, and developers.
+                We are equipped to handle import-export operations. We specialise exclusively in premium modular kitchens and customised wardrobes for residential projects, working with architects, interior designers, builders and developers.
               </motion.p>
             </motion.div>
           </div>
@@ -899,7 +899,7 @@ export const About: React.FC = () => {
               }}
             >
               <p className="description" style={{ margin: '0 auto', fontWeight: 600, color: 'var(--color-heading)' }}>
-                Reached over 5,000 completed projects across Gujarat
+                Completed over 5,000 projects across Gujarat
               </p>
             </motion.div>
           </div>
@@ -910,7 +910,7 @@ export const About: React.FC = () => {
            ========================================================================== */}
         <section
           id="contact"
-          aria-label="Experience the Leoz Cucine Standard"
+          aria-label="Experience the LEOZ Cucine Standard"
           style={{
             position: 'relative',
             paddingTop: 'clamp(100px, 15vw, 200px)',
@@ -1043,6 +1043,14 @@ export const About: React.FC = () => {
               }
         }
         @media (max-width: 767px) {
+          .hero-split-container > div:first-of-type {
+            min-height: 200px !important;
+            height: 28vh !important;
+          }
+          .hero-split-container > div:last-of-type {
+            padding-top: 28px !important;
+            padding-bottom: 28px !important;
+          }
           .about-craftsmanship-grid, .about-founder-grid {
             display: flex !important;
             flex-direction: column-reverse !important;

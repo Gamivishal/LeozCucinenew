@@ -42,7 +42,7 @@ export const images = {
     { title: 'Soft-close Drawers', desc: 'Velvet-lined felt drawers for accessories and delicates.', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=90' },
     { title: 'Shoe Storage', desc: 'Slanted illuminated shoe displays with glass dividers.', image: wardrobeGlassImg },
     { title: 'Jewellery Organisers', desc: 'Bespoke leather inserts with integrated security locks.', image: wardrobeDressingImg },
-    { title: 'Pull-out Accessories', desc: 'Non-slip extendable trouser organizers and tie holders.', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=90' },
+    { title: 'Pull-out Accessories', desc: 'Non-slip extendable trouser organisers and tie holders.', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=90' },
     { title: 'Adjustable Shelves', desc: 'Modular shelf pin systems for flexible storage layouts.', image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=90' },
     { title: 'Internal Lighting', desc: 'Motion-activated warm vertical LED strip lighting.', image: wardrobeGlassImg },
     { title: 'Premium Storage Solutions', desc: 'Custom tailored compartments for modern living.', image: wardrobeDressingImg },

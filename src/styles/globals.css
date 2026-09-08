@@ -379,6 +379,12 @@ h4,
   textarea {
     font-size: 16px !important;
   }
+
+  /* Reserve space for the fixed mobile call/WhatsApp bar so it never
+     covers the footer's last element or a form's submit button. */
+  body {
+    padding-bottom: 56px;
+  }
 }
 
 /* Custom Cursor Trail Styles */

@@ -107,7 +107,7 @@ const ProcessTimelineSection: React.FC = () => {
             viewport={{ once: false, amount: 0.3 }}
             variants={staggerContainer}
           >
-            <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>From Consultation</motion.span>
+            <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>From Consultation</motion.span><span style={{ fontSize: 0 }}> </span>
             <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>to Installation.</motion.span>
           </motion.h2>
         </div>
@@ -267,7 +267,7 @@ export const ModularKitchens: React.FC = () => {
   }, []);
 
   useDocumentMeta(
-    'Premium Kitchens | Leoz Cucine',
+    'Premium Kitchens | LEOZ Cucine',
     'Thoughtfully planned kitchens with refined finishes and intelligent storage.'
   );
 
@@ -321,7 +321,7 @@ export const ModularKitchens: React.FC = () => {
             >
               <img 
                 src={images.modularKitchenHero}
-                alt="LEOZ CUCINE Architectural Modular Kitchen"
+                alt="LEOZ Cucine Architectural Modular Kitchen"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -377,8 +377,8 @@ export const ModularKitchens: React.FC = () => {
               </motion.span>
 
               <h1 className="page-title" style={{ marginBottom: '20px' }}>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Modular Kitchens,</motion.span>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Designed Around</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Modular Kitchens,</motion.span><span style={{ fontSize: 0 }}> </span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Designed Around</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>Your Life</motion.span>
               </h1>
 
@@ -387,7 +387,7 @@ export const ModularKitchens: React.FC = () => {
                 className="hero-description"
                 style={{ margin: '0 auto', textAlign: 'center', color: 'var(--color-body)', marginBottom: '32px' }}
               >
-                Experience German Precision – Premium Modular Kitchens from Design to Installation.
+                Experience German Precision — Premium Modular Kitchens from Design to Installation.
               </motion.p>
 
               <motion.div variants={heroTextItemVariants}>
@@ -476,7 +476,7 @@ export const ModularKitchens: React.FC = () => {
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.3 }}
                 >
-                  <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>A Kitchen Should</motion.span>
+                  <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>A Kitchen Should</motion.span><span style={{ fontSize: 0 }}> </span>
                   <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Work as Beautifully as It Looks</motion.span>
                 </motion.h2>
 
@@ -537,7 +537,7 @@ export const ModularKitchens: React.FC = () => {
               </motion.span>
 
               <h2 className="section-title text-white" style={{ marginBottom: '20px' }}>
-                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>German Precision,</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>German Precision,</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Indian Sensibility</motion.span>
               </h2>
 
@@ -558,11 +558,11 @@ export const ModularKitchens: React.FC = () => {
               >
                 {(() => {
                   const fusionItems = [
-                    'Ergonomic Flow',
-                    'Ample Storage',
-                    'Easy Maintenance',
-                    'Moisture-Resistant Carcass and Finishes',
-                    'Customizable Layouts',
+                    'Ergonomic flow',
+                    'Ample storage',
+                    'Easy maintenance',
+                    'Moisture-resistant carcass and finishes',
+                    'Customisable layouts',
                   ];
                   return fusionItems.map((item, idx) => {
                     const isOrphan = fusionItems.length % 2 !== 0 && idx === fusionItems.length - 1;
@@ -610,7 +610,7 @@ export const ModularKitchens: React.FC = () => {
               </motion.div>
 
               <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto', color: 'var(--color-text-secondary)' }}>
-                Whether you're a gourmet chef or a minimalist, a LEOZ kitchen is crafted to perform flawlessly and remain timeless.
+                Whether you’re a gourmet chef or a minimalist, a LEOZ kitchen is crafted to perform flawlessly and remain timeless.
               </motion.p>
             </motion.div>
           </div>
@@ -640,7 +640,7 @@ export const ModularKitchens: React.FC = () => {
                 viewport={{ once: false, amount: 0.3 }}
                 variants={staggerContainer}
               >
-                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Find Your</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Find Your</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Kitchen Style.</motion.span>
               </motion.h2>
             </div>
@@ -656,7 +656,7 @@ export const ModularKitchens: React.FC = () => {
               {[
                 { title: 'Modern Minimalist', description: 'Clean lines, handle-less shutters, and a restrained material palette for a contemporary look.' },
                 { title: 'German Classic', description: 'Precision-engineered cabinetry and refined finishes inspired by German kitchen design.' },
-                { title: 'Contemporary Fusion', description: "A balance of bold and understated — built for Gujarati households that entertain often." },
+                { title: 'Contemporary Fusion', description: "A balance of the bold and the understated — built for Gujarati households that entertain often." },
               ].map((style, idx) => {
                 /* Card 1 enters from the right, card 2 from below, card 3 from the left */
                 const cardOffset = idx === 0 ? { x: 80 } : idx === 2 ? { x: -80 } : { y: 60 };
@@ -708,7 +708,7 @@ export const ModularKitchens: React.FC = () => {
               viewport={{ once: false, amount: 0.3 }}
               variants={staggerContainer}
             >
-              <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Built for Performance.</motion.span>
+              <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Built for Performance.</motion.span><span style={{ fontSize: 0 }}> </span>
               <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Finished for Life.</motion.span>
             </motion.h2>
 
@@ -725,7 +725,7 @@ export const ModularKitchens: React.FC = () => {
                 'High-grade marine plywood and engineered wood carcasses',
                 'Premium laminate, acrylic, and PU finish options',
                 'German-grade hardware for smooth, long-lasting function',
-                "Anti-scratch, moisture-resistant surfaces suited to Gujarat's climate",
+                "Anti-scratch, moisture-resistant surfaces suited to Gujarat’s climate",
               ].map((item, idx) => {
                 /* Item 1 from top, item 2 from bottom, item 3 from left, item 4 from right */
                 const lineOffset = [{ y: -60 }, { y: 60 }, { x: -60 }, { x: 60 }][idx] || {};
@@ -796,7 +796,7 @@ export const ModularKitchens: React.FC = () => {
                 viewport={{ once: false, amount: 0.3 }}
                 variants={staggerContainer}
               >
-                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Why Our Kitchens</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Why Our Kitchens</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Stand Apart.</motion.span>
               </motion.h2>
             </div>
@@ -901,8 +901,8 @@ export const ModularKitchens: React.FC = () => {
                 viewport={{ once: false, amount: 0.3 }}
                 variants={staggerContainer}
               >
-                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Frequently</motion.span>
-                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Asked</motion.span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Frequently</motion.span><span style={{ fontSize: 0 }}> </span>
+                <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Asked</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Questions</motion.span>
               </motion.h2>
             </div>
@@ -911,10 +911,10 @@ export const ModularKitchens: React.FC = () => {
               {[
                 {
                   q: 'How long does a modular kitchen installation take?',
-                  a: 'Standard installation typically takes 4 to 6 weeks from the date of final design approval.',
+                  a: 'Installation typically takes 4 to 6 weeks from the date of final design approval.',
                 },
                 {
-                  q: 'Do you offer customization for non-standard kitchen spaces?',
+                  q: 'Do you offer customisation for non-standard kitchen spaces?',
                   a: 'Yes, all our kitchens are custom-designed to fit your specific layout and dimensions.',
                 },
                 {
@@ -1010,7 +1010,7 @@ export const ModularKitchens: React.FC = () => {
               className="section-title text-white"
               style={{ marginBottom: '20px' }}
             >
-              <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Ready to Design</motion.span>
+              <motion.span variants={staggerItem} style={{ display: 'inline-block', marginRight: '0.25em' }}>Ready to Design</motion.span><span style={{ fontSize: 0 }}> </span>
               <motion.span variants={staggerItem} style={{ display: 'inline-block' }}>Your Kitchen?</motion.span>
             </h2>
 
@@ -1058,6 +1058,14 @@ export const ModularKitchens: React.FC = () => {
           }
         }
         @media (max-width: 767px) {
+          .hero-split-container > div:first-of-type {
+            min-height: 200px !important;
+            height: 28vh !important;
+          }
+          .hero-split-container > div:last-of-type {
+            padding-top: 28px !important;
+            padding-bottom: 28px !important;
+          }
           .mk-intro-grid {
             display: flex !important;
             flex-direction: column !important;

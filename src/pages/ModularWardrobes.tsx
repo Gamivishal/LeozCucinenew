@@ -84,7 +84,7 @@ export const ModularWardrobes: React.FC = () => {
   }, []);
 
   useDocumentMeta(
-    'Premium Wardrobes | Leoz Cucine',
+    'Premium Wardrobes | LEOZ Cucine',
     'Wardrobes designed around your room, belongings and personal style.'
   );
 
@@ -194,8 +194,8 @@ export const ModularWardrobes: React.FC = () => {
               </motion.span>
 
               <h1 className="page-title" style={{ marginBottom: '20px' }}>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Wardrobes Built</motion.span>
-                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Around the Way</motion.span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Wardrobes Built</motion.span><span style={{ fontSize: 0 }}> </span>
+                <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Around the Way</motion.span><span style={{ fontSize: 0 }}> </span>
                 <motion.span variants={heroTextItemVariants} style={{ display: 'inline-block' }}>You Live</motion.span>
               </h1>
 
@@ -248,7 +248,7 @@ export const ModularWardrobes: React.FC = () => {
             >
               <img 
                 src={images.modularWardrobeHero}
-                alt="LEOZ CUCINE Architectural Modular Wardrobe"
+                alt="LEOZ Cucine Architectural Modular Wardrobe"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -347,10 +347,10 @@ export const ModularWardrobes: React.FC = () => {
         </section>
 
         {/* ==========================================================================
-           SECTION 2.5: CUSTOMIZED WARDROBES
+           SECTION 2.5: CUSTOMISED WARDROBES
            ========================================================================== */}
         <section
-          aria-label="Customized Wardrobes"
+          aria-label="Customised Wardrobes"
           style={{
             paddingTop: 'var(--space-section-padding-desktop)',
             paddingBottom: 'var(--space-section-padding-desktop)',
@@ -368,15 +368,15 @@ export const ModularWardrobes: React.FC = () => {
               variants={staggerContainer}
             >
               <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
-                CUSTOMIZED WARDROBES
+                CUSTOMISED WARDROBES
               </motion.span>
 
               <motion.h2 variants={staggerItem} className="section-title text-white" style={{ marginBottom: '20px' }}>
-                Maximize Your Space, Elevate Your Room
+                Maximise Your Space, Elevate Your Room
               </motion.h2>
 
               <motion.p variants={staggerItem} className="description" style={{ margin: '0 auto', color: 'var(--color-text-secondary)' }}>
-                Maximize your space with our innovative wardrobe designs. Tailored to your needs, our wardrobes combine practicality with elegance, ensuring optimal storage and a clutter-free environment.
+                Maximise your space with our innovative wardrobe designs. Tailored to your needs, our wardrobes combine practicality with elegance, ensuring optimal storage and a clutter-free environment.
               </motion.p>
             </motion.div>
           </div>
@@ -420,8 +420,8 @@ export const ModularWardrobes: React.FC = () => {
             >
               {[
                 { title: 'Sliding Wardrobes', description: 'Space-efficient designs ideal for compact bedrooms, with smooth, durable sliding mechanisms.' },
-                { title: 'Hinged Wardrobes', description: 'Classic, spacious wardrobes with full access — customizable in finish and internal layout.' },
-                { title: 'Walk-In Wardrobes', description: 'Premium walk-in storage solutions for larger spaces, designed for organization and display.' },
+                { title: 'Hinged Wardrobes', description: 'Classic, spacious wardrobes with full access — customisable in finish and internal layout.' },
+                { title: 'Walk-In Wardrobes', description: 'Premium walk-in storage solutions for larger spaces, designed for organisation and display.' },
               ].map((style, idx) => {
                 /* Card 1 enters from the right, card 2 from below, card 3 from the left */
                 const cardOffset = idx === 0 ? { x: 80 } : idx === 2 ? { x: -80 } : { y: 60 };
@@ -489,7 +489,7 @@ export const ModularWardrobes: React.FC = () => {
                 'Engineered wood and marine-grade plywood construction',
                 'Laminate, veneer, acrylic and PU finish options',
                 'Premium German-grade sliding and hinge hardware for long-term durability',
-                'Internal organizers — drawers, shelves, trouser racks, accessory units',
+                'Internal organisers — drawers, shelves, trouser racks and accessory units',
               ].map((item, idx) => {
                 /* Item 1 from top, item 2 from bottom, item 3 from left, item 4 from right */
                 const lineOffset = [{ y: -60 }, { y: 60 }, { x: -60 }, { x: 60 }][idx] || {};
@@ -578,7 +578,7 @@ export const ModularWardrobes: React.FC = () => {
                 { icon: Compass, title: 'German Design Precision', description: 'German design precision reflected in finish and detailing.' },
                 { icon: Clock, title: '20+ Years of Experience', description: '20+ years of manufacturing experience.' },
                 { icon: ShieldCheck, title: 'Comprehensive Warranty', description: 'Comprehensive warranty on materials and workmanship.' },
-                { icon: Wrench, title: 'In-House Installation', description: 'Installed by our own trained team, not outsourced labor.' },
+                { icon: Wrench, title: 'In-House Installation', description: 'Installed by our own trained team, not outsourced labour.' },
               ].map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -780,12 +780,12 @@ export const ModularWardrobes: React.FC = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
               {[
                 {
-                  q: 'Can wardrobes be customized for irregular room shapes?',
+                  q: 'Can wardrobes be customised for irregular room shapes?',
                   a: 'Yes, every wardrobe is designed to fit your exact space and dimensions.',
                 },
                 {
                   q: 'What internal storage options are available?',
-                  a: 'Drawers, shelves, trouser racks, jewelry units, and shoe racks can all be included based on your needs.',
+                  a: 'Drawers, shelves, trouser racks, jewellery units, and shoe racks can all be included based on your needs.',
                 },
                 {
                   q: 'What warranty applies to wardrobes?',
@@ -1298,6 +1298,13 @@ export const ModularWardrobes: React.FC = () => {
           }
         }
         @media (max-width: 767px) {
+          .hero-split-container > div:first-of-type {
+            padding: 78px 24px 20px 24px !important;
+          }
+          .hero-split-container > div:last-of-type {
+            min-height: 180px !important;
+            height: 24vh !important;
+          }
           .mw-intro-grid {
             display: flex !important;
             flex-direction: column-reverse !important;
