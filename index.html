@@ -17,12 +17,24 @@
     content="Premium kitchens and wardrobes, thoughtfully designed for modern homes." />
   <meta property="og:type" content="website" />
 
-  <!-- Typography: Cormorant Garamond (headings) + Manrope (body) -->
+  <!-- Typography: Cormorant Garamond (headings) + Manrope (body).
+       Loaded non-render-blocking: the stylesheet is fetched with preload
+       priority and swapped in once ready, instead of blocking first paint
+       on a round trip to fonts.googleapis.com. display=swap in the URL
+       still applies once the stylesheet is active, so no invisible-text
+       regression either way. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap"
-    rel="stylesheet" />
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" />
+  </noscript>
 </head>
 
 <body>
