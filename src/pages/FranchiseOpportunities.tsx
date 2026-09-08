@@ -365,7 +365,7 @@ export const FranchiseOpportunities: React.FC = () => {
                       required
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      placeholder="Your full name"
+                      placeholder="Full Name"
                       className="contact-form-input"
                       style={{
                         width: '100%',
@@ -392,7 +392,7 @@ export const FranchiseOpportunities: React.FC = () => {
                       required
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      placeholder="+91 Mobile"
+                      placeholder="Mobile Number"
                       className="contact-form-input"
                       style={{
                         width: '100%',
@@ -419,7 +419,7 @@ export const FranchiseOpportunities: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="yourname@domain.com"
+                      placeholder="Email Address"
                       className="contact-form-input"
                       style={{
                         width: '100%',
@@ -445,7 +445,7 @@ export const FranchiseOpportunities: React.FC = () => {
                       rows={4}
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Tell us about your city, background, and franchise interest..."
+                      placeholder="Your Message"
                       className="contact-form-input"
                       style={{
                         width: '100%',

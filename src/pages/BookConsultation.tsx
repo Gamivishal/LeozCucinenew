@@ -121,7 +121,7 @@ export const BookConsultation: React.FC = () => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Name"
+                      placeholder="Full Name"
                       className="contact-form-input"
                       style={{
                         width: '100%',
@@ -158,7 +158,7 @@ export const BookConsultation: React.FC = () => {
                       required
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      placeholder="Enter mobile number"
+                      placeholder="Mobile Number"
                       className="contact-form-input"
                       style={{
                         width: '100%',
@@ -205,7 +205,7 @@ export const BookConsultation: React.FC = () => {
                       required
                       value={formData.message}
                       onChange={handleInputChange}
-                      placeholder="Message"
+                      placeholder="Your Message"
                       rows={4}
                       className="contact-form-input"
                       style={{
