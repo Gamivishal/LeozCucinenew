@@ -372,7 +372,7 @@ export const ModularKitchens: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label section-label-on-light" style={{ marginBottom: '16px' }}>
                 LEOZ KITCHENS
               </motion.span>
 
@@ -464,7 +464,7 @@ export const ModularKitchens: React.FC = () => {
             >
               {/* Text Left Column — enters sliding in from the right */}
               <motion.div variants={fromRightVariants}>
-                <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                   INTRODUCTION
                 </span>
 
@@ -632,7 +632,7 @@ export const ModularKitchens: React.FC = () => {
         >
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>KITCHEN COLLECTIONS</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>KITCHEN COLLECTIONS</span>
               <motion.h2 
                 className="section-title"
                 initial="hidden"
@@ -788,7 +788,7 @@ export const ModularKitchens: React.FC = () => {
         >
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ KITCHENS</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ KITCHENS</span>
               <motion.h2 
                 className="section-title"
                 initial="hidden"
@@ -893,7 +893,7 @@ export const ModularKitchens: React.FC = () => {
         >
           <div style={{ maxWidth: '860px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
               <motion.h2 
                 className="section-title"
                 initial="hidden"

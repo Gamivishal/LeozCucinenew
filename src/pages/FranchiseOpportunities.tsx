@@ -203,7 +203,7 @@ export const FranchiseOpportunities: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label section-label-on-light" style={{ marginBottom: '16px' }}>
                 FRANCHISE ENQUIRY
               </motion.span>
 
@@ -242,7 +242,7 @@ export const FranchiseOpportunities: React.FC = () => {
         >
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                 PARTNERSHIP
               </span>
               <motion.h2 
@@ -411,7 +411,7 @@ export const FranchiseOpportunities: React.FC = () => {
 
                   <div>
                     <label style={{ display: 'block', fontFamily: 'var(--font-family-sans)', fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', marginBottom: '8px' }}>
-                      Email ID
+                      Email Address
                     </label>
                     <input
                       type="email"

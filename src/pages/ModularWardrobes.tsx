@@ -189,7 +189,7 @@ export const ModularWardrobes: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label section-label-on-light" style={{ marginBottom: '16px' }}>
                 LEOZ WARDROBES
               </motion.span>
 
@@ -326,7 +326,7 @@ export const ModularWardrobes: React.FC = () => {
 
               {/* Text Right Column — enters sliding in from the right */}
               <motion.div variants={fromRightVariants}>
-                <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                   INTRODUCTION
                 </span>
 
@@ -398,7 +398,7 @@ export const ModularWardrobes: React.FC = () => {
         >
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WARDROBE COLLECTIONS</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>WARDROBE COLLECTIONS</span>
               <motion.h2 
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
@@ -551,7 +551,7 @@ export const ModularWardrobes: React.FC = () => {
         >
           <div style={{ maxWidth: '1300px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ WARDROBES</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>WHY LEOZ WARDROBES</span>
               <motion.h2 
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
@@ -765,7 +765,7 @@ export const ModularWardrobes: React.FC = () => {
         >
           <div style={{ maxWidth: '860px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>FAQ</span>
               <motion.h2 
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
@@ -1220,7 +1220,7 @@ export const ModularWardrobes: React.FC = () => {
         >
           <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(60px, 8vw, 110px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                 DESIGNED INSIDE &amp; OUT
               </span>
               <motion.h2 

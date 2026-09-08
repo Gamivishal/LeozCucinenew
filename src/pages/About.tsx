@@ -174,7 +174,7 @@ export const About: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label section-label-on-light" style={{ marginBottom: '16px' }}>
                 ABOUT LEOZ CUCINE
               </motion.span>
 
@@ -328,7 +328,7 @@ export const About: React.FC = () => {
             >
               {/* Left Column: Title — enters sliding in from the left */}
               <div>
-                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                   OUR PHILOSOPHY
                 </motion.span>
                 <motion.h2
@@ -488,7 +488,7 @@ export const About: React.FC = () => {
                 viewport={{ once: true, amount: 0.15 }}
                 variants={containerVariants}
               >
-                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                   LEADERSHIP
                 </motion.span>
 
@@ -715,7 +715,7 @@ export const About: React.FC = () => {
               >
                 <Globe size={32} strokeWidth={1.5} />
               </div>
-              <motion.span variants={itemVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+              <motion.span variants={itemVariants} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                 OUR GLOBAL PRESENCE
               </motion.span>
               <motion.h2 variants={itemVariants} className="section-title" style={{ marginBottom: '20px' }}>
@@ -839,7 +839,7 @@ export const About: React.FC = () => {
         >
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-              <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>MILESTONES</span>
+              <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>MILESTONES</span>
               <motion.h2 
                 className="section-title"
                 initial={{ opacity: 0, x: 50 }}
@@ -890,7 +890,13 @@ export const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: luxuryEase }}
-              style={{ textAlign: 'center' }}
+              style={{
+                textAlign: 'center',
+                padding: '24px 28px',
+                border: '1px solid var(--color-border-gold)',
+                borderRadius: 'var(--radius-md)',
+                backgroundColor: '#FFFFFF',
+              }}
             >
               <p className="description" style={{ margin: '0 auto', fontWeight: 600, color: 'var(--color-heading)' }}>
                 Reached over 5,000 completed projects across Gujarat

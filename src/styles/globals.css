@@ -80,6 +80,13 @@ h4,
   color: var(--color-accent);
 }
 
+/* Darker bronze variant for eyebrow labels sitting on light/cream section
+   backgrounds — the default gold above only clears WCAG AA against dark
+   backgrounds (~2.7:1 on white vs. the 4.5:1 required at this size). */
+.section-label-on-light {
+  color: var(--color-accent-on-light);
+}
+
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(39px, 5vw, 72px);

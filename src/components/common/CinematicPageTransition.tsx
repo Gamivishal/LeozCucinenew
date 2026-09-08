@@ -24,22 +24,32 @@ export const CinematicPageTransition: React.FC<{ children: React.ReactNode }> = 
       const currentPath = window.location.pathname;
       if (targetPath === currentPath) return;
 
+      // Motion-sensitive visitors get an instant route swap, no curtain —
+      // navigating shouldn't force a blocking animation on every click.
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        window.history.pushState({}, '', targetPath);
+        window.dispatchEvent(new Event('popstate'));
+        window.scrollTo(0, 0);
+        return;
+      }
+
       isNavigatingRef.current = true;
       const key = Date.now();
       setTransitionKey(key);
 
-      // Midpoint at 550ms: Update route silently behind solid navy overlay
+      // Midpoint at 350ms: Update route silently behind solid navy overlay
       setTimeout(() => {
         window.history.pushState({}, '', targetPath);
         window.dispatchEvent(new Event('popstate'));
         window.scrollTo(0, 0);
-      }, 550);
+      }, 350);
 
-      // End of continuous motion at 1150ms: Cleanup
+      // End of continuous motion at 700ms: Cleanup (matches transition duration below)
       setTimeout(() => {
         setTransitionKey(null);
         isNavigatingRef.current = false;
-      }, 1150);
+      }, 700);
     },
     [isInitialLoad]
   );
@@ -113,8 +123,8 @@ export const CinematicPageTransition: React.FC<{ children: React.ReactNode }> = 
               initial={{ translateY: '-100%' }}
               animate={{ translateY: ['-100%', '0%', '100%'] }}
               transition={{
-                duration: 1.1,
-                times: [0, 0.48, 1],
+                duration: 0.7,
+                times: [0, 0.5, 1],
                 ease: luxuryBezier,
               }}
               style={{

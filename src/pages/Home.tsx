@@ -245,7 +245,7 @@ const BrandIntroSection: React.FC = () => {
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainer}
         >
-          <motion.span variants={staggerItem} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+          <motion.span variants={staggerItem} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
             LEOZ CUCINE
           </motion.span>
 
@@ -295,7 +295,12 @@ const BrandIntroSection: React.FC = () => {
 
 /* Helper component for live animated numbers counter */
 const AnimatedCounter: React.FC<{ value: string }> = ({ value }) => {
-  const [displayValue, setDisplayValue] = React.useState('0');
+  // Only genuinely numeric values (e.g. "5,000+") should start at 0 and count up.
+  // Non-numeric labels (e.g. "Trusted", "In-House") must render their real text
+  // immediately — otherwise visitors with slow/blocked JS (or crawlers) see "0".
+  const [displayValue, setDisplayValue] = React.useState(() => (
+    value.match(/[\d,]+/) ? '0' : value
+  ));
   const ref = React.useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
@@ -525,7 +530,7 @@ const CollectionsSection: React.FC = () => {
     >
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(70px, 9vw, 130px)' }}>
-          <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>OUR COLLECTIONS</span>
+          <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>OUR COLLECTIONS</span>
           <motion.h2
             className="section-title"
             initial={{ opacity: 0, x: 50 }}
@@ -560,7 +565,7 @@ const CollectionsSection: React.FC = () => {
                 transition={{ duration: 0.7, ease: luxuryEase }}
                 style={{ order: isImageLeft ? 2 : 1 }}
               >
-                <span className="section-label" style={{ display: 'block', marginBottom: '18px' }}>
+                <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '18px' }}>
                   {item.eyebrow}
                 </span>
                 <h3 className="section-title" style={{ marginBottom: '20px' }}>{item.title}</h3>
@@ -668,7 +673,7 @@ const ProductHighlightsSection: React.FC = () => {
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-          <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>PRODUCT HIGHLIGHTS</span>
+          <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>PRODUCT HIGHLIGHTS</span>
           <motion.h2
             className="section-title"
             initial={{ opacity: 0, x: -50 }}
@@ -776,7 +781,7 @@ const ProcessSection: React.FC = () => {
     >
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 7vw, 90px)' }}>
-          <span className="section-label" style={{ display: 'block', marginBottom: '16px' }}>HOW WE WORK</span>
+          <span className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>HOW WE WORK</span>
           <motion.h2
             className="section-title"
             initial={{ opacity: 0, x: 50 }}
@@ -1291,7 +1296,7 @@ export const Home: React.FC = () => {
       setIsPreloaderActive(false);
       document.body.style.overflow = '';
       markPreloaderSeen();
-    }, 400 + 800);
+    }, 400 + 1100);
 
     return () => {
       clearTimeout(exitTimer);

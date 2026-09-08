@@ -149,7 +149,7 @@ export const Contact: React.FC = () => {
                 textAlign: 'center',
               }}
             >
-              <motion.span variants={heroTextItemVariants} className="section-label" style={{ marginBottom: '16px' }}>
+              <motion.span variants={heroTextItemVariants} className="section-label section-label-on-light" style={{ marginBottom: '16px' }}>
                 CONTACT
               </motion.span>
 
@@ -271,7 +271,7 @@ export const Contact: React.FC = () => {
                 viewport={{ once: true, amount: 0.15 }}
                 variants={staggerContainer}
               >
-                <motion.span variants={fromLeftVariants} className="section-label" style={{ display: 'block', marginBottom: '16px' }}>
+                <motion.span variants={fromLeftVariants} className="section-label section-label-on-light" style={{ display: 'block', marginBottom: '16px' }}>
                   VISIT US
                 </motion.span>
                 <motion.h2
@@ -293,7 +293,7 @@ export const Contact: React.FC = () => {
                         Email
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        Info@leozcucine.com
+                        info@leozcucine.com
                       </p>
                     </div>
                   </motion.div>
@@ -305,7 +305,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 style={{ fontFamily: 'var(--font-family-sans)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#B69A6B', margin: '0 0 6px 0' }}>
-                        Sales &amp; Inquiry
+                        Sales &amp; Enquiry
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
                         93131 51559
@@ -323,7 +323,7 @@ export const Contact: React.FC = () => {
                         Customer Care
                       </h4>
                       <p style={{ fontFamily: 'var(--font-family-sans)', fontSize: '15px', fontWeight: 300, color: '#4A4A4A', margin: 0, lineHeight: '1.6' }}>
-                        8758 551552
+                        87585 51552
                       </p>
                     </div>
                   </motion.div>
@@ -386,7 +386,7 @@ export const Contact: React.FC = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    <span className="section-label" style={{ display: 'block' }}>ENQUIRY FORM</span>
+                    <span className="section-label section-label-on-light" style={{ display: 'block' }}>ENQUIRY FORM</span>
                     <h3 style={{ fontFamily: 'var(--font-family-serif)', fontSize: '24px', fontWeight: 500, color: '#181818', marginBottom: '8px' }}>
                       Send Us a Message
                     </h3>

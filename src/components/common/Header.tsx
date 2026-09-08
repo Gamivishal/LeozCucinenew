@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from './Logo';
 import { Menu, X } from 'lucide-react';
+import { useLenisScroll } from '../../hooks/useLenisScroll';
 
 interface HeaderProps {
   isPreloaderActive?: boolean;
@@ -11,6 +12,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showHeader = true }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lenis } = useLenisScroll();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,13 +25,16 @@ export const Header: React.FC<HeaderProps> = ({ isPreloaderActive = false, showH
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
+      lenis?.stop();
     } else {
       document.body.style.overflow = '';
+      lenis?.start();
     }
     return () => {
       document.body.style.overflow = '';
+      lenis?.start();
     };
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, lenis]);
 
   const isVisible = !isPreloaderActive || showHeader;
 

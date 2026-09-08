@@ -49,6 +49,8 @@
   --color-accent-gold-hover: #C4AD82;
   /* Accent Hover: Lighter Champagne */
   --color-accent-gold-subtle: rgba(182, 154, 107, 0.15);
+  --color-accent-on-light: #7A5F35;
+  /* Darker bronze — WCAG AA-passing variant of the gold accent for small text on light/cream backgrounds */
 
   --color-text-primary: #FFFFFF;
   /* Primary Text on Dark */

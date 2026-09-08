@@ -153,9 +153,9 @@ export const Footer: React.FC = () => {
                 color: 'var(--color-text-secondary)',
               }}
             >
-              <p>Email: Info@leozcucine.com</p>
-              <p>Sales &amp; Inquiry: 93131 51559</p>
-              <p>Customer Care: 8758 551552</p>
+              <p>Email: info@leozcucine.com</p>
+              <p>Sales &amp; Enquiry: 93131 51559</p>
+              <p>Customer Care: 87585 51552</p>
               <p>Studio: Sankalp Square 3B, 509, Sindhu Bhavan Marg, Thaltej, Ahmedabad, Gujarat 380059</p>
               <p>Hours: Mon–Sat 10 AM–7 PM, Sun by appointment</p>
             </div>

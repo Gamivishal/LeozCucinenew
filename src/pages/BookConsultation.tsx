@@ -182,7 +182,7 @@ export const BookConsultation: React.FC = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="Email Id"
+                      placeholder="Email Address"
                       className="contact-form-input"
                       style={{
                         width: '100%',
