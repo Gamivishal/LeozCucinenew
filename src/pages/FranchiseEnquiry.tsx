@@ -1572,7 +1572,7 @@ export const FranchiseEnquiry: React.FC = () => {
                   margin: '0 auto',
                 }}
               >
-                Become part of the LEOZ CUCINE network and create exceptional spaces with a brand built on quality, craftsmanship and trust.
+                Become part of the LEOZ CUCINE network and create exceptional spaces with a brand built on quality, craftsmanship, and trust.
               </motion.p>
             </motion.div>
           </div>

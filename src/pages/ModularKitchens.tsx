@@ -561,8 +561,8 @@ export const ModularKitchens: React.FC = () => {
                     'Ergonomic Flow',
                     'Ample Storage',
                     'Easy Maintenance',
-                    'Moisture-resistant carcass and finishes',
-                    'Customizable layouts',
+                    'Moisture-Resistant Carcass and Finishes',
+                    'Customizable Layouts',
                   ];
                   return fusionItems.map((item, idx) => {
                     const isOrphan = fusionItems.length % 2 !== 0 && idx === fusionItems.length - 1;
