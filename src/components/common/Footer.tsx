@@ -105,6 +105,7 @@ export const Footer: React.FC = () => {
                 { label: 'About', path: '/about' },
                 { label: 'Contact', path: '/contact' },
                 { label: 'Franchise Enquiry', path: '/franchise-opportunities' },
+                { label: 'Talk to Us', path: '/talk-to-us' },
                 // EXTRA (not part of current spec) — disabled, kept for reference. Uncomment to re-enable.
                 // { label: 'Franchise Enquiry', path: '/franchise-enquiry' },
               ].map((item) => (
