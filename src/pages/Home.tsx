@@ -122,16 +122,14 @@ const HeroSection: React.FC = () => {
           className="hero-title text-white"
           style={{ marginBottom: '22px', textShadow: '0 4px 30px rgba(0, 0, 0, 0.45)' }}
         >
-          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>German-Engineered</motion.span><span style={{ fontSize: 0 }}> </span>
-          <motion.span variants={heroItemVariants} style={{ display: 'inline-block', marginRight: '0.25em' }}>Kitchens &amp; Wardrobes,</motion.span><span style={{ fontSize: 0 }}> </span>
-          <motion.span variants={heroItemVariants} style={{ display: 'inline-block' }}>Crafted in Gujarat</motion.span>
+          <motion.span variants={heroItemVariants}>German-Engineered Kitchens &amp; Wardrobes, Made in Gujarat</motion.span>
         </h1>
         <motion.p
           variants={heroItemVariants}
           className="hero-description text-light"
           style={{ margin: '0 auto 36px', maxWidth: '620px', textShadow: '0 2px 16px rgba(0, 0, 0, 0.5)' }}
         >
-          LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes in Ahmedabad and across Gujarat. Every kitchen and wardrobe is designed, built and installed entirely in-house.
+          20+ years of in-house manufacturing. Designed, built and installed by LEOZ Cucine in Ahmedabad.
         </motion.p>
 
         <div
@@ -168,7 +166,10 @@ const HeroSection: React.FC = () => {
       <style>{`
         @media (max-width: 767px) {
           .home-hero-section {
-            height: 78vh !important;
+            height: auto !important;
+            min-height: 78vh !important;
+            padding-top: 110px !important;
+            padding-bottom: 48px !important;
           }
           .hero-cta-container {
             flex-direction: column !important;
@@ -1291,8 +1292,8 @@ export const Home: React.FC = () => {
   const [showHeader, setShowHeader] = useState<boolean>(() => !checkShouldRunPreloader());
 
   useDocumentMeta(
-    'LEOZ Cucine | German-Engineered Kitchens & Wardrobes in Gujarat',
-    'LEOZ Cucine brings 20+ years of manufacturing expertise and German design precision to homes in Ahmedabad and across Gujarat.'
+    'LEOZ Cucine | German-Engineered Kitchens & Wardrobes, Made in Gujarat',
+    '20+ years of in-house manufacturing. Designed, built and installed by LEOZ Cucine in Ahmedabad.'
   );
 
   // Preloader timeline: hold the curtain briefly, slide it up, then reveal the page.
